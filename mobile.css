@@ -1,0 +1,1418 @@
+/* ================================================================
+   mobile-fix.css — SK Digitale
+   Correctifs responsive pour toutes les pages du portfolio
+   Ajoutez <link rel="stylesheet" href="mobile-fix.css"> dans
+   CHAQUE page (index.html, Messages.html, projets.html,
+   Adminpro.html, Admin.html), juste avant </head>
+   ================================================================ */
+
+/* ── RESET DE BASE MOBILE ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ================================================================
+   HEADER / NAV — toutes les pages
+   ================================================================ */
+@media (max-width: 768px) {
+
+  #header {
+    padding: 0 16px !important;
+    height: 60px !important;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 1.1rem !important;
+  }
+
+  /* Menu burger */
+  .menu {
+    position: fixed !important;
+    top: 60px; left: 0; right: 0;
+    background: rgba(20, 22, 34, 0.98) !important;
+    backdrop-filter: blur(16px);
+    padding: 20px 24px !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    display: none;
+    border-bottom: 2px solid rgba(255,107,53,0.3);
+    z-index: 998;
+  }
+
+  .menu.open { display: flex !important; }
+
+  .menu-link {
+    padding: 14px 0 !important;
+    font-size: 1rem !important;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    width: 100%;
+    display: block;
+  }
+
+  .menu-link:last-child { border-bottom: none; }
+}
+
+/* ================================================================
+   INDEX.HTML — Sections principales
+   ================================================================ */
+@media (max-width: 768px) {
+
+  /* Hero */
+  #presentation {
+    padding: 90px 20px 50px !important;
+    min-height: auto !important;
+  }
+
+  .hero-content {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+    gap: 30px !important;
+    text-align: center;
+  }
+
+  .text-content {
+    text-align: center;
+  }
+
+  .text-content h1 {
+    font-size: clamp(1.8rem, 7vw, 2.6rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  .subtitle {
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem) !important;
+  }
+
+  .tagline {
+    font-size: clamp(0.85rem, 3vw, 1rem) !important;
+  }
+
+  #photo {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .photo-frame {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .photo-frame img {
+    width: 180px !important;
+    height: 180px !important;
+    object-fit: cover;
+  }
+
+  /* Sections générales */
+  section, #apropos, #parcours-scolaire, #experiences,
+  #competences-techniques, #projets, #soft-skills, #cv, #contact {
+    padding: 50px 20px !important;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+  }
+
+  /* À propos */
+  .apropos-content p {
+    font-size: 0.95rem !important;
+    line-height: 1.75 !important;
+  }
+
+  /* Parcours — timeline */
+  .timeline { padding-left: 20px !important; }
+
+  .timeline-item {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .timeline-date {
+    font-size: 0.8rem !important;
+    min-width: unset !important;
+  }
+
+  /* Expériences */
+  .experience-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .experience-card {
+    padding: 20px !important;
+  }
+
+  /* Compétences */
+  .skills-container {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Projets teaser */
+  .teaser-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+    margin: 30px 0 !important;
+  }
+
+  .teaser-card {
+    padding: 20px 14px !important;
+  }
+
+  .btn-voir-projets {
+    font-size: 1rem !important;
+    padding: 16px 28px !important;
+  }
+
+  /* Soft skills */
+  .soft-skills-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+
+  .soft-skill-card {
+    padding: 18px 14px !important;
+  }
+
+  /* CV */
+  .cv-actions {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .btn-download, .btn-view {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Contact */
+  .contact-container {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .contact-info,
+  .contact-form-wrapper {
+    width: 100% !important;
+  }
+
+  .social-links {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column !important;
+    gap: 30px !important;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column !important;
+    gap: 20px !important;
+    align-items: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .teaser-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .soft-skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ================================================================
+   PROJETS.HTML
+   ================================================================ */
+@media (max-width: 768px) {
+
+  .back-bar {
+    padding: 70px 20px 10px !important;
+  }
+
+  .page-hero {
+    padding: 20px 20px 40px !important;
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+  }
+
+  .page-hero p {
+    font-size: 0.95rem !important;
+  }
+
+  .stats-row {
+    gap: 20px !important;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Filtres */
+  .filters-section {
+    padding: 0 16px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    padding: 8px 16px !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* Grille projets */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 20px 16px 60px !important;
+  }
+
+  .project-card { margin: 0 !important; }
+
+  .card-visual {
+    height: 120px !important;
+  }
+
+  .card-body {
+    padding: 18px !important;
+  }
+
+  .card-title {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* ================================================================
+   MESSAGES.HTML (Admin messages)
+   ================================================================ */
+@media (max-width: 768px) {
+
+  .admin-header {
+    flex-wrap: wrap !important;
+    height: auto !important;
+    padding: 12px 16px !important;
+    gap: 10px;
+  }
+
+  .header-left {
+    gap: 10px !important;
+  }
+
+  .header-left h2 {
+    font-size: 0.95rem !important;
+    display: none;
+  }
+
+  .header-right {
+    gap: 8px !important;
+    flex-wrap: wrap;
+  }
+
+  .btn-menu span,
+  .btn-logout span,
+  .user-info span {
+    display: none !important;
+  }
+
+  .btn-projects-nav span { display: none; }
+  .btn-projects-nav { padding: 9px 12px !important; }
+
+  /* Stats */
+  .stats-section {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    padding: 16px !important;
+  }
+
+  .stat-card {
+    padding: 14px !important;
+    gap: 10px !important;
+  }
+
+  .stat-card .stat-icon {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1rem !important;
+  }
+
+  .stat-info h3 {
+    font-size: 1.4rem !important;
+  }
+
+  /* Filters */
+  .filters-section {
+    flex-direction: column !important;
+    padding: 12px 16px !important;
+    gap: 10px !important;
+  }
+
+  .filter-buttons {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  /* Messages list */
+  .admin-main {
+    padding: 12px 12px 80px !important;
+  }
+
+  /* Modal */
+  .modal-content {
+    margin: 10px !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  .modal-header {
+    padding: 16px !important;
+  }
+
+  .modal-body {
+    padding: 16px !important;
+  }
+
+  .modal-footer {
+    padding: 12px 16px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .detail-row {
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  .detail-label {
+    min-width: unset !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* ================================================================
+   ADMINPRO.HTML (Gestion projets)
+   ================================================================ */
+@media (max-width: 768px) {
+
+  .admin-topbar {
+    padding: 0 14px !important;
+    height: auto !important;
+    min-height: 60px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .topbar-title {
+    display: none !important;
+  }
+
+  .topbar-logo {
+    font-size: 1.2rem !important;
+  }
+
+  .topbar-right {
+    gap: 6px !important;
+    flex-wrap: wrap;
+  }
+
+  .btn-topbar {
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .sbar-card {
+    padding: 14px 16px !important;
+    gap: 12px !important;
+  }
+
+  .sbar-info h3 {
+    font-size: 1.5rem !important;
+  }
+
+  /* Toolbar */
+  .toolbar {
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+
+  .search-field { width: 100% !important; }
+
+  .cat-pills {
+    gap: 6px !important;
+    justify-content: center;
+  }
+
+  .cat-pill {
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Grid projets admin */
+  .proj-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .page-wrapper {
+    padding: 80px 14px 100px !important;
+  }
+
+  /* FAB */
+  .fab-add {
+    bottom: 24px !important;
+    right: 20px !important;
+    width: 54px !important;
+    height: 54px !important;
+    font-size: 1.3rem !important;
+  }
+
+  /* Modal form */
+  .modal-panel {
+    margin: 0 !important;
+    border-radius: 20px 20px 0 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: 92vh !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .modal-overlay {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
+
+  .modal-hd {
+    padding: 18px 20px 14px !important;
+    border-radius: 20px 20px 0 0 !important;
+  }
+
+  .modal-hd h2 { font-size: 1.2rem !important; }
+
+  .modal-body { padding: 16px 20px !important; }
+
+  .form-steps {
+    gap: 4px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .form-step {
+    font-size: 0.72rem !important;
+    padding: 8px 4px !important;
+    gap: 4px !important;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .icon-opt {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .modal-ft {
+    padding: 14px 20px 20px !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    justify-content: flex-end !important;
+  }
+
+  .btn-prev, .btn-next, .btn-save {
+    padding: 10px 18px !important;
+    font-size: 0.88rem !important;
+  }
+}
+
+/* ================================================================
+   ADMIN.HTML (Login)
+   ================================================================ */
+@media (max-width: 768px) {
+
+  .login-container {
+    padding: 20px 16px !important;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-box {
+    width: 100% !important;
+    max-width: 420px !important;
+    padding: 32px 24px !important;
+    margin: 0 auto;
+  }
+
+  .logo-circle {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 1.6rem !important;
+  }
+
+  .title-gradient {
+    font-size: clamp(1.4rem, 6vw, 1.8rem) !important;
+  }
+
+  .subtitle-text {
+    font-size: 0.85rem !important;
+  }
+
+  .input-wrapper {
+    gap: 10px !important;
+  }
+
+  .btn-login {
+    font-size: 0.95rem !important;
+    padding: 14px !important;
+  }
+
+  .floating-particles { display: none; }
+}
+
+/* ================================================================
+   UTILITAIRES GLOBAUX MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+
+  /* Scroll top btn */
+  .scroll-top-btn {
+    bottom: 20px !important;
+    right: 16px !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Dark boxes */
+  .dark-box {
+    padding: 20px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Inputs & forms globaux */
+  input, textarea, select {
+    font-size: 16px !important; /* évite le zoom iOS */
+  }
+
+  /* Side menu (admin messages) */
+  .side-menu {
+    width: 85vw !important;
+    max-width: 320px !important;
+  }
+}
+
+/* ================================================================
+   TRÈS PETIT ÉCRAN (< 380px)
+   ================================================================ */
+@media (max-width: 380px) {
+
+  .teaser-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-bar,
+  .stats-section {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .form-step span { display: none; }
+  .form-step i    { font-size: 1rem; }
+}
+
+
+
+
+
+
+
+
+
+/* ================================================================
+   modal-style.css — SK Digitale Admin
+   ─────────────────────────────────────────────────────────────────
+   Couvre :
+     • Barre de défilement personnalisée (toutes pages)
+     • Modale Messages.html  (réponse + détail)
+     • Modale Adminpro.html  (ajout / édition projet)
+     • Modale suppression    (del-modal)
+     • Toasts / notifications
+
+   INTÉGRATION :
+   Ajoutez dans le <head> de Messages.html ET Adminpro.html :
+   <link rel="stylesheet" href="modal-style.css">
+   ================================================================ */
+
+
+/* ================================================================
+   1. SCROLLBAR CUSTOM
+   ================================================================ */
+
+/* Firefox */
+* { scrollbar-width: thin; scrollbar-color: #ff6b35 rgba(13,16,28,0.7); }
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar              { width: 6px; height: 6px; }
+::-webkit-scrollbar-track        { background: rgba(13,16,28,0.7); border-radius: 10px; }
+::-webkit-scrollbar-thumb        { background: linear-gradient(180deg,#ff6b35,#c94400); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover  { background: linear-gradient(180deg,#ff8c5a,#ff6b35); }
+::-webkit-scrollbar-corner       { background: transparent; }
+
+/* scrollbar fine dans les panneaux */
+.modal-panel::-webkit-scrollbar,
+.modal-content::-webkit-scrollbar { width: 5px; }
+
+
+/* ================================================================
+   2. OVERLAY GENERAL
+   ================================================================ */
+
+.modal,
+.modal-overlay,
+.del-modal-overlay {
+    backdrop-filter: blur(12px) saturate(1.6) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(1.6) !important;
+    background: rgba(4, 6, 14, 0.85) !important;
+}
+
+
+/* ================================================================
+   3. MODALE MESSAGES.HTML — modal-content
+   ================================================================ */
+
+.modal-content {
+    background: linear-gradient(155deg, #1c2035 0%, #141725 55%, #0e1120 100%) !important;
+    border: 1px solid rgba(255,107,53,0.18) !important;
+    border-radius: 26px !important;
+    box-shadow:
+        0 40px 100px rgba(0,0,0,0.75),
+        0 0 0 1px rgba(255,107,53,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.055) !important;
+    position: relative;
+    overflow: hidden;
+    animation: skModalIn 0.42s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+/* Barre lumineuse en haut */
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff6b35 40%, #e65100 60%, transparent);
+    border-radius: 2px;
+    z-index: 5;
+}
+
+/* Lueur ambiante orange en bas a droite */
+.modal-content::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* -- Header -- */
+.modal-header {
+    padding: 26px 32px 20px !important;
+    background: rgba(255,107,53,0.04) !important;
+    border-bottom: 1px solid rgba(255,107,53,0.1) !important;
+    position: sticky; top: 0; z-index: 10;
+    border-radius: 26px 26px 0 0;
+}
+
+.modal-header h2 {
+    font-family: var(--font-display) !important;
+    font-size: 1.45rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.4px !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+.modal-header h2 i {
+    color: var(--color-orange-primary) !important;
+    filter: drop-shadow(0 0 8px rgba(255,107,53,0.55));
+}
+
+/* Bouton fermer */
+.modal-close {
+    width: 36px !important; height: 36px !important;
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 10px !important;
+    color: rgba(255,255,255,0.45) !important;
+    font-size: 1rem !important;
+    cursor: pointer;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    transition: all 0.25s ease !important;
+}
+.modal-close:hover {
+    background: rgba(239,68,68,0.18) !important;
+    border-color: rgba(239,68,68,0.4) !important;
+    color: #ef4444 !important;
+    transform: rotate(90deg) scale(1.1) !important;
+}
+
+
+/* -- Corps -- */
+.modal-body {
+    padding: 26px 32px !important;
+    position: relative; z-index: 1;
+}
+
+
+/* -- Lignes de detail -- */
+.detail-row {
+    padding: 14px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.055) !important;
+}
+
+.detail-label {
+    font-size: 0.75rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.2px !important;
+    color: rgba(255,255,255,0.42) !important;
+    display: flex !important; align-items: center !important; gap: 7px !important;
+}
+.detail-label i { color: var(--color-orange-primary) !important; filter: drop-shadow(0 0 4px rgba(255,107,53,0.4)); }
+
+.detail-value {
+    color: rgba(255,255,255,0.9) !important;
+    font-size: 0.93rem !important;
+    line-height: 1.6 !important;
+    margin-top: 5px;
+}
+
+
+/* -- Texte du message -- */
+.message-text {
+    background: rgba(10,12,22,0.75) !important;
+    border: 1px solid rgba(255,107,53,0.1) !important;
+    border-left: 3px solid rgba(255,107,53,0.5) !important;
+    border-radius: 14px !important;
+    padding: 18px 20px !important;
+    line-height: 1.85 !important;
+    color: rgba(255,255,255,0.85) !important;
+    font-size: 0.9rem !important;
+    white-space: pre-wrap;
+}
+
+
+/* -- Pied de modale messages -- */
+.modal-footer {
+    padding: 18px 32px 24px !important;
+    border-top: 1px solid rgba(255,255,255,0.06) !important;
+    background: rgba(10,12,22,0.35) !important;
+    display: flex !important; gap: 12px !important; justify-content: flex-end !important;
+    border-radius: 0 0 26px 26px;
+}
+
+.btn-action {
+    padding: 11px 20px !important;
+    border-radius: 11px !important;
+    font-family: var(--font-display) !important;
+    font-size: 0.84rem !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    display: flex !important; align-items: center !important; gap: 8px !important;
+    transition: all 0.25s ease !important;
+    background: rgba(255,107,53,0.08) !important;
+    border: 1px solid rgba(255,107,53,0.22) !important;
+    color: var(--color-orange-light) !important;
+    letter-spacing: 0.2px;
+}
+.btn-action:hover {
+    background: linear-gradient(135deg,#ff6b35,#e65100) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255,107,53,0.38) !important;
+}
+
+.btn-action.btn-delete {
+    background: rgba(239,68,68,0.07) !important;
+    border-color: rgba(239,68,68,0.22) !important;
+    color: #fca5a5 !important;
+}
+.btn-action.btn-delete:hover {
+    background: linear-gradient(135deg,#ef4444,#dc2626) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 6px 20px rgba(239,68,68,0.38) !important;
+}
+
+
+/* ================================================================
+   4. SECTION REPONSE (Messages.html)
+   ================================================================ */
+
+.response-section,
+#response-section {
+    background: linear-gradient(135deg,
+        rgba(255,107,53,0.07) 0%,
+        rgba(10,12,22,0.85) 100%) !important;
+    border: 1px solid rgba(255,107,53,0.22) !important;
+    border-radius: 18px !important;
+    padding: 26px !important;
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+/* Coin decoratif */
+.response-section::before,
+#response-section::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 130px; height: 130px;
+    background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.response-section h3,
+#response-section h3 {
+    font-family: var(--font-display) !important;
+    font-size: 0.82rem !important;
+    font-weight: 800 !important;
+    color: rgba(255,255,255,0.9) !important;
+    margin-bottom: 16px !important;
+    display: flex !important; align-items: center !important; gap: 9px !important;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    position: relative; z-index: 1;
+}
+.response-section h3 i,
+#response-section h3 i {
+    color: var(--color-orange-primary) !important;
+    filter: drop-shadow(0 0 6px rgba(255,107,53,0.5));
+}
+
+/* Historique de reponse precedente */
+.reply-history {
+    background: rgba(16,185,129,0.07) !important;
+    border: 1px solid rgba(16,185,129,0.22) !important;
+    border-radius: 13px !important;
+    padding: 14px 16px !important;
+    margin-bottom: 18px;
+    font-size: 0.87rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.72);
+    position: relative; z-index: 1;
+}
+
+/* Textarea de reponse */
+.response-section textarea,
+#response-section textarea,
+#response-text {
+    width: 100% !important;
+    min-height: 130px !important;
+    padding: 14px 16px !important;
+    background: rgba(8,10,20,0.82) !important;
+    border: 2px solid rgba(255,107,53,0.18) !important;
+    border-radius: 13px !important;
+    color: rgba(255,255,255,0.9) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.89rem !important;
+    line-height: 1.7 !important;
+    resize: vertical !important;
+    margin-bottom: 14px !important;
+    transition: all 0.25s ease !important;
+    outline: none !important;
+    position: relative; z-index: 1;
+}
+.response-section textarea:focus,
+#response-section textarea:focus,
+#response-text:focus {
+    border-color: var(--color-orange-primary) !important;
+    background: rgba(12,14,26,0.95) !important;
+    box-shadow: 0 0 0 4px rgba(255,107,53,0.11), 0 0 22px rgba(255,107,53,0.09) !important;
+}
+
+/* Bouton envoyer */
+.btn-send-response,
+#btn-send-response {
+    width: 100% !important;
+    padding: 14px 22px !important;
+    background: linear-gradient(135deg,#ff6b35,#e65100) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-family: var(--font-display) !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.4px !important;
+    cursor: pointer !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    gap: 10px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 22px rgba(255,107,53,0.38) !important;
+    z-index: 1;
+}
+
+.btn-send-response::after,
+#btn-send-response::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+}
+.btn-send-response:hover::after,
+#btn-send-response:hover::after { left: 200%; }
+
+.btn-send-response:hover,
+#btn-send-response:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 32px rgba(255,107,53,0.55) !important;
+}
+.btn-send-response:disabled,
+#btn-send-response:disabled {
+    opacity: 0.6 !important; cursor: not-allowed !important; transform: none !important;
+}
+
+
+/* ================================================================
+   5. MODALE ADMINPRO.HTML — modal-panel
+   ================================================================ */
+
+.modal-panel {
+    background: linear-gradient(155deg, #1c2035 0%, #141725 55%, #0e1120 100%) !important;
+    border: 1px solid rgba(255,107,53,0.2) !important;
+    border-radius: 26px !important;
+    box-shadow:
+        0 48px 110px rgba(0,0,0,0.8),
+        0 0 0 1px rgba(255,107,53,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.055) !important;
+    position: relative;
+    overflow: hidden;
+    animation: skPanelIn 0.42s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+.modal-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 8%; right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff6b35 35%, #e65100 65%, transparent);
+    z-index: 5;
+}
+.modal-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(255,107,53,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* -- Header modale projet -- */
+.modal-hd {
+    padding: 26px 32px 20px !important;
+    border-bottom: 1px solid rgba(255,107,53,0.1) !important;
+    border-radius: 26px 26px 0 0;
+    position: sticky; top: 0;
+    background: linear-gradient(155deg,#1c2035,#141725) !important;
+    z-index: 10;
+}
+
+.modal-hd h2 {
+    font-family: var(--font-display) !important;
+    font-size: 1.4rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.4px !important;
+    color: #fff !important;
+    display: flex !important; align-items: center !important; gap: 12px !important;
+}
+.modal-hd h2 i {
+    color: var(--color-orange-primary) !important;
+    filter: drop-shadow(0 0 8px rgba(255,107,53,0.55));
+}
+
+.btn-modal-close {
+    width: 38px !important; height: 38px !important;
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 10px !important;
+    color: rgba(255,255,255,0.45) !important;
+    font-size: 1.05rem !important;
+    cursor: pointer !important;
+    display: flex !important; align-items: center !important; justify-content: center !important;
+    transition: all 0.25s ease !important;
+}
+.btn-modal-close:hover {
+    background: rgba(239,68,68,0.18) !important;
+    border-color: rgba(239,68,68,0.4) !important;
+    color: #ef4444 !important;
+    transform: rotate(90deg) scale(1.1) !important;
+}
+
+
+/* -- Steps nav -- */
+.form-steps {
+    background: rgba(8,10,20,0.7) !important;
+    border: 1px solid rgba(255,107,53,0.1) !important;
+    border-radius: 14px !important;
+    padding: 5px !important;
+    margin-bottom: 28px !important;
+    gap: 4px !important;
+}
+
+.form-step {
+    border-radius: 10px !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.3px !important;
+    transition: all 0.25s ease !important;
+    color: rgba(255,255,255,0.32) !important;
+    padding: 10px 8px !important;
+}
+.form-step:hover:not(.active) {
+    color: rgba(255,255,255,0.62) !important;
+    background: rgba(255,107,53,0.06) !important;
+}
+.form-step.active {
+    background: linear-gradient(135deg,#ff6b35,#e65100) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 18px rgba(255,107,53,0.42), inset 0 1px 0 rgba(255,255,255,0.2) !important;
+}
+.form-step.done { color: #10b981 !important; background: rgba(16,185,129,0.07) !important; }
+
+
+/* -- Champs formulaire -- */
+.modal-body { padding: 26px 32px !important; }
+
+.field-group { margin-bottom: 20px !important; }
+
+.field-group label {
+    font-size: 0.76rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.2px !important;
+    color: rgba(255,107,53,0.82) !important;
+    margin-bottom: 8px !important;
+    display: flex !important; align-items: center !important; gap: 7px !important;
+}
+
+.field-group input,
+.field-group textarea,
+.field-group select {
+    background: rgba(8,10,20,0.78) !important;
+    border: 2px solid rgba(255,255,255,0.065) !important;
+    border-radius: 12px !important;
+    color: rgba(255,255,255,0.92) !important;
+    padding: 12px 15px !important;
+    font-size: 0.9rem !important;
+    font-family: var(--font-body) !important;
+    transition: all 0.25s ease !important;
+}
+.field-group input:focus,
+.field-group textarea:focus,
+.field-group select:focus {
+    border-color: var(--color-orange-primary) !important;
+    background: rgba(12,14,26,0.95) !important;
+    box-shadow: 0 0 0 4px rgba(255,107,53,0.11), 0 0 20px rgba(255,107,53,0.07) !important;
+    outline: none !important;
+}
+.field-group input::placeholder,
+.field-group textarea::placeholder { color: rgba(255,255,255,0.18) !important; }
+
+
+/* -- Tags -- */
+.tags-input-wrapper {
+    background: rgba(8,10,20,0.78) !important;
+    border: 2px solid rgba(255,255,255,0.065) !important;
+    border-radius: 12px !important;
+    min-height: 50px !important;
+    transition: all 0.25s ease !important;
+}
+.tags-input-wrapper:focus-within {
+    border-color: var(--color-orange-primary) !important;
+    box-shadow: 0 0 0 4px rgba(255,107,53,0.11) !important;
+}
+.tags-hint { color: rgba(255,255,255,0.22) !important; font-size: 0.72rem !important; }
+
+
+/* -- Zone upload image -- */
+.img-upload-zone {
+    background: rgba(8,10,20,0.65) !important;
+    border: 2px dashed rgba(255,107,53,0.28) !important;
+    border-radius: 14px !important;
+    transition: all 0.3s ease !important;
+}
+.img-upload-zone:hover,
+.img-upload-zone.dragover {
+    border-color: var(--color-orange-primary) !important;
+    background: rgba(255,107,53,0.05) !important;
+    box-shadow: 0 0 30px rgba(255,107,53,0.1) !important;
+}
+
+
+/* -- Apercu mini -- */
+.mini-preview {
+    background: rgba(8,10,20,0.85) !important;
+    border: 1px solid rgba(255,107,53,0.1) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 10px 36px rgba(0,0,0,0.45) !important;
+}
+
+
+/* -- Pied de modale projet -- */
+.modal-ft {
+    padding: 18px 32px 26px !important;
+    border-top: 1px solid rgba(255,255,255,0.065) !important;
+    background: rgba(8,10,20,0.45) !important;
+    border-radius: 0 0 26px 26px;
+}
+
+.btn-prev {
+    background: transparent !important;
+    border: 2px solid rgba(255,255,255,0.12) !important;
+    color: rgba(255,255,255,0.45) !important;
+    border-radius: 12px !important;
+    transition: all 0.25s !important;
+}
+.btn-prev:hover {
+    border-color: var(--color-orange-primary) !important;
+    color: var(--color-orange-primary) !important;
+    transform: translateX(-3px) !important;
+}
+
+.btn-next,
+.btn-save {
+    background: linear-gradient(135deg,#ff6b35,#e65100) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 22px rgba(255,107,53,0.38) !important;
+    position: relative; overflow: hidden;
+    transition: all 0.3s ease !important;
+    color: #fff !important;
+}
+.btn-next::after,
+.btn-save::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent);
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+}
+.btn-next:hover::after,
+.btn-save:hover::after { left: 200%; }
+.btn-next:hover,
+.btn-save:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 32px rgba(255,107,53,0.55) !important;
+}
+
+
+/* ================================================================
+   6. MODALE SUPPRESSION (del-modal)
+   ================================================================ */
+
+.del-modal-overlay {
+    backdrop-filter: blur(14px) saturate(1.7) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    background: rgba(4,6,14,0.88) !important;
+}
+
+.del-panel {
+    background: linear-gradient(155deg,#1c2035,#141725) !important;
+    border: 2px solid rgba(239,68,68,0.28) !important;
+    border-radius: 24px !important;
+    padding: 40px 34px !important;
+    box-shadow:
+        0 40px 90px rgba(0,0,0,0.8),
+        0 0 0 1px rgba(239,68,68,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.05) !important;
+    position: relative; overflow: hidden;
+    animation: skModalIn 0.38s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+.del-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#ef4444,transparent);
+}
+.del-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle,rgba(239,68,68,0.1) 0%,transparent 70%);
+    pointer-events: none;
+}
+
+.del-panel > i {
+    font-size: 3.2rem !important;
+    color: #ef4444 !important;
+    display: block !important; margin-bottom: 18px !important;
+    filter: drop-shadow(0 0 18px rgba(239,68,68,0.55));
+    animation: delPulse 1.6s ease-in-out infinite;
+}
+
+.del-panel h3 {
+    font-family: var(--font-display) !important;
+    font-size: 1.55rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px !important;
+    color: #fff !important;
+    margin-bottom: 10px !important;
+}
+.del-panel p {
+    color: rgba(255,255,255,0.52) !important;
+    font-size: 0.88rem !important;
+    line-height: 1.7 !important;
+    margin-bottom: 28px !important;
+}
+
+.btn-cancel-del {
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    color: rgba(255,255,255,0.6) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.25s !important;
+}
+.btn-cancel-del:hover {
+    background: rgba(255,255,255,0.09) !important;
+    border-color: rgba(255,255,255,0.28) !important;
+    color: #fff !important;
+}
+
+.btn-confirm-del {
+    background: linear-gradient(135deg,#ef4444,#dc2626) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(239,68,68,0.42) !important;
+    font-weight: 800 !important;
+    color: #fff !important;
+    transition: all 0.25s !important;
+}
+.btn-confirm-del:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 32px rgba(239,68,68,0.62) !important;
+}
+
+
+/* ================================================================
+   7. TOASTS (Adminpro)
+   ================================================================ */
+
+.toast {
+    background: linear-gradient(135deg,#1c2035,#141725) !important;
+    border-radius: 16px !important;
+    border-left: 3px solid var(--color-orange-primary) !important;
+    box-shadow: 0 18px 52px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,107,53,0.09) !important;
+    padding: 16px 20px !important;
+    min-width: 270px;
+}
+.toast.success { border-left-color: #10b981 !important; }
+.toast.error   { border-left-color: #ef4444 !important; }
+.toast.success i { color: #10b981 !important; filter: drop-shadow(0 0 6px rgba(16,185,129,0.5)); }
+.toast.error   i { color: #ef4444 !important; filter: drop-shadow(0 0 6px rgba(239,68,68,0.5)); }
+.toast span { color: rgba(255,255,255,0.92) !important; font-size: 0.88rem !important; }
+
+
+/* ================================================================
+   8. KEYFRAMES
+   ================================================================ */
+
+@keyframes skModalIn {
+    from { opacity: 0; transform: translateY(-28px) scale(0.96); filter: blur(4px); }
+    to   { opacity: 1; transform: translateY(0)     scale(1);    filter: blur(0); }
+}
+
+@keyframes skPanelIn {
+    from { opacity: 0; transform: translateY(36px) scale(0.95); filter: blur(4px); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    filter: blur(0); }
+}
+
+@keyframes delPulse {
+    0%,100% { transform: scale(1);    filter: drop-shadow(0 0 18px rgba(239,68,68,0.55)); }
+    50%     { transform: scale(1.08); filter: drop-shadow(0 0 26px rgba(239,68,68,0.82)); }
+}
+
+
+/* ================================================================
+   9. RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 768px) {
+    .modal-content,
+    .modal-panel { border-radius: 20px !important; margin: 10px !important; }
+    .modal-panel  { border-radius: 22px 22px 0 0 !important; max-height: 94vh !important; }
+    .modal-header,
+    .modal-hd     { padding: 18px 20px !important; }
+    .modal-body   { padding: 18px 20px !important; }
+    .modal-footer,
+    .modal-ft     { padding: 14px 20px 20px !important; flex-wrap: wrap !important; gap: 10px !important; }
+    .btn-action   { flex: 1 !important; justify-content: center !important; }
+    .del-panel    { padding: 30px 22px !important; }
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+}
