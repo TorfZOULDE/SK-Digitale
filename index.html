@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Titre de la page -->
-  <title>KPODAMAKOU Samson | Développeur web & Administrateur Système et Réseau</title>
-
-  <!-- Meta Open Graph pour le partage -->
+    <title>Samson Kpodamakou | Developpeur Web - Administrateur Reseaux & Systèmes</title>
+    <!-- Meta Open Graph pour le partage -->
   <meta property="og:title" content="Développeur web & Administrateur Système et Réseau" />
   <meta property="og:description" content="Découvrez les projets web et les compétences réseau de Samson KPODAMAKOU : innovation, code et solutions connectées." />
   <meta property="og:image" content="https://torfzoulde.github.io/SK-Digitale/WhatsApp Image 2026-03-12 at 20.36.51.jpeg" />
@@ -20,1163 +18,520 @@
   <meta name="twitter:image" content="https://torfzoulde.github.io/SK-Digitale/WhatsApp Image 2026-03-12 at 20.36.51.jpeg" />
     <link rel="stylesheet" href="folio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        /* =============================================
-           ADMIN PROJETS – STYLES SPECIFIQUES
-        ============================================= */
-        body { background: var(--color-anthracite); color: var(--color-white); font-family: var(--font-body); }
-
-        /* ---- TOP BAR ---- */
-        .admin-topbar {
-            position: sticky; top: 0; z-index: 200;
-            height: 65px;
-            background: rgba(26,29,41,0.97);
-            backdrop-filter: blur(12px);
-            border-bottom: 2px solid rgba(255,107,53,0.25);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 5%;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-        }
-        .topbar-left { display: flex; align-items: center; gap: 22px; }
-        .topbar-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800;
-            background: var(--gradient-orange); -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent; background-clip: text; }
-        .topbar-title { color: rgba(255,255,255,0.7); font-size: 0.9rem; border-left: 2px solid rgba(255,107,53,0.3); padding-left: 22px; }
-        .topbar-right { display: flex; gap: 12px; align-items: center; }
-        .btn-topbar {
-            padding: 8px 18px; border-radius: 10px; font-family: var(--font-body);
-            font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex;
-            align-items: center; gap: 8px; text-decoration: none; transition: all 0.25s ease;
-        }
-        .btn-topbar-outline { background: transparent; border: 2px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); }
-        .btn-topbar-outline:hover { border-color: var(--color-orange-primary); color: var(--color-orange-primary); }
-        .btn-topbar-primary { background: var(--gradient-orange); border: none; color: #fff; box-shadow: 0 0 20px var(--color-orange-glow); }
-        .btn-topbar-primary:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255,107,53,0.55); }
-
-        /* ---- PAGE WRAPPER ---- */
-        .page-wrapper { max-width: 1500px; margin: 0 auto; padding: 40px 5% 100px; position: relative; z-index: 1; }
-
-        /* ---- STATS BAR ---- */
-        .stats-bar {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 36px;
-        }
-        .sbar-card {
-            background: var(--color-anthracite-light); border-radius: 16px; padding: 22px 24px;
-            display: flex; align-items: center; gap: 18px; border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.25s;
-        }
-        .sbar-card:hover { transform: translateY(-4px); }
-        .sbar-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; flex-shrink: 0; }
-        .sbar-icon.orange { background: var(--gradient-orange); box-shadow: 0 0 20px var(--color-orange-glow); }
-        .sbar-icon.blue { background: linear-gradient(135deg,#3b82f6,#1d4ed8); }
-        .sbar-icon.green { background: linear-gradient(135deg,#10b981,#059669); }
-        .sbar-icon.purple { background: linear-gradient(135deg,#8b5cf6,#6d28d9); }
-        .sbar-info h3 { font-family: var(--font-display); font-size: 2rem; color: #fff; line-height: 1; margin-bottom: 4px; }
-        .sbar-info p { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
-
-        /* ---- TOOLBAR ---- */
-        .toolbar {
-            background: var(--color-anthracite-light); border-radius: 16px; padding: 18px 24px;
-            display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .search-field { flex: 1; min-width: 220px; position: relative; }
-        .search-field i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.4); }
-        .search-field input {
-            width: 100%; padding: 10px 14px 10px 42px;
-            background: var(--color-anthracite-dark); border: 2px solid transparent;
-            border-radius: 10px; color: #fff; font-family: var(--font-body); font-size: 0.9rem;
-            transition: border-color 0.2s;
-        }
-        .search-field input:focus { outline: none; border-color: var(--color-orange-primary); }
-        .cat-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-        .cat-pill {
-            padding: 7px 16px; background: var(--color-anthracite-dark);
-            border: 2px solid rgba(255,255,255,0.1); border-radius: 50px;
-            color: rgba(255,255,255,0.6); font-size: 0.8rem; font-weight: 600; cursor: pointer;
-            transition: all 0.2s;
-        }
-        .cat-pill:hover { border-color: var(--color-orange-primary); color: var(--color-orange-primary); }
-        .cat-pill.active { background: var(--gradient-orange); border-color: transparent; color: #fff; box-shadow: 0 0 16px var(--color-orange-glow); }
-
-        /* ---- PROJECTS GRID ---- */
-        .proj-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px;
+        /* ===== SECTION PROJETS - TEASER ===== */
+        .projects-teaser {
+            text-align: center;
+            padding: 60px 20px;
         }
 
-        /* ---- PROJECT CARD ADMIN ---- */
-        .proj-admin-card {
-            background: var(--color-anthracite-light); border-radius: 18px; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s;
-            position: relative; display: flex; flex-direction: column;
-        }
-        .proj-admin-card:hover { transform: translateY(-8px); border-color: rgba(255,107,53,0.35); box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 30px rgba(255,107,53,0.15); }
-        .proj-admin-card.hidden-card { opacity: 0.35; }
-
-        .card-header-band { height: 10px; background: var(--gradient-orange); }
-        .card-header-band.blue { background: linear-gradient(90deg,#3b82f6,#1d4ed8); }
-        .card-header-band.green { background: linear-gradient(90deg,#10b981,#059669); }
-        .card-header-band.purple { background: linear-gradient(90deg,#8b5cf6,#6d28d9); }
-        .card-header-band.gold { background: linear-gradient(90deg,#fbbf24,#d97706); }
-        .card-header-band.pink { background: linear-gradient(90deg,#ec4899,#be185d); }
-
-        .card-inner { padding: 22px; flex: 1; display: flex; flex-direction: column; }
-
-        .card-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-        .card-cat-badge {
-            padding: 4px 12px; border-radius: 20px; font-size: 0.7rem;
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-        }
-        .badge-web { background: rgba(255,107,53,0.15); color: var(--color-orange-light); border: 1px solid rgba(255,107,53,0.3); }
-        .badge-network { background: rgba(59,130,246,0.15); color: #93c5fd; border: 1px solid rgba(59,130,246,0.3); }
-        .badge-python { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.3); }
-        .badge-mobile { background: rgba(139,92,246,0.15); color: #c4b5fd; border: 1px solid rgba(139,92,246,0.3); }
-
-        .card-visibility { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: rgba(255,255,255,0.45); }
-        .dot-vis { width: 8px; height: 8px; border-radius: 50%; background: #10b981; }
-        .dot-vis.hidden { background: rgba(255,255,255,0.25); }
-
-        .card-title-admin { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.3; }
-        .card-tech-admin { font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
-        .card-desc-admin { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.65; flex: 1; margin-bottom: 16px;
-            display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-
-        .card-tags-admin { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-        .tag-admin {
-            padding: 3px 10px; background: var(--color-anthracite-dark);
-            border: 1px solid rgba(255,107,53,0.2); color: rgba(255,255,255,0.55);
-            border-radius: 20px; font-size: 0.72rem; font-weight: 600;
+        .teaser-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .card-actions { display: flex; gap: 10px; }
-        .btn-card-action {
-            flex: 1; padding: 10px; border-radius: 10px; font-family: var(--font-display);
-            font-size: 0.82rem; font-weight: 700; cursor: pointer; border: none;
-            display: flex; align-items: center; justify-content: center; gap: 7px;
-            transition: all 0.2s;
-        }
-        .btn-edit { background: rgba(255,107,53,0.12); color: var(--color-orange-light); border: 1px solid rgba(255,107,53,0.25); }
-        .btn-edit:hover { background: var(--gradient-orange); color: #fff; }
-        .btn-toggle { background: rgba(16,185,129,0.1); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.25); }
-        .btn-toggle:hover { background: linear-gradient(135deg,#10b981,#059669); color: #fff; }
-        .btn-toggle.hidden-mode { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); border-color: rgba(255,255,255,0.1); }
-        .btn-toggle.hidden-mode:hover { background: linear-gradient(135deg,#10b981,#059669); color: #fff; }
-        .btn-del { background: rgba(239,68,68,0.1); color: #fca5a5; border: 1px solid rgba(239,68,68,0.25); flex: 0 0 44px; }
-        .btn-del:hover { background: #ef4444; color: #fff; }
-
-        /* ---- EMPTY STATE ---- */
-        .empty-proj {
-            grid-column: 1/-1; text-align: center; padding: 80px 20px;
-            color: rgba(255,255,255,0.4);
-        }
-        .empty-proj i { font-size: 4rem; color: var(--color-orange-primary); display: block; margin-bottom: 20px; opacity: 0.5; }
-        .empty-proj h3 { font-family: var(--font-display); font-size: 1.5rem; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
-
-        /* ---- FAB (Floating Add Button) ---- */
-        .fab-add {
-            position: fixed; bottom: 36px; right: 36px;
-            width: 62px; height: 62px; border-radius: 50%;
-            background: var(--gradient-orange); border: none; cursor: pointer;
-            color: #fff; font-size: 1.6rem;
-            box-shadow: 0 8px 32px rgba(255,107,53,0.55);
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.3s; z-index: 500;
-        }
-        .fab-add:hover { transform: scale(1.12) rotate(90deg); box-shadow: 0 12px 40px rgba(255,107,53,0.7); }
-
-        /* ---- MODAL ADD/EDIT ---- */
-        .modal-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
-            z-index: 1000; align-items: center; justify-content: center; padding: 20px;
-        }
-        .modal-overlay.open { display: flex; }
-
-        .modal-panel {
+        .teaser-card {
             background: var(--color-anthracite-light);
-            border-radius: 24px; width: 100%; max-width: 680px;
-            max-height: 92vh; overflow-y: auto;
-            box-shadow: 0 32px 80px rgba(0,0,0,0.7);
-            border: 1px solid rgba(255,107,53,0.25);
-            animation: panelIn 0.35s cubic-bezier(0.16,1,0.3,1);
-        }
-        @keyframes panelIn {
-            from { opacity:0; transform: translateY(40px) scale(0.96); }
-            to   { opacity:1; transform: translateY(0) scale(1); }
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
         }
 
-        .modal-hd {
-            padding: 28px 32px 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex; align-items: center; justify-content: space-between;
-            position: sticky; top: 0; background: var(--color-anthracite-light); z-index: 2;
-            border-radius: 24px 24px 0 0;
-        }
-        .modal-hd h2 { font-family: var(--font-display); font-size: 1.6rem; color: #fff; display: flex; align-items: center; gap: 12px; }
-        .modal-hd h2 i { color: var(--color-orange-primary); }
-        .btn-modal-close {
-            width: 38px; height: 38px; border-radius: 10px; background: var(--color-anthracite-dark);
-            border: none; color: rgba(255,255,255,0.5); font-size: 1.2rem; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-        }
-        .btn-modal-close:hover { background: rgba(239,68,68,0.2); color: #ef4444; }
-
-        .modal-body { padding: 28px 32px; }
-
-        /* Progress steps */
-        .form-steps {
-            display: flex; gap: 0; margin-bottom: 32px;
-            background: var(--color-anthracite-dark); border-radius: 12px; padding: 4px; overflow: hidden;
-        }
-        .form-step {
-            flex: 1; padding: 10px 8px; text-align: center; border-radius: 10px;
-            font-family: var(--font-display); font-size: 0.82rem; font-weight: 700;
-            color: rgba(255,255,255,0.4); cursor: pointer; transition: all 0.25s;
-            display: flex; align-items: center; justify-content: center; gap: 7px;
-        }
-        .form-step.active { background: var(--gradient-orange); color: #fff; box-shadow: 0 0 16px var(--color-orange-glow); }
-        .form-step.done { color: #10b981; }
-        .form-step.done::before { content: '✓ '; }
-
-        /* Step panels */
-        .step-panel { display: none; }
-        .step-panel.active { display: block; }
-
-        /* Form fields */
-        .field-group { margin-bottom: 22px; }
-        .field-group label {
-            display: flex; align-items: center; gap: 8px;
-            font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
-            color: var(--color-orange-light); margin-bottom: 8px;
-        }
-        .field-group input,
-        .field-group textarea,
-        .field-group select {
-            width: 100%; padding: 13px 16px;
-            background: var(--color-anthracite-dark);
-            border: 2px solid rgba(255,255,255,0.08); border-radius: 12px;
-            color: #fff; font-family: var(--font-body); font-size: 0.92rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .field-group input:focus,
-        .field-group textarea:focus,
-        .field-group select:focus {
-            outline: none; border-color: var(--color-orange-primary);
-            box-shadow: 0 0 0 4px var(--color-orange-glow);
-        }
-        .field-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff6b35' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
-        .field-group select option { background: #242938; }
-        .field-group textarea { resize: vertical; min-height: 100px; }
-
-        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-        /* Tags input */
-        .tags-input-wrapper {
-            background: var(--color-anthracite-dark); border: 2px solid rgba(255,255,255,0.08);
-            border-radius: 12px; padding: 8px 12px; display: flex; flex-wrap: wrap; gap: 8px;
-            cursor: text; transition: border-color 0.2s;
-            min-height: 50px; align-items: center;
-        }
-        .tags-input-wrapper:focus-within { border-color: var(--color-orange-primary); box-shadow: 0 0 0 4px var(--color-orange-glow); }
-        .tag-chip {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 4px 10px; background: rgba(255,107,53,0.15);
-            border: 1px solid rgba(255,107,53,0.35); border-radius: 20px;
-            color: var(--color-orange-light); font-size: 0.78rem; font-weight: 600;
-        }
-        .tag-chip button { background: none; border: none; color: currentColor; cursor: pointer; font-size: 0.9rem; padding: 0; line-height: 1; }
-        .tags-text-input {
-            flex: 1; min-width: 100px; background: none; border: none; outline: none;
-            color: #fff; font-family: var(--font-body); font-size: 0.88rem; padding: 4px 2px;
-        }
-        .tags-hint { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 5px; }
-
-        /* Color picker for card band */
-        .color-options { display: flex; gap: 10px; flex-wrap: wrap; }
-        .color-opt {
-            width: 36px; height: 36px; border-radius: 10px; cursor: pointer;
-            border: 3px solid transparent; transition: all 0.2s;
-        }
-        .color-opt:hover, .color-opt.selected { border-color: #fff; transform: scale(1.1); }
-        .color-opt.orange { background: linear-gradient(135deg,#ff6b35,#e65100); }
-        .color-opt.blue   { background: linear-gradient(135deg,#3b82f6,#1d4ed8); }
-        .color-opt.green  { background: linear-gradient(135deg,#10b981,#059669); }
-        .color-opt.purple { background: linear-gradient(135deg,#8b5cf6,#6d28d9); }
-        .color-opt.gold   { background: linear-gradient(135deg,#fbbf24,#d97706); }
-        .color-opt.pink   { background: linear-gradient(135deg,#ec4899,#be185d); }
-
-        /* Icon picker */
-        .icon-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
-        .icon-opt {
-            width: 44px; height: 44px; border-radius: 10px; background: var(--color-anthracite-dark);
-            border: 2px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; cursor: pointer; color: rgba(255,255,255,0.6); transition: all 0.2s;
-        }
-        .icon-opt:hover, .icon-opt.selected { border-color: var(--color-orange-primary); color: var(--color-orange-primary); background: rgba(255,107,53,0.1); }
-
-        /* Preview card */
-        .preview-wrap { margin-top: 8px; }
-        .preview-label { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 12px; }
-        .mini-preview {
-            background: var(--color-anthracite-dark); border-radius: 16px; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-        .mini-preview-band { height: 8px; background: var(--gradient-orange); }
-        .mini-preview-body { padding: 16px; }
-        .mini-preview-cat { font-size: 0.7rem; color: var(--color-orange-light); font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
-        .mini-preview-title { font-family: var(--font-display); font-size: 1.1rem; color: #fff; margin-bottom: 4px; }
-        .mini-preview-tech { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
-        .mini-preview-desc { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.5;
-            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
-        /* Toggle visibility */
-        .toggle-wrap { display: flex; align-items: center; gap: 14px; }
-        .toggle-switch { position: relative; width: 48px; height: 26px; }
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-        .toggle-slider {
-            position: absolute; inset: 0; background: rgba(255,255,255,0.1);
-            border-radius: 26px; cursor: pointer; transition: 0.3s;
-        }
-        .toggle-slider:before {
-            content: ''; position: absolute; width: 20px; height: 20px;
-            left: 3px; top: 3px; background: rgba(255,255,255,0.6);
-            border-radius: 50%; transition: 0.3s;
-        }
-        .toggle-switch input:checked + .toggle-slider { background: var(--gradient-orange); box-shadow: 0 0 12px var(--color-orange-glow); }
-        .toggle-switch input:checked + .toggle-slider:before { transform: translateX(22px); background: #fff; }
-        .toggle-label { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
-
-        /* Modal footer */
-        .modal-ft {
-            padding: 20px 32px 28px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.08);
-        }
-        .btn-prev, .btn-next, .btn-save {
-            padding: 12px 26px; border-radius: 12px; font-family: var(--font-display);
-            font-size: 1rem; font-weight: 700; cursor: pointer; display: flex;
-            align-items: center; gap: 10px; transition: all 0.25s;
-        }
-        .btn-prev { background: transparent; border: 2px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); }
-        .btn-prev:hover { border-color: var(--color-orange-primary); color: var(--color-orange-primary); }
-        .btn-next { background: var(--gradient-orange); border: none; color: #fff; box-shadow: 0 0 20px var(--color-orange-glow); }
-        .btn-next:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255,107,53,0.55); }
-        .btn-save { background: var(--gradient-orange); border: none; color: #fff; box-shadow: 0 0 20px var(--color-orange-glow); }
-        .btn-save:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255,107,53,0.55); }
-
-        /* ---- DELETE CONFIRM MODAL ---- */
-        .del-modal-overlay {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(4px);
-            z-index: 2000; align-items: center; justify-content: center; padding: 20px;
-        }
-        .del-modal-overlay.open { display: flex; }
-        .del-panel {
-            background: var(--color-anthracite-light); border-radius: 20px;
-            padding: 36px; max-width: 420px; width: 100%; text-align: center;
-            border: 2px solid rgba(239,68,68,0.3);
-            animation: panelIn 0.3s cubic-bezier(0.16,1,0.3,1);
-        }
-        .del-panel i { font-size: 3.5rem; color: #ef4444; display: block; margin-bottom: 18px; }
-        .del-panel h3 { font-family: var(--font-display); font-size: 1.5rem; color: #fff; margin-bottom: 10px; }
-        .del-panel p { color: rgba(255,255,255,0.65); line-height: 1.6; margin-bottom: 28px; }
-        .del-actions { display: flex; gap: 14px; justify-content: center; }
-        .btn-cancel-del { padding: 12px 24px; background: transparent; border: 2px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); border-radius: 12px; font-family: var(--font-body); font-weight: 600; cursor: pointer; transition: all 0.2s; }
-        .btn-cancel-del:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
-        .btn-confirm-del { padding: 12px 24px; background: #ef4444; border: none; color: #fff; border-radius: 12px; font-family: var(--font-display); font-weight: 700; cursor: pointer; transition: all 0.2s; box-shadow: 0 0 20px rgba(239,68,68,0.4); }
-        .btn-confirm-del:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(239,68,68,0.6); }
-
-        /* ---- TOAST ---- */
-        .toast {
-            position: fixed; top: 20px; right: 20px; z-index: 9999;
-            background: var(--color-anthracite-light); border-radius: 14px; padding: 16px 22px;
-            display: flex; align-items: center; gap: 14px; min-width: 260px;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-            transform: translateX(calc(100% + 40px)); opacity: 0;
-            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-            border-left: 4px solid var(--color-orange-primary);
-        }
-        .toast.show { transform: translateX(0); opacity: 1; }
-        .toast.success { border-left-color: #10b981; }
-        .toast.error { border-left-color: #ef4444; }
-        .toast i { font-size: 1.4rem; }
-        .toast.success i { color: #10b981; }
-        .toast.error i { color: #ef4444; }
-        .toast span { color: #fff; font-size: 0.9rem; font-weight: 500; }
-
-        /* ---- CANVAS BG ---- */
-        #creative-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.3; }
-
-        /* ---- RESPONSIVE ---- */
-        @media(max-width:900px) {
-            .stats-bar { grid-template-columns: repeat(2,1fr); }
-            .proj-grid { grid-template-columns: 1fr; }
-            .field-row { grid-template-columns: 1fr; }
-            .icon-grid { grid-template-columns: repeat(6,1fr); }
-        }
-        @media(max-width:600px) {
-            .stats-bar { grid-template-columns: 1fr 1fr; }
-            .admin-topbar { padding: 0 4%; }
-            .modal-hd, .modal-body, .modal-ft { padding-left: 20px; padding-right: 20px; }
+        .teaser-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gradient-orange);
+            opacity: 0;
+            transition: var(--transition-normal);
+            z-index: 0;
         }
 
-        /* ---- IMAGE UPLOAD ---- */
-        .img-upload-zone {
-            border: 2px dashed rgba(255,107,53,0.35); border-radius: 14px;
-            padding: 28px 20px; text-align: center; cursor: pointer;
-            transition: all 0.25s; background: var(--color-anthracite-dark);
-            position: relative; overflow: hidden;
+        .teaser-card:hover::before { opacity: 0.05; }
+
+        .teaser-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,107,53,0.35);
+            box-shadow: var(--shadow-lg), var(--shadow-orange);
         }
-        .img-upload-zone:hover, .img-upload-zone.dragover {
-            border-color: var(--color-orange-primary); background: rgba(255,107,53,0.06);
+
+        .teaser-card > * { position: relative; z-index: 1; }
+
+        .teaser-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-orange);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.6rem;
+            color: var(--color-white);
+            box-shadow: var(--shadow-orange);
+            transition: var(--transition-normal);
         }
-        .img-upload-zone input[type="file"] {
-            position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+
+        .teaser-card:hover .teaser-icon {
+            transform: scale(1.1) rotate(-5deg);
         }
-        .img-upload-icon { font-size: 2.4rem; color: var(--color-orange-primary); margin-bottom: 10px; opacity: 0.7; }
-        .img-upload-text { color: rgba(255,255,255,0.6); font-size: 0.88rem; line-height: 1.5; }
-        .img-upload-text strong { color: var(--color-orange-light); }
-        .img-preview-wrap { display: none; position: relative; border-radius: 14px; overflow: hidden; border: 2px solid rgba(255,107,53,0.35); }
-        .img-preview-wrap img { width: 100%; height: 200px; object-fit: cover; display: block; }
-        .img-preview-wrap.show { display: block; }
-        .img-preview-actions { position: absolute; top: 10px; right: 10px; display: flex; gap: 8px; }
-        .btn-img-action { width: 34px; height: 34px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: all 0.2s; backdrop-filter: blur(6px); }
-        .btn-img-remove { background: rgba(239,68,68,0.85); color: #fff; }
-        .btn-img-remove:hover { background: #ef4444; transform: scale(1.1); }
-        .btn-img-change { background: rgba(255,107,53,0.85); color: #fff; }
-        .btn-img-change:hover { background: var(--color-orange-primary); transform: scale(1.1); }
-        .img-size-warn { margin-top: 8px; font-size: 0.75rem; color: #f59e0b; display: none; align-items: center; gap: 6px; }
-        .img-size-warn.show { display: flex; }
-        .card-thumb { width: 100%; height: 130px; object-fit: cover; display: block; border-radius: 10px; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.08); }
-        .card-thumb-placeholder { width: 100%; height: 80px; background: var(--color-anthracite-dark); border-radius: 10px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.15); font-size: 1.8rem; border: 1px dashed rgba(255,255,255,0.1); }
-        .mini-preview-img { width: 100%; height: 110px; object-fit: cover; display: block; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+        .teaser-card h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            color: var(--color-white);
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .teaser-card p {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .teaser-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--color-orange-primary);
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #fff;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        /* Gros bouton CTA */
+        .btn-voir-projets {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 50px;
+            background: var(--gradient-orange);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 60px;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 40px var(--color-orange-glow), var(--shadow-lg);
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-voir-projets::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -100%;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.5s ease;
+        }
+
+        .btn-voir-projets:hover::after { left: 200%; }
+
+        .btn-voir-projets:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 0 60px rgba(255,107,53,0.6), var(--shadow-lg);
+        }
+
+        .btn-voir-projets i { font-size: 1.1rem; }
+
+        .teaser-sub {
+            margin-top: 20px;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85rem;
+        }
     </style>
 </head>
 <body>
-    <canvas id="creative-bg"></canvas>
+   <canvas id="creative-bg"></canvas>
+   
+   <div id="content">
+        <header id="header">
+            <div class="menu-btn" id="menuBtn">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="logo">
+                <a href="Admin.html" class="btn-admin"><i class="fas fa-user-shield"></i></a>
+                SK Digitale
+            </div>
+            <nav class="menu" id="menu">
+                <a href="#apropos" class="menu-link">À propos</a>
+                <a href="#parcours-scolaire" class="menu-link">Parcours</a>
+                <a href="#experiences" class="menu-link">Expériences</a>
+                <a href="#competences-techniques" class="menu-link">Compétences</a>
+                <a href="projets.html" class="menu-link">Projets</a>
+                <a href="#cv" class="menu-link">CV</a>
+                <a href="#contact" class="menu-link">Contact</a>
+            </nav>
+        </header>
 
-    <!-- TOP BAR -->
-    <div class="admin-topbar">
-        <div class="topbar-left">
-            <span class="topbar-logo">SK Digitale</span>
-            <span class="topbar-title"><i class="fas fa-layer-group" style="margin-right:8px;color:var(--color-orange-primary)"></i>Gestion des Projets</span>
-        </div>
-        <div class="topbar-right">
-            <a href="Messages.html" class="btn-topbar btn-topbar-outline"><i class="fas fa-envelope"></i> Messages</a>
-            <a href="projets.html" target="_blank" class="btn-topbar btn-topbar-outline"><i class="fas fa-eye"></i> Voir le site</a>
-            <button class="btn-topbar btn-topbar-primary" onclick="openAddModal()"><i class="fas fa-plus"></i> Nouveau projet</button>
-        </div>
-    </div>
-
-    <div class="page-wrapper">
-
-        <!-- STATS BAR -->
-        <div class="stats-bar">
-            <div class="sbar-card">
-                <div class="sbar-icon orange"><i class="fas fa-layer-group"></i></div>
-                <div class="sbar-info"><h3 id="stat-total">0</h3><p>Total projets</p></div>
-            </div>
-            <div class="sbar-card">
-                <div class="sbar-icon green"><i class="fas fa-eye"></i></div>
-                <div class="sbar-info"><h3 id="stat-visible">0</h3><p>Visibles</p></div>
-            </div>
-            <div class="sbar-card">
-                <div class="sbar-icon blue"><i class="fas fa-code"></i></div>
-                <div class="sbar-info"><h3 id="stat-web">0</h3><p>Web</p></div>
-            </div>
-            <div class="sbar-card">
-                <div class="sbar-icon purple"><i class="fas fa-calendar-plus"></i></div>
-                <div class="sbar-info"><h3 id="stat-recent">0</h3><p>Ce mois-ci</p></div>
-            </div>
-        </div>
-
-        <!-- TOOLBAR -->
-        <div class="toolbar">
-            <div class="search-field">
-                <i class="fas fa-search"></i>
-                <input type="text" id="search-input" placeholder="Rechercher un projet…" oninput="renderProjects()">
-            </div>
-            <div class="cat-pills">
-                <button class="cat-pill active" data-f="all" onclick="setFilter(this,'all')">Tous</button>
-                <button class="cat-pill" data-f="web" onclick="setFilter(this,'web')">Web</button>
-                <button class="cat-pill" data-f="network" onclick="setFilter(this,'network')">Réseaux</button>
-                <button class="cat-pill" data-f="python" onclick="setFilter(this,'python')">Python</button>
-                <button class="cat-pill" data-f="mobile" onclick="setFilter(this,'mobile')">Mobile</button>
-            </div>
-        </div>
-
-        <!-- PROJECTS GRID -->
-        <div class="proj-grid" id="proj-grid">
-            <div class="empty-proj">
-                <i class="fas fa-circle-notch fa-spin"></i>
-                <h3>Chargement…</h3>
-            </div>
-        </div>
-    </div>
-
-    <!-- FAB -->
-    <button class="fab-add" onclick="openAddModal()" title="Ajouter un projet">
-        <i class="fas fa-plus"></i>
-    </button>
-
-    <!-- ===================== ADD / EDIT MODAL ===================== -->
-    <div class="modal-overlay" id="add-modal">
-        <div class="modal-panel">
-            <div class="modal-hd">
-                <h2><i class="fas fa-cube"></i> <span id="modal-title">Nouveau Projet</span></h2>
-                <button class="btn-modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <!-- Step indicator -->
-                <div class="form-steps">
-                    <div class="form-step active" id="step-btn-1" onclick="goStep(1)"><i class="fas fa-align-left"></i> Infos</div>
-                    <div class="form-step" id="step-btn-2" onclick="goStep(2)"><i class="fas fa-palette"></i> Apparence</div>
-                    <div class="form-step" id="step-btn-3" onclick="goStep(3)"><i class="fas fa-eye"></i> Aperçu</div>
+        <section id="presentation">
+            <div class="hero-content">
+                <div class="text-content">
+                    <h1 class="fade-in">Samson Kpodamakou</h1>
+                    <p class="subtitle fade-in">Développeur Web & Mobile</p>
+                    <p class="subtitle fade-in">Administrateur Systèmes & Réseaux</p>
+                    <p class="tagline fade-in">Futur expert en cybersécurité</p>
                 </div>
-
-                <!-- STEP 1 – Infos -->
-                <div class="step-panel active" id="step-1">
-                    <div class="field-group">
-                        <label><i class="fas fa-heading"></i> Titre du projet *</label>
-                        <input type="text" id="f-title" placeholder="Ex: Système de Gestion de Stock" maxlength="80">
-                    </div>
-                    <div class="field-row">
-                        <div class="field-group">
-                            <label><i class="fas fa-tag"></i> Catégorie *</label>
-                            <select id="f-cat">
-                                <option value="">— Choisir —</option>
-                                <option value="web">Développement Web</option>
-                                <option value="network">Réseaux & Systèmes</option>
-                                <option value="python">Python & Data</option>
-                                <option value="mobile">Mobile</option>
-                            </select>
-                        </div>
-                        <div class="field-group">
-                            <label><i class="fas fa-code"></i> Technologies *</label>
-                            <input type="text" id="f-tech" placeholder="Ex: HTML5 • CSS3 • JavaScript">
-                        </div>
-                    </div>
-                    <div class="field-group">
-                        <label><i class="fas fa-align-left"></i> Description *</label>
-                        <textarea id="f-desc" placeholder="Décrivez votre projet en quelques phrases…" rows="4"></textarea>
-                    </div>
-                    <div class="field-group">
-                        <label><i class="fas fa-link"></i> Lien du projet</label>
-                        <input type="url" id="f-link" placeholder="https://votre-projet.com">
-                    </div>
-                    <div class="field-group">
-                        <label><i class="fas fa-tags"></i> Tags (appuyez Entrée pour ajouter)</label>
-                        <div class="tags-input-wrapper" id="tags-wrapper" onclick="document.getElementById('tags-input').focus()">
-                            <input class="tags-text-input" id="tags-input" type="text" placeholder="Ex: Responsive…">
-                        </div>
-                        <div class="tags-hint">Appuyez sur Entrée ou virgule pour ajouter un tag</div>
-                    </div>
-                    <div class="field-group">
-                        <label><i class="fas fa-eye"></i> Visibilité</label>
-                        <div class="toggle-wrap">
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="f-visible" checked>
-                                <span class="toggle-slider"></span>
-                            </label>
-                            <span class="toggle-label" id="vis-label">Visible sur le site</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STEP 2 – Apparence -->
-                <div class="step-panel" id="step-2">
-                    <div class="field-group">
-                        <label><i class="fas fa-image"></i> Image du projet</label>
-                        <!-- Zone de dépôt -->
-                        <div class="img-upload-zone" id="img-upload-zone">
-                            <input type="file" id="f-image" accept="image/*" onchange="handleImageUpload(this)">
-                            <div class="img-upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                            <div class="img-upload-text">
-                                <strong>Cliquez ou glissez</strong> une image ici<br>
-                                JPG, PNG, WebP — max 500 Ko recommandé
-                            </div>
-                        </div>
-                        <!-- Prévisualisation -->
-                        <div class="img-preview-wrap" id="img-preview-wrap">
-                            <img id="img-preview" src="" alt="Aperçu">
-                            <div class="img-preview-actions">
-                                <button class="btn-img-action btn-img-change" title="Changer l'image" onclick="document.getElementById('f-image').click()"><i class="fas fa-exchange-alt"></i></button>
-                                <button class="btn-img-action btn-img-remove" title="Supprimer l'image" onclick="removeImage()"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </div>
-                        <div class="img-size-warn" id="img-size-warn">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            Image lourde — elle sera compressée automatiquement
-                        </div>
-                    </div>
-                    <div class="field-group">
-                        <label><i class="fas fa-fill-drip"></i> Couleur de la carte</label>
-                        <div class="color-options">
-                            <div class="color-opt orange selected" data-color="orange" onclick="selectColor(this)"></div>
-                            <div class="color-opt blue" data-color="blue" onclick="selectColor(this)"></div>
-                            <div class="color-opt green" data-color="green" onclick="selectColor(this)"></div>
-                            <div class="color-opt purple" data-color="purple" onclick="selectColor(this)"></div>
-                            <div class="color-opt gold" data-color="gold" onclick="selectColor(this)"></div>
-                            <div class="color-opt pink" data-color="pink" onclick="selectColor(this)"></div>
-                        </div>
-                    </div>
-                    <div class="field-group">
-                        <label><i class="fas fa-icons"></i> Icône</label>
-                        <div class="icon-grid">
-                            <div class="icon-opt selected" data-icon="fa-code" onclick="selectIcon(this)"><i class="fas fa-code"></i></div>
-                            <div class="icon-opt" data-icon="fa-globe" onclick="selectIcon(this)"><i class="fas fa-globe"></i></div>
-                            <div class="icon-opt" data-icon="fa-warehouse" onclick="selectIcon(this)"><i class="fas fa-warehouse"></i></div>
-                            <div class="icon-opt" data-icon="fa-graduation-cap" onclick="selectIcon(this)"><i class="fas fa-graduation-cap"></i></div>
-                            <div class="icon-opt" data-icon="fa-network-wired" onclick="selectIcon(this)"><i class="fas fa-network-wired"></i></div>
-                            <div class="icon-opt" data-icon="fa-chart-bar" onclick="selectIcon(this)"><i class="fas fa-chart-bar"></i></div>
-                            <div class="icon-opt" data-icon="fa-mobile-alt" onclick="selectIcon(this)"><i class="fas fa-mobile-alt"></i></div>
-                            <div class="icon-opt" data-icon="fa-server" onclick="selectIcon(this)"><i class="fas fa-server"></i></div>
-                            <div class="icon-opt" data-icon="fa-gem" onclick="selectIcon(this)"><i class="fas fa-gem"></i></div>
-                            <div class="icon-opt" data-icon="fa-shopping-bag" onclick="selectIcon(this)"><i class="fas fa-shopping-bag"></i></div>
-                            <div class="icon-opt" data-icon="fa-brain" onclick="selectIcon(this)"><i class="fas fa-brain"></i></div>
-                            <div class="icon-opt" data-icon="fa-robot" onclick="selectIcon(this)"><i class="fas fa-robot"></i></div>
-                            <div class="icon-opt" data-icon="fa-database" onclick="selectIcon(this)"><i class="fas fa-database"></i></div>
-                            <div class="icon-opt" data-icon="fa-shield-alt" onclick="selectIcon(this)"><i class="fas fa-shield-alt"></i></div>
-                            <div class="icon-opt" data-icon="fa-gamepad" onclick="selectIcon(this)"><i class="fas fa-gamepad"></i></div>
-                            <div class="icon-opt" data-icon="fa-music" onclick="selectIcon(this)"><i class="fas fa-music"></i></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- STEP 3 – Aperçu -->
-                <div class="step-panel" id="step-3">
-                    <div class="preview-wrap">
-                        <div class="preview-label">Aperçu de la carte</div>
-                        <div class="mini-preview" id="mini-preview">
-                            <img class="mini-preview-img" id="prev-img" src="" alt="" style="display:none">
-                            <div class="mini-preview-band" id="prev-band"></div>
-                            <div class="mini-preview-body">
-                                <p class="mini-preview-cat" id="prev-cat">Catégorie</p>
-                                <h3 class="mini-preview-title" id="prev-title">Titre du projet</h3>
-                                <p class="mini-preview-tech" id="prev-tech">Technologies</p>
-                                <p class="mini-preview-desc" id="prev-desc">Description du projet…</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field-group" style="margin-top:24px">
-                        <label><i class="fas fa-sort-numeric-up"></i> Ordre d'affichage</label>
-                        <input type="number" id="f-order" placeholder="Ex: 1 (plus petit = premier)" min="1">
+                <div id="photo" class="fade-in">
+                    <div class="photo-frame">
+                        <img src="sam.jpg" alt="Photo de Samson Kpodamakou">
                     </div>
                 </div>
             </div>
-            <div class="modal-ft">
-                <button class="btn-prev" id="btn-prev" style="visibility:hidden" onclick="prevStep()"><i class="fas fa-arrow-left"></i> Précédent</button>
-                <div style="display:flex;gap:12px">
-                    <button class="btn-next" id="btn-next" onclick="nextStep()">Suivant <i class="fas fa-arrow-right"></i></button>
-                    <button class="btn-save" id="btn-save" style="display:none" onclick="saveProject()"><i class="fas fa-cloud-upload-alt"></i> Enregistrer</button>
+        </section>
+
+        <section id="apropos">
+            <div class="section-header"><h2>À propos</h2><div class="accent-line"></div></div>
+            <div class="apropos-content">
+                <p>Je suis Samson Kpodamakou, étudiant passionné en <strong>Informatique de Gestion</strong> à l'ENEAM. Mon parcours est guidé par une fascination profonde pour les technologies et leur capacité à résoudre des problèmes complexes.</p>
+                <p>Actuellement en formation pour devenir <strong>Administrateur Systèmes et Réseaux</strong>, je développe continuellement mes compétences en gestion d'infrastructures, sécurité informatique, et développement d'applications.</p>
+                <p>Ma rigueur et mon sens de l'organisation me permettent de mener à bien des projets complexes, alliant compétences techniques en programmation et vision stratégique en gestion de projets.</p>
+            </div>
+        </section>
+
+        <section id="parcours-scolaire">
+            <div class="section-header"><h2>Parcours Scolaire</h2><div class="accent-line"></div></div>
+            <div class="dark-box">
+                <p>BAC+2 en Informatique de Gestion, Licence en Administration des Systèmes et Réseaux.</p>
+                <div class="parcours-btn-wrapper">
+                    <button id="btn-voir-parcours" class="btn-voir-parcours">
+                        <i class="fas fa-chevron-down"></i> Voir plus
+                    </button>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- DELETE CONFIRM -->
-    <div class="del-modal-overlay" id="del-modal">
-        <div class="del-panel">
-            <i class="fas fa-exclamation-triangle"></i>
-            <h3>Supprimer ce projet ?</h3>
-            <p>Cette action est irréversible. Le projet sera définitivement supprimé de Firestore.</p>
-            <div class="del-actions">
-                <button class="btn-cancel-del" onclick="closeDelModal()">Annuler</button>
-                <button class="btn-confirm-del" id="confirm-del-btn" onclick="confirmDelete()"><i class="fas fa-trash"></i> Supprimer</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- TOAST -->
-    <div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg"></span></div>
-
-    <!-- FIREBASE -->
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
-    <script>
-    // =============================================
-    //  FIREBASE CONFIG  –  remplace par tes clés
-    // =============================================
-    const firebaseConfig = {
-        apiKey: "AIzaSyDTKnDbmZ3DK09UF8dwqbZ_CZTqB8G32GU",
-  authDomain: "sk-digitale.firebaseapp.com",
-  projectId: "sk-digitale",
-  storageBucket: "sk-digitale.firebasestorage.app",
-  messagingSenderId: "643375244922",
-  appId: "1:643375244922:web:0fc6387286de90fab5fdc3",
-  measurementId: "G-PLB0X1WLK8"
-    };
-    
-    firebase.initializeApp(firebaseConfig);
-    const db   = firebase.firestore();
-    const auth = firebase.auth();
-
-    // =============================================
-    //  STATE
-    // =============================================
-    let projects    = [];
-    let currentFilter = 'all';
-    let currentStep   = 1;
-    let editingId     = null;
-    let deleteId      = null;
-    let tags          = [];
-    let imageBase64   = null; // stocke l'image en base64
-
-    const catLabels = { web:'Développement Web', network:'Réseaux & Systèmes', python:'Python & Data', mobile:'Mobile' };
-    const bandColors = { orange:'', blue:'blue', green:'green', purple:'purple', gold:'gold', pink:'pink' };
-
-    // =============================================
-    //  FIRESTORE — LOAD
-    // =============================================
-    function loadProjects() {
-        db.collection('projets').orderBy('order','asc').onSnapshot(snapshot => {
-            projects = [];
-            snapshot.forEach(doc => projects.push({ id: doc.id, ...doc.data() }));
-            updateStats();
-            renderProjects();
-        }, err => {
-            // fallback si pas de connexion / pas encore de projets
-            projects = [];
-            updateStats();
-            renderProjects();
-            console.warn('Firestore:', err.message);
-        });
-    }
-
-    // =============================================
-    //  STATS
-    // =============================================
-    function updateStats() {
-        const now = new Date();
-        const firstOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
-        document.getElementById('stat-total').textContent   = projects.length;
-        document.getElementById('stat-visible').textContent = projects.filter(p => p.visible !== false).length;
-        document.getElementById('stat-web').textContent     = projects.filter(p => p.cat === 'web').length;
-        document.getElementById('stat-recent').textContent  = projects.filter(p => {
-            const d = p.createdAt?.toDate?.() || new Date(p.createdAt || 0);
-            return d >= firstOfMonth;
-        }).length;
-    }
-
-    // =============================================
-    //  RENDER CARDS
-    // =============================================
-    function renderProjects() {
-        const q     = (document.getElementById('search-input').value || '').toLowerCase();
-        const grid  = document.getElementById('proj-grid');
-        const shown = projects.filter(p => {
-            const matchCat  = currentFilter === 'all' || p.cat === currentFilter;
-            const matchQ    = !q || (p.title||'').toLowerCase().includes(q) || (p.desc||'').toLowerCase().includes(q);
-            return matchCat && matchQ;
-        });
-
-        if (!shown.length) {
-            grid.innerHTML = `<div class="empty-proj">
-                <i class="fas fa-layer-group"></i>
-                <h3>Aucun projet trouvé</h3>
-                <p>Ajoutez votre premier projet avec le bouton <strong style="color:var(--color-orange-primary)">+</strong></p>
-            </div>`;
-            return;
-        }
-
-        grid.innerHTML = shown.map((p, idx) => {
-            const band  = bandColors[p.color] || '';
-            const bc    = band ? `card-header-band ${band}` : 'card-header-band';
-            const hidden = p.visible === false;
-            const tagsHtml = (p.tags||[]).map(t => `<span class="tag-admin">${t}</span>`).join('');
-            const num = String(idx + 1).padStart(2,'0');
-            return `
-            <div class="proj-admin-card${hidden?' hidden-card':''}" data-id="${p.id}">
-                <div class="${bc}"></div>
-                <div class="card-inner">
-                    <div class="card-meta">
-                        <span class="card-cat-badge badge-${p.cat||'web'}">${catLabels[p.cat]||p.cat}</span>
-                        <span class="card-visibility">
-                            <span class="dot-vis${hidden?' hidden':''}"></span>
-                            ${hidden ? 'Masqué' : 'Visible'}
-                        </span>
-                    </div>
-                    ${p.image
-                        ? `<img class="card-thumb" src="${p.image}" alt="${p.title}">`
-                        : `<div class="card-thumb-placeholder"><i class="fas fa-image"></i></div>`
-                    }
-                    <h3 class="card-title-admin">${p.title||'Sans titre'}</h3>
-                    <p class="card-tech-admin">${p.tech||''}</p>
-                    <p class="card-desc-admin">${p.desc||''}</p>
-                    <div class="card-tags-admin">${tagsHtml}</div>
-                    <div class="card-actions">
-                        <button class="btn-card-action btn-edit" onclick="openEditModal('${p.id}')"><i class="fas fa-pen"></i> Modifier</button>
-                        <button class="btn-card-action btn-toggle${hidden?' hidden-mode':''}" onclick="toggleVisibility('${p.id}',${!hidden})">
-                            <i class="fas fa-${hidden?'eye':'eye-slash'}"></i> ${hidden?'Afficher':'Masquer'}
-                        </button>
-                        <button class="btn-card-action btn-del" onclick="openDelModal('${p.id}')"><i class="fas fa-trash"></i></button>
+            <div class="timeline" id="parcours-complet" style="display: none; margin-top: 40px;">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 - Présent</div>
+                    <div class="timeline-content">
+                        <h3>Licence en Administration des Réseaux & Systèmes</h3>
+                        <p class="institution">ENEAM</p>
+                        <p class="description">Spécialisation en administration systèmes et réseaux.</p>
                     </div>
                 </div>
-            </div>`;
-        }).join('');
-    }
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 - 2026</div>
+                    <div class="timeline-content">
+                        <h3>BAC+2 en Informatique de Gestion</h3>
+                        <p class="institution">ENEAM</p>
+                        <p class="description">Spécialisation en administration systèmes et réseaux, développement d'applications, et gestion de projets informatiques.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>Baccalauréat Série D</h3>
+                        <p class="institution">Lycée Scientifique</p>
+                        <p class="description">Formation scientifique avec spécialisation en mathématiques et sciences physiques.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Formations continues</div>
+                    <div class="timeline-content">
+                        <h3>Certifications et Cours</h3>
+                        <ul>
+                            <li>Configuration et gestion de réseaux Cisco</li>
+                            <li>Administration systèmes Linux (Ubuntu, CentOS)</li>
+                            <li>Développement Web Full-Stack</li>
+                            <li>Sécurité informatique et cryptographie</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    function setFilter(el, f) {
-        document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-        el.classList.add('active');
-        currentFilter = f;
-        renderProjects();
-    }
+        <section id="experiences">
+            <div class="section-header"><h2>Expériences Professionnelles</h2><div class="accent-line"></div></div>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="exp-header"><i class="fas fa-network-wired"></i><h3>Stage Administrateur Réseau</h3></div>
+                    <p class="exp-company">Entreprise XYZ</p>
+                    <p class="exp-date">Juin 2025 - Août 2025</p>
+                    <ul class="exp-tasks">
+                        <li>Installation et configuration de serveurs Linux</li>
+                        <li>Gestion des comptes utilisateurs Active Directory</li>
+                        <li>Configuration de pare-feu et monitoring réseau avec Nagios</li>
+                        <li>Mise en place de systèmes de backup automatisés</li>
+                        <li>Documentation technique complète des infrastructures</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <div class="exp-header"><i class="fas fa-code"></i><h3>Projet Développement Web</h3></div>
+                    <p class="exp-company">ENEAM - Projet Académique</p>
+                    <p class="exp-date">Mars 2025 - Mai 2025</p>
+                    <ul class="exp-tasks">
+                        <li>Conception d'une application web de gestion de stock</li>
+                        <li>Architecture frontend avec HTML5, CSS3 et JavaScript</li>
+                        <li>Backend en Python Flask et base de données MySQL</li>
+                        <li>Système d'authentification sécurisé</li>
+                        <li>Interface responsive pour tous les appareils</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <div class="exp-header"><i class="fas fa-server"></i><h3>Assistant Technique IT</h3></div>
+                    <p class="exp-company">Centre Informatique ENEAM</p>
+                    <p class="exp-date">Janvier 2025 - Présent</p>
+                    <ul class="exp-tasks">
+                        <li>Support technique niveau 1 et 2</li>
+                        <li>Maintenance préventive du parc informatique</li>
+                        <li>Installation et configuration de postes de travail</li>
+                        <li>Résolution de problèmes réseau et connectivité</li>
+                        <li>Formation basique des utilisateurs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    // =============================================
-    //  IMAGE UPLOAD & COMPRESSION
-    // =============================================
-    function handleImageUpload(input) {
-        const file = input.files[0];
-        if (!file) return;
+        <section id="competences-techniques">
+            <div class="section-header"><h2>Compétences Techniques</h2><div class="accent-line"></div></div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <div class="category-icon"><i class="fas fa-code"></i></div>
+                    <h3>Programmation</h3>
+                    <div class="skills-list">
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-python"></i><span>Python</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-database"></i><span>SQL</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-html5"></i><span>HTML5</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-css3-alt"></i><span>CSS3</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-js"></i><span>JavaScript</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Réseaux & Systèmes</h3>
+                    <div class="skills-list">
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-network-wired"></i><span>Cisco Networking</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-linux"></i><span>Linux</span></div><div class="skill-bar"><div class="skill-progress" style="width: 80%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-windows"></i><span>Windows Server</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-shield-alt"></i><span>Sécurité Réseau</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Outils & Technologies</h3>
+                    <div class="skills-list">
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-database"></i><span>MySQL / PostgreSQL</span></div><div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fab fa-docker"></i><span>Docker</span></div><div class="skill-bar"><div class="skill-progress" style="width: 65%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-terminal"></i><span>Bash Scripting</span></div><div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="category-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Bureautique</h3>
+                    <div class="skills-list">
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-file-excel"></i><span>Excel</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-file-word"></i><span>Word</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div>
+                        <div class="skill-item"><div class="skill-info"><i class="fas fa-file-powerpoint"></i><span>PowerPoint</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        const warn = document.getElementById('img-size-warn');
-        if (file.size > 500 * 1024) warn.classList.add('show');
-        else warn.classList.remove('show');
+       
+        <!-- ===== SECTION PROJETS - TEASER ===== -->
+        <section id="projets">
+            <div class="section-header"><h2>Mes Projets</h2><div class="accent-line"></div></div>
+            <div class="projects-teaser">
+                <p style="color: rgba(255,255,255,0.65); font-size: 1.05rem; max-width: 600px; margin: 0 auto 50px; line-height: 1.8;">
+                    Du développement web à l'administration réseau, découvrez <strong style="color: var(--color-orange-light);">8 projets</strong> réalisés couvrant plusieurs domaines techniques.
+                </p>
 
-        const reader = new FileReader();
-        reader.onload = e => {
-            const img = new Image();
-            img.onload = () => {
-                // Compression canvas : max 800px de large
-                const canvas = document.createElement('canvas');
-                const MAX = 800;
-                let w = img.width, h = img.height;
-                if (w > MAX) { h = Math.round(h * MAX / w); w = MAX; }
-                canvas.width = w; canvas.height = h;
-                canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-                imageBase64 = canvas.toDataURL('image/jpeg', 0.82);
-                showImagePreview(imageBase64);
-            };
-            img.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
+                <div class="teaser-grid">
+                    <div class="teaser-card">
+                        <div class="teaser-icon"><i class="fas fa-code"></i></div>
+                        <h4>Développement Web <span class="teaser-count">4</span></h4>
+                        <p>Flask, PHP, HTML/CSS/JS</p>
+                    </div>
+                    <div class="teaser-card">
+                        <div class="teaser-icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);"><i class="fas fa-network-wired"></i></div>
+                        <h4>Réseaux & Systèmes <span class="teaser-count">2</span></h4>
+                        <p>Cisco, Linux, Apache</p>
+                    </div>
+                    <div class="teaser-card">
+                        <div class="teaser-icon" style="background: linear-gradient(135deg, #10b981, #059669);"><i class="fas fa-chart-bar"></i></div>
+                        <h4>Python & Data <span class="teaser-count">1</span></h4>
+                        <p>Pandas, Matplotlib, Tkinter</p>
+                    </div>
+                    <div class="teaser-card">
+                        <div class="teaser-icon" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);"><i class="fas fa-mobile-alt"></i></div>
+                        <h4>Mobile <span class="teaser-count">1</span></h4>
+                        <p>React Native, Firebase</p>
+                    </div>
+                </div>
 
-    function showImagePreview(src) {
-        document.getElementById('img-upload-zone').style.display = 'none';
-        const wrap = document.getElementById('img-preview-wrap');
-        document.getElementById('img-preview').src = src;
-        wrap.classList.add('show');
-        updatePreview();
-    }
+                <a href="projets.html" class="btn-voir-projets">
+                    <i class="fas fa-layer-group"></i>
+                    Voir tous mes projets
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p class="teaser-sub">8 projets • Filtres par catégorie • Liens vers les démos</p>
+            </div>
+        </section>
 
-    function removeImage() {
-        imageBase64 = null;
-        document.getElementById('f-image').value = '';
-        document.getElementById('img-preview-wrap').classList.remove('show');
-        document.getElementById('img-upload-zone').style.display = '';
-        document.getElementById('img-size-warn').classList.remove('show');
-        updatePreview();
-    }
+         <section id="soft-skills">
+            <div class="section-header"><h2>Qualités Personnelles</h2><div class="accent-line"></div></div>
+            <div class="soft-skills-grid">
+                <div class="soft-skill-card"><div class="icon-wrapper"><i class="fas fa-chart-line"></i></div><h3>Rigueur</h3><p>Attention méticuleuse aux détails et respect strict des procédures.</p></div>
+                <div class="soft-skill-card"><div class="icon-wrapper"><i class="fas fa-lightbulb"></i></div><h3>Autonomie</h3><p>Capacité à prendre des initiatives et gérer mes projets de manière indépendante.</p></div>
+                <div class="soft-skill-card"><div class="icon-wrapper"><i class="fas fa-search"></i></div><h3>Curiosité</h3><p>Passion constante pour l'apprentissage et l'exploration de nouvelles technologies.</p></div>
+                <div class="soft-skill-card"><div class="icon-wrapper"><i class="fas fa-users"></i></div><h3>Esprit d'équipe</h3><p>Collaboration efficace au sein d'équipes multidisciplinaires.</p></div>
+                <div class="soft-skill-card"><div class="icon-wrapper"><i class="fas fa-puzzle-piece"></i></div><h3>Résolution de problèmes</h3><p>Approche analytique pour identifier et résoudre des problèmes complexes.</p></div>
+                <div class="soft-skill-card"><div class="icon-wrapper"><i class="fas fa-clock"></i></div><h3>Gestion du temps</h3><p>Organisation efficace pour respecter les délais et optimiser la productivité.</p></div>
+            </div>
+        </section>
 
-    // Drag & drop sur la zone
-    const uploadZone = document.getElementById('img-upload-zone');
-    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('dragover'); });
-    uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
-    uploadZone.addEventListener('drop', e => {
-        e.preventDefault(); uploadZone.classList.remove('dragover');
-        const file = e.dataTransfer.files[0];
-        if (file && file.type.startsWith('image/')) {
-            const dt = new DataTransfer(); dt.items.add(file);
-            document.getElementById('f-image').files = dt.files;
-            handleImageUpload(document.getElementById('f-image'));
-        }
-    });
 
-    // =============================================
-    //  TAGS INPUT
-    // =============================================
-    document.getElementById('tags-input').addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ',') {
-            e.preventDefault();
-            const val = e.target.value.trim().replace(/,/g,'');
-            if (val && !tags.includes(val)) {
-                tags.push(val);
-                renderTags();
-            }
-            e.target.value = '';
-        }
-    });
+        <section id="cv">
+            <div class="section-header"><h2>Mon Curriculum Vitae</h2><div class="accent-line"></div></div>
+            <div class="cv-content">
+                <blockquote class="cv-quote">
+                    <i class="fas fa-quote-left"></i>
+                    <p>La réussite appartient à ceux qui se préparent aujourd'hui pour demain.</p>
+                    <i class="fas fa-quote-right"></i>
+                </blockquote>
+                <div class="cv-actions">
+                    <a href="CV_Samson_Kpodamakou.pdf" download class="btn-download"><i class="fas fa-download"></i> Télécharger mon CV</a>
+                    <button class="btn-view" onclick="window.open('CV_Samson_Kpodamakou.pdf', '_blank')"><i class="fas fa-eye"></i> Consulter en ligne</button>
+                </div>
+                <div class="cv-summary">
+                    <h3>En résumé</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item"><i class="fas fa-graduation-cap"></i><span>Licence Administration des Systemes et Reseaux</span></div>
+                        <div class="summary-item"><i class="fas fa-code"></i><span>5+ langages de programmation</span></div>
+                        <div class="summary-item"><i class="fas fa-project-diagram"></i><span>8 projets majeurs réalisés</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    function renderTags() {
-        const wrapper = document.getElementById('tags-wrapper');
-        const input   = document.getElementById('tags-input');
-        wrapper.querySelectorAll('.tag-chip').forEach(c => c.remove());
-        tags.forEach((t, i) => {
-            const chip = document.createElement('span');
-            chip.className = 'tag-chip';
-            chip.innerHTML = `${t}<button type="button" onclick="removeTag(${i})">×</button>`;
-            wrapper.insertBefore(chip, input);
-        });
-    }
+        <section id="contact">
+            <div class="section-header"><h2>Contactez-moi</h2><div class="accent-line"></div></div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Restons en contact</h3>
+                    <p class="contact-intro">Vous avez un projet en tête ou une opportunité professionnelle ? N'hésitez pas à me contacter !</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-text"><h4>Email</h4><a href="mailto:rogardossou@email.com">rogardossou@email.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-text"><h4>Téléphone</h4><a href="tel:+22901438380330">+229 01 43 83 80 30</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="contact-text"><h4>Localisation</h4><p>Porto-Novo, Bénin</p></div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/samson-kpodamakou" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i><span>LinkedIn</span></a>
+                        <a href="https://github.com/samsonkpodamakou" target="_blank" class="social-btn"><i class="fab fa-github"></i><span>GitHub</span></a>
+                        <a href="https://twitter.com/samsonkpoda" target="_blank" class="social-btn"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <button id="btn-contact" class="btn-show-form"><i class="fas fa-paper-plane"></i> Envoyer un message</button>
+                    <form id="form-contact">
+                        <div class="form-group">
+                            <label for="nom"><i class="fas fa-user"></i> Nom complet</label>
+                            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email"><i class="fas fa-envelope"></i> Adresse email</label>
+                            <input type="email" id="email" name="email" placeholder="votre.email@exemple.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sujet"><i class="fas fa-tag"></i> Sujet</label>
+                            <input type="text" id="sujet" name="sujet" placeholder="Objet de votre message" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message"><i class="fas fa-comment"></i> Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Votre message..." required></textarea>
+                        </div>
+                        <button type="submit" id="envoyer" class="btn-submit"><i class="fas fa-paper-plane"></i> Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-    function removeTag(i) { tags.splice(i, 1); renderTags(); }
+        <footer id="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Samson Kpodamakou</h3>
+                    <p>Développeur Web & Mobile | Futur expert en Cybersécurité</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#apropos">À propos</a></li>
+                            <li><a href="#competences-techniques">Compétences</a></li>
+                            <li><a href="projets.html">Projets</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Réseaux sociaux</h4>
+                        <ul>
+                            <li><a href="https://www.linkedin.com/in/samson-kpodamakou-54ab263a9" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://github.com/samsonkpodamakou" target="_blank">GitHub</a></li>
+                            <li><a href="https://twitter.com/samsonkpoda" target="_blank">Twitter</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Samson Kpodamakou. L'informatique c'est l'avenir.</p>
+            </div>
+        </footer>
 
-    // =============================================
-    //  VISIBILITY TOGGLE ON CARD
-    // =============================================
-    function toggleVisibility(id, visible) {
-        db.collection('projets').doc(id).update({ visible }).then(() => {
-            toast(`Projet ${visible ? 'affiché' : 'masqué'} avec succès`, 'success');
-        });
-    }
+        <button id="scroll-top" class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+   </div>
 
-    // =============================================
-    //  MODAL ADD
-    // =============================================
-    function openAddModal() {
-        editingId = null;
-        tags = [];
-        document.getElementById('modal-title').textContent = 'Nouveau Projet';
-        resetForm();
-        goStep(1);
-        document.getElementById('add-modal').classList.add('open');
-    }
+   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+   <script>
+     const firebaseConfig = {
+       apiKey: "TON_API_KEY",
+       authDomain: "TON_PROJECT.firebaseapp.com",
+       projectId: "TON_PROJECT_ID",
+       storageBucket: "TON_PROJECT.appspot.com",
+       messagingSenderId: "TON_SENDER_ID",
+       appId: "TON_APP_ID"
+     };
+     firebase.initializeApp(firebaseConfig);
+     window.db   = firebase.firestore();
+     window.auth = firebase.auth();
+     window.firebaseFirestore = firebase.firestore;
+     window.firebaseAuth      = firebase.auth;
+   </script>
+   <script src="folio.js"></script>
 
-    function openEditModal(id) {
-        const p = projects.find(x => x.id === id);
-        if (!p) return;
-        editingId = id;
-        tags = [...(p.tags || [])];
-        document.getElementById('modal-title').textContent = 'Modifier le Projet';
-
-        document.getElementById('f-title').value   = p.title  || '';
-        document.getElementById('f-cat').value      = p.cat    || '';
-        document.getElementById('f-tech').value     = p.tech   || '';
-        document.getElementById('f-desc').value     = p.desc   || '';
-        document.getElementById('f-link').value     = p.link   || '';
-        document.getElementById('f-visible').checked = p.visible !== false;
-        document.getElementById('f-order').value   = p.order  || '';
-        renderTags();
-
-        // image existante
-        removeImage(); // reset d'abord
-        if (p.image) {
-            imageBase64 = p.image;
-            showImagePreview(p.image);
-        }
-
-        // color
-        document.querySelectorAll('.color-opt').forEach(c => {
-            c.classList.toggle('selected', c.dataset.color === (p.color||'orange'));
-        });
-        // icon
-        document.querySelectorAll('.icon-opt').forEach(ic => {
-            ic.classList.toggle('selected', ic.dataset.icon === (p.icon||'fa-code'));
-        });
-
-        goStep(1);
-        document.getElementById('add-modal').classList.add('open');
-    }
-
-    function closeModal() {
-        document.getElementById('add-modal').classList.remove('open');
-        editingId = null;
-    }
-
-    function resetForm() {
-        ['f-title','f-cat','f-tech','f-desc','f-link','f-order'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.value = '';
-        });
-        document.getElementById('f-visible').checked = true;
-        tags = [];
-        renderTags();
-        document.querySelectorAll('.color-opt').forEach((c,i) => c.classList.toggle('selected', i===0));
-        document.querySelectorAll('.icon-opt').forEach((ic,i) => ic.classList.toggle('selected', i===0));
-        // reset image
-        removeImage();
-    }
-
-    // =============================================
-    //  STEP NAVIGATION
-    // =============================================
-    function goStep(n) {
-        currentStep = n;
-        [1,2,3].forEach(i => {
-            document.getElementById(`step-${i}`).classList.toggle('active', i===n);
-            const btn = document.getElementById(`step-btn-${i}`);
-            btn.classList.remove('active','done');
-            if (i === n) btn.classList.add('active');
-            else if (i < n) btn.classList.add('done');
-        });
-        document.getElementById('btn-prev').style.visibility = n === 1 ? 'hidden' : 'visible';
-        document.getElementById('btn-next').style.display = n < 3 ? 'flex' : 'none';
-        document.getElementById('btn-save').style.display = n === 3 ? 'flex' : 'none';
-        if (n === 3) updatePreview();
-        // visibility label
-        const vis = document.getElementById('f-visible');
-        if (vis) updateVisLabel();
-    }
-
-    document.getElementById('f-visible').addEventListener('change', updateVisLabel);
-    function updateVisLabel() {
-        document.getElementById('vis-label').textContent = document.getElementById('f-visible').checked ? 'Visible sur le site' : 'Masqué du site';
-    }
-
-    function nextStep() {
-        if (currentStep === 1 && !validateStep1()) return;
-        goStep(currentStep + 1);
-    }
-    function prevStep() { goStep(currentStep - 1); }
-
-    function validateStep1() {
-        const title = document.getElementById('f-title').value.trim();
-        const cat   = document.getElementById('f-cat').value;
-        const desc  = document.getElementById('f-desc').value.trim();
-        if (!title) { toast('Le titre est obligatoire', 'error'); return false; }
-        if (!cat)   { toast('La catégorie est obligatoire', 'error'); return false; }
-        if (!desc)  { toast('La description est obligatoire', 'error'); return false; }
-        return true;
-    }
-
-    // =============================================
-    //  COLOR / ICON PICKERS
-    // =============================================
-    function selectColor(el) {
-        document.querySelectorAll('.color-opt').forEach(c => c.classList.remove('selected'));
-        el.classList.add('selected');
-        updatePreview();
-    }
-    function selectIcon(el) {
-        document.querySelectorAll('.icon-opt').forEach(ic => ic.classList.remove('selected'));
-        el.classList.add('selected');
-    }
-
-    // =============================================
-    //  PREVIEW
-    // =============================================
-    const catMap = { web:'Développement Web', network:'Réseaux & Systèmes', python:'Python & Data', mobile:'Mobile' };
-    const bandMap = { orange:'background:linear-gradient(90deg,#ff6b35,#e65100)', blue:'background:linear-gradient(90deg,#3b82f6,#1d4ed8)', green:'background:linear-gradient(90deg,#10b981,#059669)', purple:'background:linear-gradient(90deg,#8b5cf6,#6d28d9)', gold:'background:linear-gradient(90deg,#fbbf24,#d97706)', pink:'background:linear-gradient(90deg,#ec4899,#be185d)' };
-
-    function updatePreview() {
-        const color = document.querySelector('.color-opt.selected')?.dataset.color || 'orange';
-        document.getElementById('prev-band').style = bandMap[color] || bandMap.orange;
-        document.getElementById('prev-cat').textContent   = catMap[document.getElementById('f-cat').value] || '—';
-        document.getElementById('prev-title').textContent = document.getElementById('f-title').value || 'Titre du projet';
-        document.getElementById('prev-tech').textContent  = document.getElementById('f-tech').value  || 'Technologies';
-        document.getElementById('prev-desc').textContent  = document.getElementById('f-desc').value  || 'Description…';
-        // image dans le preview
-        const prevImg = document.getElementById('prev-img');
-        if (imageBase64) {
-            prevImg.src = imageBase64;
-            prevImg.style.display = 'block';
-        } else {
-            prevImg.style.display = 'none';
-        }
-    }
-
-    // =============================================
-    //  SAVE
-    // =============================================
-    async function saveProject() {
-        const color = document.querySelector('.color-opt.selected')?.dataset.color || 'orange';
-        const icon  = document.querySelector('.icon-opt.selected')?.dataset.icon   || 'fa-code';
-        const data  = {
-            title:   document.getElementById('f-title').value.trim(),
-            cat:     document.getElementById('f-cat').value,
-            tech:    document.getElementById('f-tech').value.trim(),
-            desc:    document.getElementById('f-desc').value.trim(),
-            link:    document.getElementById('f-link').value.trim(),
-            tags:    [...tags],
-            visible: document.getElementById('f-visible').checked,
-            order:   parseInt(document.getElementById('f-order').value) || projects.length + 1,
-            image:   imageBase64 || null,
-            color, icon,
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-        };
-
-        const btn = document.getElementById('btn-save');
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enregistrement…';
-        btn.disabled = true;
-
-        try {
-            if (editingId) {
-                await db.collection('projets').doc(editingId).update(data);
-                toast('Projet modifié avec succès ! ✏️', 'success');
-            } else {
-                data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-                await db.collection('projets').add(data);
-                toast('Projet ajouté avec succès ! 🎉', 'success');
-            }
-            closeModal();
-        } catch(err) {
-            console.error(err);
-            toast('Erreur lors de l\'enregistrement', 'error');
-        } finally {
-            btn.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Enregistrer';
-            btn.disabled = false;
-        }
-    }
-
-    // =============================================
-    //  DELETE
-    // =============================================
-    function openDelModal(id) { deleteId = id; document.getElementById('del-modal').classList.add('open'); }
-    function closeDelModal()  { deleteId = null; document.getElementById('del-modal').classList.remove('open'); }
-
-    async function confirmDelete() {
-        if (!deleteId) return;
-        try {
-            await db.collection('projets').doc(deleteId).delete();
-            toast('Projet supprimé', 'success');
-        } catch(e) {
-            toast('Erreur suppression', 'error');
-        }
-        closeDelModal();
-    }
-
-    // =============================================
-    //  TOAST
-    // =============================================
-    function toast(msg, type = 'success') {
-        const el = document.getElementById('toast');
-        const icon = el.querySelector('i');
-        el.className = `toast ${type}`;
-        icon.className = `fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}`;
-        document.getElementById('toast-msg').textContent = msg;
-        el.classList.add('show');
-        setTimeout(() => el.classList.remove('show'), 3800);
-    }
-
-    // =============================================
-    //  CLOSE ON OVERLAY CLICK
-    // =============================================
-    document.getElementById('add-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
-    document.getElementById('del-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeDelModal(); });
-
-    // =============================================
-    //  CANVAS BG
-    // =============================================
-    const cv = document.getElementById('creative-bg');
-    if (cv) {
-        const ctx2 = cv.getContext('2d');
-        function resizeCv() { cv.width = window.innerWidth; cv.height = window.innerHeight; }
-        resizeCv(); window.addEventListener('resize', resizeCv);
-        const pts = Array.from({length:60},()=>({ x:Math.random()*cv.width, y:Math.random()*cv.height, vx:(Math.random()-.5)*.6, vy:(Math.random()-.5)*.6 }));
-        function animCv() {
-            ctx2.clearRect(0,0,cv.width,cv.height);
-            pts.forEach(p => {
-                p.x+=p.vx; p.y+=p.vy;
-                if(p.x<0||p.x>cv.width) p.vx*=-1;
-                if(p.y<0||p.y>cv.height) p.vy*=-1;
-                ctx2.beginPath(); ctx2.arc(p.x,p.y,1.5,0,Math.PI*2);
-                ctx2.fillStyle='rgba(255,107,53,0.4)'; ctx2.fill();
-            });
-            for(let i=0;i<pts.length;i++) for(let j=i+1;j<pts.length;j++){
-                const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.sqrt(dx*dx+dy*dy);
-                if(d<100){ ctx2.beginPath(); ctx2.strokeStyle=`rgba(255,107,53,${(1-d/100)*0.15})`; ctx2.lineWidth=.5; ctx2.moveTo(pts[i].x,pts[i].y); ctx2.lineTo(pts[j].x,pts[j].y); ctx2.stroke(); }
-            }
-            requestAnimationFrame(animCv);
-        }
-        animCv();
-    }
-
-    // Chargement direct sans vérification d'auth
-    loadProjects();
-    </script>
 </body>
 </html>
