@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projets | Samson Kpodamakou</title>
+    <link rel="stylesheet" href="folio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+</head>
+<body class="page-projets">
+    <canvas id="creative-bg"></canvas>
+
+    <div id="content">
+        <!-- HEADER -->
+        <header id="header">
+            <div class="menu-btn" id="menuBtn">
+                <span></span><span></span><span></span>
+            </div>
+            <a href="index.html" class="logo">SK Digitale</a>
+            <nav class="menu" id="menu">
+                <a href="index.html#apropos" class="menu-link">À propos</a>
+                <a href="index.html#parcours-scolaire" class="menu-link">Parcours</a>
+                <a href="index.html#experiences" class="menu-link">Expériences</a>
+                <a href="index.html#competences-techniques" class="menu-link">Compétences</a>
+                <a href="projets.html" class="menu-link active">Projets</a>
+                <a href="index.html#cv" class="menu-link">CV</a>
+                <a href="index.html#contact" class="menu-link">Contact</a>
+            </nav>
+        </header>
+
+        <!-- BOUTON RETOUR -->
+        <div class="back-bar">
+            <a href="index.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Retour à l'accueil
+            </a>
+        </div>
+
+        <!-- HERO -->
+        <section class="page-hero">
+            <div class="hero-badge">
+                <i class="fas fa-layer-group"></i>
+                Portfolio de réalisations
+            </div>
+            <h1>Mes <span>Projets</span></h1>
+            <p>Du développement web à l'administration réseau, voici une sélection de mes travaux académiques et personnels.</p>
+            <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Projets</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Technologies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Domaines</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILTRES -->
+        <div class="filters-section">
+            <button class="filter-btn active" data-filter="all">Tous</button>
+            <button class="filter-btn" data-filter="web">Développement Web</button>
+            <button class="filter-btn" data-filter="network">Réseaux & Systèmes</button>
+            <button class="filter-btn" data-filter="python">Python & Data</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+        </div>
+
+        <!-- GRILLE PROJETS -->
+        <section class="projects-section">
+            <div class="projects-grid">
+
+                <!-- 01 -->
+                <div class="project-card" data-cat="web" style="animation-delay:0.05s">
+                    <div class="card-visual web">
+                        <span class="card-number">01</span>
+                        <div class="card-icon-wrap"><i class="fas fa-warehouse"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Développement Web</p>
+                        <h3 class="card-title">Système de Gestion de Stock</h3>
+                        <p class="card-tech">Python • Flask • MySQL • HTML/CSS/JS</p>
+                        <p class="card-desc">Application web complète de gestion des inventaires avec tableau de bord analytics en temps réel. Intègre un système d'authentification sécurisé et une interface responsive.</p>
+                        <div class="card-tags">
+                            <span class="tag">Authentification</span>
+                            <span class="tag">Base de données</span>
+                            <span class="tag">Responsive</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/flori-touch/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 -->
+                <div class="project-card" data-cat="web" style="animation-delay:0.1s">
+                    <div class="card-visual web">
+                        <span class="card-number">02</span>
+                        <div class="card-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Développement Web</p>
+                        <h3 class="card-title">Plateforme Web ENEAM</h3>
+                        <p class="card-tech">HTML5 • CSS3 • JavaScript • PHP</p>
+                        <p class="card-desc">Portail web complet pour étudiants avec gestion des emplois du temps, consultation des notes et accès aux ressources pédagogiques.</p>
+                        <div class="card-tags">
+                            <span class="tag">Multi-utilisateurs</span>
+                            <span class="tag">CMS</span>
+                            <span class="tag">Notifications</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/flori-touch/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03 -->
+                <div class="project-card" data-cat="network" style="animation-delay:0.15s">
+                    <div class="card-visual network">
+                        <span class="card-number">03</span>
+                        <div class="card-icon-wrap"><i class="fas fa-network-wired"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Réseaux & Systèmes</p>
+                        <h3 class="card-title">Infrastructure Réseau Local</h3>
+                        <p class="card-tech">Cisco Packet Tracer • VLAN • Routing</p>
+                        <p class="card-desc">Conception et simulation complète d'un réseau local d'entreprise avec segmentation VLAN, politique de sécurité et gestion de la qualité de service (QoS).</p>
+                        <div class="card-tags">
+                            <span class="tag">VLAN</span>
+                            <span class="tag">Sécurité</span>
+                            <span class="tag">QoS</span>
+                            <span class="tag">Cisco</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/flori-touch/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 -->
+                <div class="project-card" data-cat="python" style="animation-delay:0.2s">
+                    <div class="card-visual python">
+                        <span class="card-number">04</span>
+                        <div class="card-icon-wrap"><i class="fas fa-chart-bar"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Python & Data</p>
+                        <h3 class="card-title">Dashboard Analytics Python</h3>
+                        <p class="card-tech">Python • Pandas • Matplotlib • Tkinter</p>
+                        <p class="card-desc">Application de bureau pour l'analyse et la visualisation de données avec génération de graphiques dynamiques et export au format PDF.</p>
+                        <div class="card-tags">
+                            <span class="tag">Data Analysis</span>
+                            <span class="tag">Visualisation</span>
+                            <span class="tag">Export PDF</span>
+                            <span class="tag">Pandas</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/flori-touch/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05 -->
+                <div class="project-card" data-cat="mobile" style="animation-delay:0.25s">
+                    <div class="card-visual mobile">
+                        <span class="card-number">05</span>
+                        <div class="card-icon-wrap"><i class="fas fa-mobile-alt"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Mobile</p>
+                        <h3 class="card-title">Application Mobile Todo</h3>
+                        <p class="card-tech">React Native • Firebase • AsyncStorage</p>
+                        <p class="card-desc">Application mobile cross-platform de gestion de tâches avec synchronisation cloud en temps réel, notifications push et persistance locale.</p>
+                        <div class="card-tags">
+                            <span class="tag">Cross-platform</span>
+                            <span class="tag">Cloud Sync</span>
+                            <span class="tag">Notifications</span>
+                            <span class="tag">Firebase</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/flori-touch/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 06 -->
+                <div class="project-card" data-cat="network" style="animation-delay:0.3s">
+                    <div class="card-visual server">
+                        <span class="card-number">06</span>
+                        <div class="card-icon-wrap"><i class="fas fa-server"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Réseaux & Systèmes</p>
+                        <h3 class="card-title">Serveur Web Linux</h3>
+                        <p class="card-tech">Ubuntu Server • Apache • SSL • Firewall</p>
+                        <p class="card-desc">Configuration complète d'un serveur web Linux avec Apache, certificat SSL/TLS, pare-feu iptables et monitoring Nagios. Sauvegardes automatisées.</p>
+                        <div class="card-tags">
+                            <span class="tag">HTTPS</span>
+                            <span class="tag">Monitoring</span>
+                            <span class="tag">Backup</span>
+                            <span class="tag">Linux</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/flori-touch/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 07 -->
+                <div class="project-card" data-cat="web" style="animation-delay:0.35s">
+                    <div class="card-visual jewelry">
+                        <span class="card-number">07</span>
+                        <div class="card-icon-wrap"><i class="fas fa-gem"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Développement Web</p>
+                        <h3 class="card-title">Flori'Touch – Site Vitrine</h3>
+                        <p class="card-tech">HTML5 • CSS3 • JavaScript</p>
+                        <p class="card-desc">Site vitrine dédié à la présentation de bijoux artisanaux et personnalisés. Interface esthétique orientée expérience utilisateur pour mettre en avant les produits.</p>
+                        <div class="card-tags">
+                            <span class="tag">Site Vitrine</span>
+                            <span class="tag">Responsive</span>
+                            <span class="tag">UX Design</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/flori-touch/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 08 -->
+                <div class="project-card" data-cat="web" style="animation-delay:0.4s">
+                    <div class="card-visual ecom">
+                        <span class="card-number">08</span>
+                        <div class="card-icon-wrap"><i class="fas fa-shopping-bag"></i></div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-category">Développement Web</p>
+                        <h3 class="card-title">SK'Shops – E-commerce Mode</h3>
+                        <p class="card-tech">HTML5 • CSS3 • JavaScript</p>
+                        <p class="card-desc">Prototype de site e-commerce de mode avec catalogue de produits, panier visuel et sections informatives. Illustre mes compétences en intégration web et interfaces de vente.</p>
+                        <div class="card-tags">
+                            <span class="tag">E-commerce</span>
+                            <span class="tag">Panier</span>
+                            <span class="tag">Catalogue</span>
+                        </div>
+                        <div class="card-footer">
+                            <a href="https://torf-zoulde.github.io/SK-Shop/" target="_blank" class="btn-project btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Voir le projet
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="page-footer">
+            <p>&copy; Samson Kpodamakou — <a href="index.html">Retour à l'accueil</a></p>
+        </footer>
+    </div>
+
+    <button id="scroll-top" class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="folio.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+<!-- Firebase config déjà dans folio.js → juste ajouter : -->
+<script src="projets.js"></script>
+    
+</body>
+</html>

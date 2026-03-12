@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - SK Digitale</title>
+    <link rel="stylesheet" href="folio.css">
+    <link rel="stylesheet" href="fol.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="creative-bg"></canvas>
+
+    <header class="admin-header">
+        <div class="header-left">
+            <div class="logo">SK Digitale</div>
+            <h2>Gestion des Messages</h2>
+        </div>
+        <div class="header-right">
+            <a href="Adminpro.html" class="btn-projects-nav">
+                <i class="fas fa-layer-group"></i>
+                <span>Mes Projets</span>
+            </a>
+            <button class="btn-menu" id="btn-menu"><i class="fas fa-bars"></i><span>Menu</span></button>
+            <div class="user-info"><i class="fas fa-user-shield"></i><span>Admin</span></div>
+            <button class="btn-logout" id="btn-logout">
+                <i class="fas fa-sign-out-alt"></i><span>Déconnexion</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="side-menu" id="side-menu">
+        <div class="side-menu-header">
+            <h3><i class="fas fa-cog"></i> Menu</h3>
+            <button class="close-menu" id="close-menu"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="side-menu-content">
+            <button class="menu-item" id="menu-dashboard"><i class="fas fa-chart-line"></i><span>Tableau de bord</span></button>
+            <button class="menu-item" id="menu-all-data"><i class="fas fa-database"></i><span>Toutes les données</span></button>
+            <button class="menu-item" id="menu-settings"><i class="fas fa-key"></i><span>Changer mot de passe</span></button>
+            <button class="menu-item" id="menu-export"><i class="fas fa-download"></i><span>Exporter les données</span></button>
+            <a href="Adminpro.html" class="menu-item menu-item-link">
+                <i class="fas fa-layer-group"></i>
+                <span>Gérer les Projets</span>
+                <span class="menu-badge-new">NEW</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <main class="admin-main">
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-icon total"><i class="fas fa-envelope"></i></div>
+                <div class="stat-info"><h3 id="stat-total">0</h3><p>Total Messages</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon unread"><i class="fas fa-envelope-open"></i></div>
+                <div class="stat-info"><h3 id="stat-unread">0</h3><p>Non Lus</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon read"><i class="fas fa-check-circle"></i></div>
+                <div class="stat-info"><h3 id="stat-read">0</h3><p>Lus</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon today"><i class="fas fa-calendar-day"></i></div>
+                <div class="stat-info"><h3 id="stat-today">0</h3><p>Aujourd'hui</p></div>
+            </div>
+        </section>
+
+        <section class="filters-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Rechercher par nom, email ou sujet...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all"><i class="fas fa-list"></i> Tous</button>
+                <button class="filter-btn" data-filter="unread"><i class="fas fa-envelope"></i> Non lus</button>
+                <button class="filter-btn" data-filter="read"><i class="fas fa-envelope-open"></i> Lus</button>
+            </div>
+            <button class="btn-refresh" id="btn-refresh"><i class="fas fa-sync-alt"></i> Actualiser</button>
+        </section>
+
+        <section class="messages-container" id="messages-container">
+            <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Chargement des messages...</p></div>
+        </section>
+    </main>
+
+    <!-- MODAL DETAIL MESSAGE -->
+    <div class="modal" id="message-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-envelope-open-text"></i> Détails du message</h2>
+                <button class="modal-close" id="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="message-details">
+                    <div class="detail-row">
+                        <div class="detail-label"><i class="fas fa-user"></i> Nom</div>
+                        <div class="detail-value" id="detail-nom"></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label"><i class="fas fa-envelope"></i> Email</div>
+                        <div class="detail-value" id="detail-email"></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label"><i class="fas fa-tag"></i> Sujet</div>
+                        <div class="detail-value" id="detail-sujet"></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label"><i class="fas fa-clock"></i> Date</div>
+                        <div class="detail-value" id="detail-date"></div>
+                    </div>
+                    <div class="detail-row full">
+                        <div class="detail-label"><i class="fas fa-comment"></i> Message</div>
+                        <div class="detail-value message-text" id="detail-message"></div>
+                    </div>
+                </div>
+                <div class="response-section" id="response-section">
+                    <h3><i class="fas fa-reply"></i> Répondre au message</h3>
+                    <textarea id="response-text" rows="6" placeholder="Écrivez votre réponse ici..."></textarea>
+                    <button class="btn-send-response" id="btn-send-response">
+                        <i class="fas fa-paper-plane"></i> Envoyer la réponse
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-action" id="btn-toggle-read">
+                    <i class="fas fa-eye"></i>
+                    <span id="read-status-text">Marquer comme lu</span>
+                </button>
+                <button class="btn-action btn-delete" id="btn-delete-message">
+                    <i class="fas fa-trash"></i> Supprimer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL TOUTES LES DONNEES -->
+    <div class="modal" id="all-data-modal">
+        <div class="modal-content" style="max-width: 1200px;">
+            <div class="modal-header">
+                <h2><i class="fas fa-database"></i> Toutes les données</h2>
+                <button class="modal-close" id="close-all-data"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="data-table-container" id="data-table-container">
+                    <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Chargement...</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CHANGER MOT DE PASSE -->
+    <div class="modal" id="settings-modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2><i class="fas fa-key"></i> Changer le mot de passe</h2>
+                <button class="modal-close" id="close-settings"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <form id="change-password-form">
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Mot de passe actuel</label>
+                        <input type="password" id="current-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> Nouveau mot de passe</label>
+                        <input type="password" id="new-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-check-circle"></i> Confirmer</label>
+                        <input type="password" id="confirm-password" required>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-save"></i> Enregistrer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- STYLES SPECIFIQUES A CETTE PAGE -->
+    <style>
+        .btn-projects-nav {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 20px;
+            background: var(--gradient-orange);
+            color: #fff; text-decoration: none;
+            border-radius: 10px;
+            font-family: var(--font-display);
+            font-size: 0.9rem; font-weight: 700;
+            box-shadow: 0 0 20px var(--color-orange-glow);
+            transition: all 0.25s ease; white-space: nowrap;
+        }
+        .btn-projects-nav:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255,107,53,0.55); }
+
+        .menu-item-link {
+            text-decoration: none; color: inherit;
+            display: flex; align-items: center; gap: 12px;
+            position: relative;
+            border-top: 1px solid rgba(255,107,53,0.2);
+            margin-top: 8px; padding-top: 8px;
+        }
+        .menu-badge-new {
+            margin-left: auto; padding: 2px 8px;
+            background: var(--gradient-orange);
+            border-radius: 20px; font-size: 0.65rem;
+            font-weight: 800; color: #fff; letter-spacing: 0.5px;
+        }
+        @media (max-width: 640px) {
+            .btn-projects-nav span { display: none; }
+            .btn-projects-nav { padding: 10px 14px; }
+        }
+    </style>
+
+    <!-- =============================================
+         FIREBASE SDK COMPAT
+         REMPLACE les valeurs TON_* par tes vraies clés
+    ============================================= -->
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDTKnDbmZ3DK09UF8dwqbZ_CZTqB8G32GU",
+  authDomain: "sk-digitale.firebaseapp.com",
+  projectId: "sk-digitale",
+  storageBucket: "sk-digitale.firebasestorage.app",
+  messagingSenderId: "643375244922",
+  appId: "1:643375244922:web:0fc6387286de90fab5fdc3",
+  measurementId: "G-PLB0X1WLK8"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        window.db   = firebase.firestore();
+        window.auth = firebase.auth();
+
+        // ──────────────────────────────────────────────
+        // SUPPORT LOCAL — décommente si tu testes avec
+        // "firebase emulators:start"
+        // Recommente avant de déployer
+        // ──────────────────────────────────────────────
+        // window.auth.useEmulator('http://localhost:9099');
+        // window.db.useEmulator('localhost', 8080);
+    </script>
+
+    <!-- message.js chargé APRÈS Firebase -->
+    <script src="message.js"></script>
+</body>
+</html>
