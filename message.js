@@ -285,7 +285,7 @@ if (btnSendResponse) {
                 subject:       'Re: ' + (currentMessage.sujet || 'Votre message'),
                 original_msg:  currentMessage.message || '',
                 reply_message: reponse,
-                from_name:     'Samson Kpodamakou — SK Digitale',
+                from_name:     'Samson KPODAMAKOU',
             };
 
             await emailjs.send(
