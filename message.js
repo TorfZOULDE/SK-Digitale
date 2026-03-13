@@ -60,9 +60,9 @@ if (canvas) {
 // ⚙️  CONFIG EMAILJS
 // 👉 Remplace ces 3 valeurs après avoir créé ton compte sur emailjs.com
 // ===================================
-const EMAILJS_SERVICE_ID  = 'TON_SERVICE_ID';   // ex: 'service_abc123'
-const EMAILJS_TEMPLATE_ID = 'TON_TEMPLATE_ID';  // ex: 'template_xyz789'
-const EMAILJS_PUBLIC_KEY  = 'TA_PUBLIC_KEY';     // ex: 'AbCdEfGhIjKlMnOp'
+const EMAILJS_SERVICE_ID  = 'service_6w4lumh';
+const EMAILJS_TEMPLATE_ID = 'template_wlvxvp3';
+const EMAILJS_PUBLIC_KEY  = 'S3NBSmEy7nuZn9KyD';
 
 // ===================================
 // VARIABLES GLOBALES
