@@ -125,7 +125,7 @@
                     <h3><i class="fas fa-reply"></i> Répondre au message</h3>
                     <textarea id="response-text" rows="6" placeholder="Écrivez votre réponse ici..."></textarea>
                     <button class="btn-send-response" id="btn-send-response">
-                        <i class="fas fa-paper-plane"></i> Envoyer la réponse
+                        <i class="fas fa-paper-plane"></i> Envoyer la réponse par email
                     </button>
                 </div>
             </div>
@@ -185,7 +185,6 @@
         </div>
     </div>
 
-    <!-- STYLES SPECIFIQUES A CETTE PAGE -->
     <style>
         .btn-projects-nav {
             display: flex; align-items: center; gap: 8px;
@@ -213,45 +212,68 @@
             border-radius: 20px; font-size: 0.65rem;
             font-weight: 800; color: #fff; letter-spacing: 0.5px;
         }
+
+        /* ✅ Bouton envoyer réponse */
+        .btn-send-response {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 12px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #ff6b35, #f7431e);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 20px rgba(255,107,53,0.4);
+            width: 100%;
+            justify-content: center;
+        }
+        .btn-send-response:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(255,107,53,0.6);
+        }
+        .btn-send-response:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         @media (max-width: 640px) {
             .btn-projects-nav span { display: none; }
             .btn-projects-nav { padding: 10px 14px; }
         }
     </style>
 
-    <!-- =============================================
-         FIREBASE SDK COMPAT
-         REMPLACE les valeurs TON_* par tes vraies clés
-    ============================================= -->
+    <!-- FIREBASE SDK COMPAT -->
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+
+    <!-- ✅ EMAILJS — pour envoyer les emails de réponse aux visiteurs -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyDTKnDbmZ3DK09UF8dwqbZ_CZTqB8G32GU",
-  authDomain: "sk-digitale.firebaseapp.com",
-  projectId: "sk-digitale",
-  storageBucket: "sk-digitale.firebasestorage.app",
-  messagingSenderId: "643375244922",
-  appId: "1:643375244922:web:0fc6387286de90fab5fdc3",
-  measurementId: "G-PLB0X1WLK8"
+            authDomain: "sk-digitale.firebaseapp.com",
+            projectId: "sk-digitale",
+            storageBucket: "sk-digitale.firebasestorage.app",
+            messagingSenderId: "643375244922",
+            appId: "1:643375244922:web:0fc6387286de90fab5fdc3",
+            measurementId: "G-PLB0X1WLK8"
         };
 
         firebase.initializeApp(firebaseConfig);
-
-        window.db   = firebase.firestore();
-        window.auth = firebase.auth();
-
-        // ──────────────────────────────────────────────
-        // SUPPORT LOCAL — décommente si tu testes avec
-        // "firebase emulators:start"
-        // Recommente avant de déployer
-        // ──────────────────────────────────────────────
-        // window.auth.useEmulator('http://localhost:9099');
-        // window.db.useEmulator('localhost', 8080);
+        window.db      = firebase.firestore();
+        window.auth    = firebase.auth();
+        window.firebase = firebase;
     </script>
 
-    <!-- message.js chargé APRÈS Firebase -->
+    <!-- message.js chargé APRÈS Firebase et EmailJS -->
     <script src="message.js"></script>
 </body>
 </html>

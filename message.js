@@ -57,6 +57,14 @@ if (canvas) {
 }
 
 // ===================================
+// ⚙️  CONFIG EMAILJS
+// 👉 Remplace ces 3 valeurs après avoir créé ton compte sur emailjs.com
+// ===================================
+const EMAILJS_SERVICE_ID  = 'TON_SERVICE_ID';   // ex: 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'TON_TEMPLATE_ID';  // ex: 'template_xyz789'
+const EMAILJS_PUBLIC_KEY  = 'TA_PUBLIC_KEY';     // ex: 'AbCdEfGhIjKlMnOp'
+
+// ===================================
 // VARIABLES GLOBALES
 // ===================================
 let messagesData   = [];
@@ -82,6 +90,7 @@ const btnMenu           = document.getElementById('btn-menu');
 const sideMenu          = document.getElementById('side-menu');
 const closeMenu         = document.getElementById('close-menu');
 const menuOverlay       = document.getElementById('menu-overlay');
+const btnSendResponse   = document.getElementById('btn-send-response');
 
 // ===================================
 // NOTIFICATION
@@ -123,7 +132,7 @@ if (btnMenu && sideMenu && closeMenu && menuOverlay) {
 }
 
 // ===================================
-// CHARGER LES MESSAGES (SDK compat)
+// CHARGER LES MESSAGES
 // ===================================
 function loadMessages() {
     if (!messagesContainer) return;
@@ -160,6 +169,9 @@ function displayMessages(messages) {
     messagesContainer.innerHTML = messages.map(m => {
         m.lu = m.lu ?? false;
         const date = m.createdAt ? new Date(m.createdAt.seconds * 1000).toLocaleString('fr-FR') : 'Date inconnue';
+        const reponduBadge = m.repondu
+            ? '<span style="background:#10b981;color:#fff;font-size:0.65rem;padding:2px 8px;border-radius:20px;margin-left:8px;font-weight:700;">↩ Répondu</span>'
+            : '';
         return `
             <div class="message-card ${m.lu ? 'read' : 'unread'}" data-id="${m.id}">
                 <div class="message-status ${m.lu ? 'read' : 'unread'}">
@@ -167,7 +179,7 @@ function displayMessages(messages) {
                 </div>
                 <div class="message-content">
                     <div class="message-header">
-                        <h4>${m.nom || 'Nom inconnu'}</h4>
+                        <h4>${m.nom || 'Nom inconnu'}${reponduBadge}</h4>
                         <span>${date}</span>
                     </div>
                     <p class="message-subject">${m.sujet || 'Sans sujet'}</p>
@@ -195,6 +207,20 @@ function openMessageModal(id) {
     document.getElementById('detail-date').textContent    = currentMessage.createdAt
         ? new Date(currentMessage.createdAt.seconds * 1000).toLocaleString('fr-FR') : 'Inconnue';
     document.getElementById('detail-message').textContent = currentMessage.message || '';
+
+    // Afficher la réponse précédente si elle existe
+    const responseSection = document.getElementById('response-section');
+    if (responseSection && currentMessage.repondu && currentMessage.reponse) {
+        const prevReply = document.getElementById('previous-reply') || document.createElement('div');
+        prevReply.id = 'previous-reply';
+        prevReply.style.cssText = 'background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:10px;padding:14px;margin-bottom:16px;color:rgba(255,255,255,0.8);font-size:0.88rem;';
+        prevReply.innerHTML = `<strong style="color:#10b981"><i class="fas fa-check-circle"></i> Réponse déjà envoyée :</strong><p style="margin-top:8px;white-space:pre-wrap">${currentMessage.reponse}</p>`;
+        responseSection.insertBefore(prevReply, responseSection.firstChild);
+    } else {
+        const prevReply = document.getElementById('previous-reply');
+        if (prevReply) prevReply.remove();
+    }
+
     if (readStatusText) readStatusText.textContent = currentMessage.lu ? 'Marquer comme non lu' : 'Marquer comme lu';
     if (responseText)   responseText.value = '';
     if (messageModal)   messageModal.style.display = 'flex';
@@ -217,7 +243,96 @@ function openMessageModal(id) {
 if (closeModalBtn) closeModalBtn.addEventListener('click', () => { if (messageModal) messageModal.style.display = 'none'; });
 
 // ===================================
-// MARQUER LU / NON LU (SDK compat)
+// ✅ ENVOI DE LA REPONSE PAR EMAIL (EmailJS)
+// ===================================
+if (btnSendResponse) {
+    btnSendResponse.addEventListener('click', async () => {
+        if (!currentMessage) {
+            showNotification('Aucun message sélectionné', 'error');
+            return;
+        }
+
+        const reponse = responseText ? responseText.value.trim() : '';
+        if (!reponse) {
+            showNotification('Veuillez écrire une réponse avant d\'envoyer', 'error');
+            return;
+        }
+
+        // Vérifier que EmailJS est chargé
+        if (typeof emailjs === 'undefined') {
+            showNotification('EmailJS non chargé. Vérifiez votre connexion internet.', 'error');
+            return;
+        }
+
+        // Vérifier que les clés sont configurées
+        if (EMAILJS_SERVICE_ID === 'TON_SERVICE_ID') {
+            showNotification('⚠️ Configure tes clés EmailJS dans message.js (voir les commentaires)', 'error');
+            return;
+        }
+
+        // Désactiver le bouton pendant l'envoi
+        const originalHTML       = btnSendResponse.innerHTML;
+        btnSendResponse.disabled = true;
+        btnSendResponse.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+
+        try {
+            // Paramètres envoyés au template EmailJS
+            // Ces noms (to_name, to_email, etc.) doivent correspondre
+            // aux variables dans ton template EmailJS
+            const templateParams = {
+                to_name:       currentMessage.nom   || 'Visiteur',
+                to_email:      currentMessage.email || '',
+                subject:       'Re: ' + (currentMessage.sujet || 'Votre message'),
+                original_msg:  currentMessage.message || '',
+                reply_message: reponse,
+                from_name:     'Samson Kpodamakou — SK Digitale',
+            };
+
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                templateParams,
+                EMAILJS_PUBLIC_KEY
+            );
+
+            // ✅ Sauvegarder la réponse dans Firestore
+            await window.db.collection('messages').doc(currentMessage.id).update({
+                repondu:   true,
+                reponse:   reponse,
+                reponduLe: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            // Mettre à jour en mémoire locale
+            const idx = messagesData.findIndex(m => m.id === currentMessage.id);
+            if (idx !== -1) {
+                messagesData[idx].repondu = true;
+                messagesData[idx].reponse = reponse;
+            }
+            currentMessage.repondu = true;
+            currentMessage.reponse = reponse;
+
+            // Actualiser la liste
+            displayMessages(applyFilter(messagesData));
+
+            showNotification(`✅ Réponse envoyée avec succès à ${currentMessage.email} !`, 'success');
+            if (responseText) responseText.value = '';
+
+        } catch (err) {
+            console.error('Erreur envoi email:', err);
+            if (err.status === 400) {
+                showNotification('Clés EmailJS invalides. Vérifie SERVICE_ID, TEMPLATE_ID et PUBLIC_KEY.', 'error');
+            } else {
+                showNotification('Erreur lors de l\'envoi. Réessaie.', 'error');
+            }
+        } finally {
+            btnSendResponse.disabled  = false;
+            btnSendResponse.innerHTML = originalHTML;
+        }
+    });
+}
+
+// ===================================
+// MARQUER LU / NON LU
 // ===================================
 if (btnToggleRead) {
     btnToggleRead.addEventListener('click', () => {
@@ -243,7 +358,7 @@ if (btnToggleRead) {
 }
 
 // ===================================
-// SUPPRIMER MESSAGE (SDK compat)
+// SUPPRIMER MESSAGE
 // ===================================
 if (btnDeleteMessage) {
     btnDeleteMessage.addEventListener('click', () => {
@@ -344,7 +459,7 @@ if (menuAllData && allDataModal) {
         }
         let html = '<table style="width:100%;border-collapse:collapse;color:white;font-size:0.85rem">';
         html += '<thead><tr style="background:rgba(255,255,255,0.1)">';
-        ['Nom','Email','Sujet','Date','Lu'].forEach(h => {
+        ['Nom','Email','Sujet','Date','Lu','Répondu'].forEach(h => {
             html += `<th style="padding:10px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.2)">${h}</th>`;
         });
         html += '</tr></thead><tbody>';
@@ -355,7 +470,8 @@ if (menuAllData && allDataModal) {
                 <td style="padding:10px">${m.email || '-'}</td>
                 <td style="padding:10px">${m.sujet || '-'}</td>
                 <td style="padding:10px">${date}</td>
-                <td style="padding:10px">${m.lu ? '✅' : '📩'}</td>
+                <td style="padding:10px">${m.lu      ? '✅' : '📩'}</td>
+                <td style="padding:10px">${m.repondu ? '↩️' : '—'}</td>
             </tr>`;
         });
         html += '</tbody></table>';
@@ -387,7 +503,7 @@ if (menuExport) {
         if (menuOverlay) menuOverlay.classList.remove('active');
         if (messagesData.length === 0) { showNotification('Aucune donnée à exporter', 'error'); return; }
 
-        const headers = ['Nom','Email','Sujet','Message','Date','Lu'];
+        const headers = ['Nom','Email','Sujet','Message','Date','Lu','Répondu'];
         const rows = messagesData.map(m => {
             const date = m.createdAt ? new Date(m.createdAt.seconds * 1000).toLocaleString('fr-FR') : '-';
             return [
@@ -396,7 +512,8 @@ if (menuExport) {
                 m.sujet   || '',
                 (m.message || '').replace(/,/g, ';'),
                 date,
-                m.lu ? 'Oui' : 'Non'
+                m.lu      ? 'Oui' : 'Non',
+                m.repondu ? 'Oui' : 'Non'
             ];
         });
         const csv  = [headers, ...rows].map(r => r.join(',')).join('\n');

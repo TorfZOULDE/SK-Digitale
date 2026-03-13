@@ -164,6 +164,84 @@
             color: rgba(255,255,255,0.45);
             font-size: 0.85rem;
         }
+
+        /* ===== CORRECTION MENU MOBILE ===== */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 15, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 16px 0;
+                z-index: 9999;
+                border-bottom: 2px solid rgba(255, 107, 53, 0.3);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            }
+
+            .menu.active {
+                display: flex !important;
+            }
+
+            .menu-link {
+                padding: 14px 30px;
+                font-size: 1rem;
+                color: rgba(255, 255, 255, 0.85);
+                text-decoration: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                transition: all 0.2s ease;
+                display: block;
+            }
+
+            .menu-link:hover {
+                color: #ff6b35;
+                background: rgba(255, 107, 53, 0.08);
+                padding-left: 40px;
+            }
+
+            /* Bouton hamburger visible sur mobile */
+            .menu-btn {
+                display: flex !important;
+                flex-direction: column;
+                gap: 5px;
+                cursor: pointer;
+                padding: 8px;
+                z-index: 10000;
+                background: none;
+                border: none;
+                outline: none;
+            }
+
+            .menu-btn span {
+                display: block;
+                width: 25px;
+                height: 2px;
+                background: #ff6b35;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+            }
+
+            /* Animation hamburger → X */
+            .menu-btn.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+            .menu-btn.active span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            .menu-btn.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .menu-btn { display: none !important; }
+            .menu { display: flex !important; }
+        }
     </style>
 </head>
 <body>
@@ -352,7 +430,6 @@
             </div>
         </section>
 
-       
         <!-- ===== SECTION PROJETS - TEASER ===== -->
         <section id="projets">
             <div class="section-header"><h2>Mes Projets</h2><div class="accent-line"></div></div>
@@ -514,21 +591,26 @@
         <button id="scroll-top" class="scroll-top-btn"><i class="fas fa-arrow-up"></i></button>
    </div>
 
+   <!-- =============================================
+        FIREBASE SDK COMPAT — vraies clés du projet
+   ============================================= -->
    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
    <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
    <script>
+     // ✅ CORRECTION : vraies clés Firebase (copiées depuis Messages.html)
      const firebaseConfig = {
-       apiKey: "TON_API_KEY",
-       authDomain: "TON_PROJECT.firebaseapp.com",
-       projectId: "TON_PROJECT_ID",
-       storageBucket: "TON_PROJECT.appspot.com",
-       messagingSenderId: "TON_SENDER_ID",
-       appId: "TON_APP_ID"
+       apiKey: "AIzaSyDTKnDbmZ3DK09UF8dwqbZ_CZTqB8G32GU",
+       authDomain: "sk-digitale.firebaseapp.com",
+       projectId: "sk-digitale",
+       storageBucket: "sk-digitale.firebasestorage.app",
+       messagingSenderId: "643375244922",
+       appId: "1:643375244922:web:0fc6387286de90fab5fdc3",
+       measurementId: "G-PLB0X1WLK8"
      };
      firebase.initializeApp(firebaseConfig);
-     window.db   = firebase.firestore();
-     window.auth = firebase.auth();
+     window.db                = firebase.firestore();
+     window.auth              = firebase.auth();
      window.firebaseFirestore = firebase.firestore;
      window.firebaseAuth      = firebase.auth;
    </script>

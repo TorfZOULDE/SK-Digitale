@@ -70,22 +70,28 @@ if (canvas) {
 }
 
 // ===================================
-// MENU MOBILE
+// MENU MOBILE — CORRECTION
 // ===================================
 const menuBtn = document.getElementById('menuBtn');
 const menu    = document.getElementById('menu');
+
 if (menuBtn && menu) {
-    menuBtn.addEventListener('click', e => {
+    // ✅ FIX : utiliser addEventListener sur le bouton hamburger
+    menuBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        menu.classList.toggle('active');
-        menuBtn.classList.toggle('active');
+        const isActive = menu.classList.toggle('active');
+        menuBtn.classList.toggle('active', isActive);
     });
-    document.addEventListener('click', e => {
+
+    // Fermer le menu en cliquant ailleurs
+    document.addEventListener('click', function(e) {
         if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
             menu.classList.remove('active');
             menuBtn.classList.remove('active');
         }
     });
+
+    // Fermer le menu quand on clique sur un lien
     document.querySelectorAll('.menu-link').forEach(link => {
         link.addEventListener('click', () => {
             menu.classList.remove('active');
@@ -183,10 +189,13 @@ function showNotification(message, type = 'info') {
 
 // ===================================
 // FORMULAIRE CONTACT → FIRESTORE
+// ✅ CORRECTION : attendre que Firebase soit prêt
 // ===================================
 const btnContact  = document.getElementById('btn-contact');
 const formContact = document.getElementById('form-contact');
+
 if (btnContact && formContact) {
+    // Afficher / Masquer le formulaire
     btnContact.addEventListener('click', () => {
         formContact.classList.toggle('active');
         btnContact.innerHTML = formContact.classList.contains('active')
@@ -194,8 +203,15 @@ if (btnContact && formContact) {
             : '<i class="fas fa-paper-plane"></i> Envoyer un message';
     });
 
-    formContact.addEventListener('submit', async e => {
+    // Soumission du formulaire
+    formContact.addEventListener('submit', async function(e) {
         e.preventDefault();
+
+        // ✅ FIX : vérifier que window.db est disponible avant d'envoyer
+        if (!window.db) {
+            showNotification('Erreur : connexion à la base de données impossible.', 'error');
+            return;
+        }
 
         const nom     = document.getElementById('nom').value.trim();
         const email   = document.getElementById('email').value.trim();
@@ -208,26 +224,32 @@ if (btnContact && formContact) {
         }
 
         const submitBtn    = formContact.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
+        const originalHTML = submitBtn.innerHTML;
         submitBtn.disabled  = true;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
 
         try {
+            // ✅ FIX : utiliser window.firebaseFirestore.FieldValue pour le timestamp
             await window.db.collection('messages').add({
-                nom, email, sujet, message,
+                nom,
+                email,
+                sujet,
+                message,
                 lu: false,
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                createdAt: window.firebaseFirestore.FieldValue.serverTimestamp()
             });
+
             showNotification('Message envoyé avec succès ! 🎉', 'success');
             formContact.reset();
             formContact.classList.remove('active');
             btnContact.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer un message';
+
         } catch (err) {
             console.error('Erreur Firestore :', err);
             showNotification("Impossible d'envoyer le message. Réessayez.", 'error');
         } finally {
             submitBtn.disabled  = false;
-            submitBtn.innerHTML = originalText;
+            submitBtn.innerHTML = originalHTML;
         }
     });
 }
@@ -307,8 +329,6 @@ if (loginForm) {
         const passwordVal = document.getElementById('password').value;
 
         // Firebase Auth nécessite un email valide
-        // Si l'utilisateur tape juste "admin" → on ajoute le domaine
-        // IMPORTANT : le compte doit exister dans Firebase Auth avec cet email exact
         const email = usernameVal.includes('@') ? usernameVal : usernameVal + '@skdigitale.com';
 
         try {
