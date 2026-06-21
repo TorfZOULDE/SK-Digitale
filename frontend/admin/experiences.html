@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Expériences</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <i class="fas fa-user-shield"></i>
+      <div>
+        <span class="logo-title">Portfolio</span>
+        <span class="logo-sub">Admin Console</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-link"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+      <p class="nav-label">Contenu</p>
+      <a href="projects.html" class="nav-link"><i class="fas fa-folder-open"></i><span>Projets</span></a>
+      <a href="experiences.html" class="nav-link active"><i class="fas fa-briefcase"></i><span>Expériences</span></a>
+      <a href="ai-management.html" class="nav-link"><i class="fas fa-robot"></i><span>IA</span></a>
+      <a href="announcements.html" class="nav-link">
+        <i class="fas fa-bullhorn"></i><span>Annonces</span>
+      </a>
+      <p class="nav-label">Communication</p>
+      <a href="messages.html" class="nav-link"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="visitors.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+      <div class="nav-bottom">
+        <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span>Paramètres</span></a>
+        <a href="login.html" class="nav-link nav-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i><span>Déconnexion</span></a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="breadcrumb">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+          <i class="fas fa-chevron-right"></i>
+          <span class="breadcrumb-active">Expériences</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="header-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+        <div class="header-user">
+          <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+          <div class="user-info">
+            <span class="user-name">Samson KPODAMAKOU</span>
+            <span class="user-role">ADMINISTRATOR</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <div class="page-title">
+        <h1>Gestion des Expériences</h1>
+        <p>Ajoutez, modifiez ou supprimez vos expériences professionnelles</p>
+      </div>
+
+      <div class="table-actions">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Rechercher une expérience...">
+        </div>
+        <button class="btn-add" id="btnAddExp">
+          <i class="fas fa-plus"></i> Nouvelle expérience
+        </button>
+      </div>
+
+      <!-- LISTE DESKTOP -->
+      <div class="table-card">
+        <div class="table-responsive">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Titre</th>
+                <th>Entreprise</th>
+                <th>Période</th>
+                <th>Icône</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="expTable">
+              <tr><td colspan="5" class="table-loading"><i class="fas fa-spinner fa-spin"></i> Chargement...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- LISTE MOBILE -->
+      <div class="proj-mobile-list" id="expMobileList"></div>
+
+    </div>
+  </div>
+
+  <!-- MODAL EXPÉRIENCE -->
+  <div class="modal" id="expModal">
+    <div class="modal-box modal-large">
+      <div class="modal-header">
+        <h3 id="expModalTitle"><i class="fas fa-briefcase"></i> Nouvelle expérience</h3>
+        <button class="modal-close" id="closeExpModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Titre *</label>
+            <input type="text" id="expTitle" placeholder="Ex: Stage Administrateur Réseau">
+          </div>
+          <div class="form-group">
+            <label>Entreprise *</label>
+            <input type="text" id="expCompany" placeholder="Ex: Entreprise XYZ">
+          </div>
+          <div class="form-group">
+            <label>Période *</label>
+            <input type="text" id="expDate" placeholder="Ex: Juin 2025 - Août 2025">
+          </div>
+          <div class="form-group">
+            <label>Icône Font Awesome</label>
+            <input type="text" id="expIcon" placeholder="Ex: fas fa-network-wired">
+          </div>
+          <div class="form-group full">
+            <label>Tâches (une par ligne) *</label>
+            <textarea id="expTasks" rows="6" placeholder="Installation de serveurs Linux&#10;Configuration réseau&#10;Maintenance informatique"></textarea>
+          </div>
+        </div>
+
+        <!-- Aperçu icône -->
+        <div class="icon-preview">
+          <p>Aperçu de l'icône :</p>
+          <div class="icon-preview-box">
+            <i id="iconPreview" class="fas fa-briefcase"></i>
+          </div>
+          <div class="icon-suggestions">
+            <span onclick="setIcon('fas fa-network-wired')"><i class="fas fa-network-wired"></i></span>
+            <span onclick="setIcon('fas fa-code')"><i class="fas fa-code"></i></span>
+            <span onclick="setIcon('fas fa-server')"><i class="fas fa-server"></i></span>
+            <span onclick="setIcon('fas fa-shield-alt')"><i class="fas fa-shield-alt"></i></span>
+            <span onclick="setIcon('fas fa-database')"><i class="fas fa-database"></i></span>
+            <span onclick="setIcon('fas fa-laptop')"><i class="fas fa-laptop"></i></span>
+            <span onclick="setIcon('fas fa-tools')"><i class="fas fa-tools"></i></span>
+            <span onclick="setIcon('fas fa-graduation-cap')"><i class="fas fa-graduation-cap"></i></span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-cancel" id="cancelExp">Annuler</button>
+          <button class="btn-primary-admin" id="saveExp">
+            <i class="fas fa-save"></i> Sauvegarder
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL SUPPRESSION -->
+  <div class="modal" id="deleteExpModal">
+    <div class="modal-box modal-small">
+      <div class="modal-header">
+        <h3><i class="fas fa-trash"></i> Confirmer la suppression</h3>
+        <button class="modal-close" id="closeDeleteExpModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <p style="color:#6b7280;margin-bottom:20px;">Voulez-vous vraiment supprimer cette expérience ? Cette action est irréversible.</p>
+        <div class="modal-footer">
+          <button class="btn-cancel" id="cancelDeleteExp">Annuler</button>
+          <button class="btn-danger" id="confirmDeleteExp"><i class="fas fa-trash"></i> Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/admin.js"></script>
+  <script src="../assets/js/admin-experiences.js"></script>
+</body>
+</html>

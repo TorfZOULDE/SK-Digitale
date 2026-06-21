@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail Projet — Samson KPODAMAKOU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+</head>
+<body>
+
+  <canvas id="creative-bg"></canvas>
+
+  <header id="header">
+    <div class="logo">
+      <!-- ✅ Supprimé le bouton admin, remplacé par le theme toggle -->
+      <button class="theme-toggle" id="themeToggle" title="Changer le thème">
+        <i class="fas fa-sun"></i>
+      </button>
+      Samson KPODAMAKOU
+    </div>
+    <nav class="menu" id="mainNav">
+      <a href="../index.html" class="menu-link">À propos</a>
+      <a href="../index.html#parcours" class="menu-link">Parcours</a>
+      <a href="../index.html#competences" class="menu-link">Compétences</a>
+      <a href="../index.html#experiences" class="menu-link">Expériences</a>
+      <a href="projects.html" class="menu-link active">Projets</a>
+      <a href="../index.html#cv" class="menu-link">CV</a>
+      <a href="../index.html#contact" class="menu-link">Contact</a>
+      <a href="ai-chat.html" class="menu-link menu-ia">Assistant IA</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="project-detail-page" id="projectDetail">
+    <div style="text-align:center;padding:150px 5%;color:rgba(255,255,255,0.4);">
+      <i class="fas fa-spinner fa-spin" style="font-size:2rem;"></i>
+      <p style="margin-top:15px;">Chargement du projet...</p>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>SK Digitale</h3>
+        <p>Développeur Web & Administrateur Réseaux passionné, basé à Cotonou, Bénin.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html#apropos">À propos</a></li>
+            <li><a href="../index.html#parcours">Parcours</a></li>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="../index.html#cv">CV</a></li>
+            <li><a href="ai-chat.html">Assistant IA</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Samson KPODAMAKOU — Tous droits réservés</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/22900000000" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <button class="scroll-top-btn" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="../assets/js/backed.js"></script>
+  <script src="../assets/js/pages.js"></script>
+  <script src="../assets/js/project-details.js"></script>
+</body>
+</html>

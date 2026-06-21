@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samson KPOAMAKOU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+
+  <canvas id="creative-bg"></canvas>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="logo">
+      <!-- ✅ Supprimé le bouton admin, remplacé par le theme toggle -->
+      <button class="theme-toggle" id="themeToggle" title="Changer le thème">
+        <i class="fas fa-sun"></i>
+      </button>
+      Samson KPODAMAKOU
+    </div>
+    <nav class="menu" id="mainNav">
+      <a href="#apropos"            class="menu-link">À propos</a>
+      <a href="#parcours"           class="menu-link">Parcours</a>
+      <a href="#competences"        class="menu-link">Compétences</a>
+      <a href="#experiences"        class="menu-link">Expériences</a>
+      <a href="pages/projects.html" class="menu-link">Projets</a>
+      <a href="#cv"                 class="menu-link">CV</a>
+      <a href="#contact"            class="menu-link">Contact</a>
+      <a href="pages/ai-chat.html"  class="menu-link menu-ia">Assistant IA</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-name">
+          <span class="name-first">Samson</span>
+          <span class="name-last">KPODAMAKOU</span>
+        </h1>
+        <p class="hero-sub">
+          <span class="typed-text"></span>
+          <span class="cursor">|</span>
+        </p>
+        <p class="hero-tagline">Étudiant en Informatique de Gestion</p>
+        <div class="hero-actions">
+          <a href="assets/files/CV_Torf_Zoulde.pdf" download class="btn-primary">
+            <i class="fas fa-download"></i> Télécharger CV
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <i class="fas fa-paper-plane"></i> Me contacter
+          </a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <img src="assets/images/profile/sam.jpeg"
+               onerror="this.src='https://ui-avatars.com/api/?name=Torf+Zoulde&size=350&background=ff6b35&color=fff'"
+               alt="Torf Zoulde">
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- BANDEAU ANNONCES DÉFILANT -->
+  <div class="announcement-bar" id="announcementBar">
+    <div class="announcement-track" id="announcementTrack">
+      <!-- Rempli dynamiquement par JS -->
+    </div>
+  </div>
+  <!-- À PROPOS -->
+  <section id="apropos">
+
+    <div class="section-header">
+      <h2>À propos</h2>
+      <div class="accent-line"></div>
+    </div>
+
+    <div class="apropos-card">
+      <div class="bio-text">
+        <p>Je suis <strong>Samson KPODAMAKOU </strong>, étudiant passionné en <strong class="highlight">Informatique de Gestion</strong> à l'ENEAM. Mon parcours est guidé par une fascination profonde pour les technologies et leur capacité à résoudre des problèmes complexes.</p>
+        <p>Actuellement en formation pour devenir <strong class="highlight">Développeur Web et Administrateur Réseaux</strong>, je développe continuellement mes compétences en gestion d'infrastructures, sécurité informatique, et développement d'applications.</p>
+        <p>Ma rigueur et mon sens de l'organisation me permettent de mener à bien des projets complexes, alliant compétences techniques en programmation et vision stratégique en gestion de projets.</p>
+      </div>
+      <button class="apropos-toggle" id="aproposToggle" aria-expanded="false">
+        <i class="fas fa-chevron-down"></i>
+      </button>
+    </div>
+
+    <div class="apropos-more" id="aproposMore">
+      <div class="apropos-grid">
+
+        <div class="apropos-left">
+          <div class="skills-block">
+            <h4 class="block-title"><i class="fas fa-bolt"></i> Compétences principales</h4>
+            <div class="skills-grid">
+              <div class="skill-group">
+                <span class="skill-label">Web Frontend</span>
+                <span class="skill-tags">HTML • CSS • JS • React</span>
+              </div>
+              <div class="skill-group">
+                <span class="skill-label">Backend</span>
+                <span class="skill-tags">Node.js • PHP • Laravel • Python</span>
+              </div>
+              <div class="skill-group">
+                <span class="skill-label">Systèmes</span>
+                <span class="skill-tags">Linux • Windows Server</span>
+              </div>
+              <div class="skill-group">
+                <span class="skill-label">Réseaux</span>
+                <span class="skill-tags">Cisco • TCP/IP • SSH</span>
+              </div>
+              <div class="skill-group">
+                <span class="skill-label">Base de données</span>
+                <span class="skill-tags">MySQL • UML</span>
+              </div>
+              <div class="skill-group">
+                <span class="skill-label">Outils</span>
+                <span class="skill-tags">Git • Docker • VS Code</span>
+              </div>
+            </div>
+          </div>
+          <div class="services-block">
+            <h4 class="block-title"><i class="fas fa-bullseye"></i> Ce que je propose</h4>
+            <ul class="services-list">
+              <li><i class="fas fa-check"></i> Création de sites web modernes</li>
+              <li><i class="fas fa-check"></i> Développement d'applications web</li>
+              <li><i class="fas fa-check"></i> Administration systèmes & réseaux</li>
+              <li><i class="fas fa-check"></i> Maintenance et assistance informatique</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="apropos-right">
+          <div class="info-card">
+            <div class="info-card-inner">
+              <div class="info-row">
+                <span class="info-icon"><i class="fas fa-graduation-cap"></i></span>
+                <div>
+                  <span class="info-label">Formation</span>
+                  <span class="info-value">Informatique de Gestion — ENEAM</span>
+                </div>
+              </div>
+              <div class="info-row">
+                <span class="info-icon"><i class="fas fa-map-marker-alt"></i></span>
+                <div>
+                  <span class="info-label">Localisation</span>
+                  <span class="info-value">Cotonou, Bénin</span>
+                </div>
+              </div>
+              <div class="info-row">
+                <span class="info-icon"><i class="fas fa-rocket"></i></span>
+                <div>
+                  <span class="info-label">Objectif</span>
+                  <span class="info-value">Développeur Web & Admin Réseaux</span>
+                </div>
+              </div>
+              <div class="identity-badge">
+                <span class="badge-dot"></span> Disponible pour projets & collaboration
+              </div>
+            </div>
+          </div>
+
+          <div class="vscode-window">
+            <div class="vscode-titlebar">
+              <div class="vscode-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="vscode-filename">about.py</span>
+              <span class="vscode-lang">Python</span>
+            </div>
+            <div class="vscode-body">
+              <div class="vscode-line"><span class="ln">1</span><span class="cm"># Profil de Torf Zoulde</span></div>
+              <div class="vscode-line"><span class="ln">2</span><span class="cm">&nbsp;</span></div>
+              <div class="vscode-line"><span class="ln">3</span><span class="kw">class </span><span class="cl">Developer</span><span class="pu">:</span></div>
+              <div class="vscode-line"><span class="ln">4</span><span class="ind"></span><span class="kw">def </span><span class="fn">__init__</span><span class="pu">(self):</span></div>
+              <div class="vscode-line"><span class="ln">5</span><span class="ind2"></span><span class="vr">self</span><span class="pu">.</span><span class="at">name</span><span class="pu"> = </span><span class="st">"Torf Zoulde"</span></div>
+              <div class="vscode-line"><span class="ln">6</span><span class="ind2"></span><span class="vr">self</span><span class="pu">.</span><span class="at">role</span><span class="pu"> = </span><span class="st">"Dev Web • Admin Sys & Réseaux"</span></div>
+              <div class="vscode-line"><span class="ln">7</span><span class="ind2"></span><span class="vr">self</span><span class="pu">.</span><span class="at">stack</span><span class="pu"> = [</span></div>
+              <div class="vscode-line"><span class="ln">8</span><span class="ind3"></span><span class="st">"JavaScript"</span><span class="pu">, </span><span class="st">"Node.js"</span><span class="pu">, </span><span class="st">"React"</span><span class="pu">,</span></div>
+              <div class="vscode-line"><span class="ln">9</span><span class="ind3"></span><span class="st">"Linux"</span><span class="pu">, </span><span class="st">"Cisco"</span><span class="pu">, </span><span class="st">"Git"</span></div>
+              <div class="vscode-line"><span class="ln">10</span><span class="ind2"></span><span class="pu">]</span></div>
+              <div class="vscode-line"><span class="ln">11</span><span class="ind2"></span><span class="vr">self</span><span class="pu">.</span><span class="at">available</span><span class="pu"> = </span><span class="bl">True</span></div>
+              <div class="vscode-line"><span class="ln">12</span><span class="cm">&nbsp;</span></div>
+              <div class="vscode-line"><span class="ln">13</span><span class="vr">me </span><span class="pu">= </span><span class="cl">Developer</span><span class="pu">()</span></div>
+              <div class="vscode-line"><span class="ln">14</span><span class="fn">print</span><span class="pu">(</span><span class="st">f"Salut, je suis </span><span class="pu">{</span><span class="vr">me</span><span class="pu">.</span><span class="at">name</span><span class="pu">}</span><span class="st"> 👋"</span><span class="pu">)</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- DESIGN + PROJETS — ZONE VIDÉO -->
+  <div class="video-zone">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source src="assets/videos/bg-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <!-- DESIGN CRÉATIF -->
+    <section id="design">
+      <div class="design-content">
+        <h2>Design Créatif & Moderne</h2>
+        <p>Des solutions web élégantes, performantes et adaptées à vos besoins.</p>
+        <a href="pages/projects.html" class="btn-primary">
+          <i class="fas fa-folder-open"></i> Découvrir mes projets
+        </a>
+      </div>
+    </section>
+
+    <!-- PROJETS RÉCENTS -->
+    <section id="projets">
+      <div class="section-header">
+        <h2>Projets Récents</h2>
+        <div class="accent-line"></div>
+      </div>
+
+      <!-- TEASER CATÉGORIES -->
+      <div class="teaser-grid" id="teaser-grid">
+        <!-- Chargé depuis l'API -->
+      </div>
+
+      <!-- CAROUSEL PROJETS -->
+      <div class="projets-carousel">
+        <div class="projets-grid" id="projects-grid"></div>
+        <div class="projets-nav" id="projets-nav"></div>
+      </div>
+
+      <div class="projets-cta">
+        <a href="pages/projects.html" class="btn-primary">
+          <i class="fas fa-layer-group"></i> Voir tous les projets
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <p class="teaser-sub" id="teaser-sub">Chargement...</p>
+      </div>
+    </section>
+
+  </div>
+  <!-- PARCOURS -->
+  <section id="parcours">
+    <div class="section-header">
+      <h2>Parcours Scolaire</h2>
+      <div class="accent-line"></div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-date">2026 — Présent</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-tag en-cours">En cours</span>
+          <h3>Licence en Administration des Réseaux & Systèmes</h3>
+          <p class="institution"><i class="fas fa-university"></i> ENEAM, Cotonou</p>
+          <p class="description">Spécialisation en administration systèmes et réseaux, gestion d'infrastructures et sécurité informatique.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-date">2025 — 2026</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-tag obtenu">Obtenu</span>
+          <h3>BAC+2 en Informatique de Gestion</h3>
+          <p class="institution"><i class="fas fa-university"></i> ENEAM, Cotonou</p>
+          <p class="description">Spécialisation en administration systèmes et réseaux, développement d'applications, et gestion de projets informatiques.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-date">2023 — 2024</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-tag obtenu">Obtenu</span>
+          <h3>Baccalauréat Série D</h3>
+          <p class="institution"><i class="fas fa-school"></i> Lycée Scientifique</p>
+          <p class="description">Formation scientifique avec spécialisation en mathématiques et sciences physiques.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <span class="timeline-date">Continu</span>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <span class="timeline-tag certif">Certifications</span>
+          <h3>Formations & Certifications</h3>
+          <ul class="timeline-list">
+            <li><i class="fas fa-check"></i> Configuration et gestion de réseaux Cisco</li>
+            <li><i class="fas fa-check"></i> Administration systèmes Linux (Ubuntu, CentOS)</li>
+            <li><i class="fas fa-check"></i> Développement Web Full-Stack</li>
+            <li><i class="fas fa-check"></i> Sécurité informatique et cryptographie</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPÉRIENCES -->
+  <section id="experiences">
+    <div class="section-header">
+      <h2>Expériences Professionnelles</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="experience-grid" id="experience-grid">
+      <!-- Chargé depuis l'API -->
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section id="competences">
+    <div class="section-header">
+      <h2>Compétences Techniques</h2>
+      <div class="accent-line"></div>
+    </div>
+
+    <div class="skills-container">
+
+      <!-- Programmation -->
+      <div class="skill-category">
+        <div class="category-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3>Programmation</h3>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-code"></i> HTML / CSS</span>
+              <span>85%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-js"></i> JavaScript</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-react"></i> React</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-php"></i> PHP</span>
+              <span>65%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="65"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-laravel"></i> Laravel</span>
+              <span>80%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-node-js"></i> Node.js</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-python"></i> Python</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-project-diagram"></i> UML</span>
+              <span>60%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="60"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Réseaux & Systèmes -->
+      <div class="skill-category">
+        <div class="category-icon">
+          <i class="fas fa-network-wired"></i>
+        </div>
+        <h3>Réseaux & Systèmes</h3>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-wifi"></i> Cisco Networking</span>
+              <span>65%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="65"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-linux"></i> Linux</span>
+              <span>65%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="65"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-windows"></i> Windows Server</span>
+              <span>60%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="60"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-shield-alt"></i> Sécurité Réseau</span>
+              <span>55%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="55"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-tools"></i> Maintenance</span>
+              <span>50%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="50"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Outils & Technologies -->
+      <div class="skill-category">
+        <div class="category-icon">
+          <i class="fas fa-wrench"></i>
+        </div>
+        <h3>Outils & Technologies</h3>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-git-alt"></i> Git & GitHub</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-database"></i> MySQL</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fab fa-docker"></i> Docker</span>
+              <span>55%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="55"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-terminal"></i> Bash Scripting</span>
+              <span>60%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="60"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bureautique -->
+    <div class="skills-container skills-bottom">
+      <div class="skill-category skill-category-small">
+        <div class="category-icon">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <h3>Bureautique</h3>
+        <div class="skills-list">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-file-excel"></i> Excel</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-file-word"></i> Word</span>
+              <span>75%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span><i class="fas fa-file-powerpoint"></i> PowerPoint</span>
+              <span>70%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- QUALITÉS PERSONNELLES -->
+  <section id="soft-skills">
+    <div class="section-header">
+      <h2>Qualités Personnelles</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="soft-skills-grid">
+      <div class="soft-skill-card">
+        <div class="icon-wrapper"><i class="fas fa-chart-line"></i></div>
+        <h3>Rigueur</h3>
+        <p>Attention méticuleuse aux détails et respect strict des procédures.</p>
+      </div>
+      <div class="soft-skill-card">
+        <div class="icon-wrapper"><i class="fas fa-lightbulb"></i></div>
+        <h3>Autonomie</h3>
+        <p>Capacité à prendre des initiatives et gérer mes projets de manière indépendante.</p>
+      </div>
+      <div class="soft-skill-card">
+        <div class="icon-wrapper"><i class="fas fa-search"></i></div>
+        <h3>Curiosité</h3>
+        <p>Passion constante pour l'apprentissage et l'exploration de nouvelles technologies.</p>
+      </div>
+      <div class="soft-skill-card">
+        <div class="icon-wrapper"><i class="fas fa-users"></i></div>
+        <h3>Esprit d'équipe</h3>
+        <p>Collaboration efficace au sein d'équipes multidisciplinaires.</p>
+      </div>
+      <div class="soft-skill-card">
+        <div class="icon-wrapper"><i class="fas fa-puzzle-piece"></i></div>
+        <h3>Résolution de problèmes</h3>
+        <p>Approche analytique pour identifier et résoudre des problèmes complexes.</p>
+      </div>
+      <div class="soft-skill-card">
+        <div class="icon-wrapper"><i class="fas fa-clock"></i></div>
+        <h3>Gestion du temps</h3>
+        <p>Organisation efficace pour respecter les délais et optimiser la productivité.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV -->
+  <section id="cv">
+    <div class="section-header">
+      <h2>Mon Curriculum Vitae</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="cv-content">
+      <blockquote class="cv-quote">
+        <i class="fas fa-quote-left"></i>
+        <p>La réussite appartient à ceux qui se préparent aujourd'hui pour demain.</p>
+        <i class="fas fa-quote-right"></i>
+      </blockquote>
+      <div class="cv-actions">
+        <a href="assets/files/CV_Samson_KPODAMAKOU.pdf" download class="btn-download">
+          <i class="fas fa-download"></i> Télécharger mon CV
+        </a>
+        <button class="btn-view" onclick="window.open('assets/files/CV_Samson_KPODAMAKOU.pdf', '_blank')">
+          <i class="fas fa-eye"></i> Consulter en ligne
+        </button>
+      </div>
+      <div class="cv-summary">
+        <h3>En résumé</h3>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Licence Administration des Systèmes et Réseaux</span>
+          </div>
+          <div class="summary-item">
+            <i class="fas fa-code"></i>
+            <span>5+ langages de programmation</span>
+          </div>
+          <div class="summary-item">
+            <i class="fas fa-project-diagram"></i>
+            <span>8 projets majeurs réalisés</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header">
+      <h2>Contact</h2>
+      <div class="accent-line"></div>
+    </div>
+
+    <div class="contact-container">
+
+      <div class="contact-info">
+        <h3>Travaillons ensemble</h3>
+        <p class="contact-intro">
+          Vous avez un projet ? Une opportunité ? N'hésitez pas à me contacter.
+          Je suis disponible pour des stages, des collaborations ou des projets freelance.
+        </p>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div class="contact-text">
+              <h4>Email</h4>
+              <a href="mailto:torf.zoulde@email.com">samsonkpodamakou5@email.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="contact-text">
+              <h4>Localisation</h4>
+              <p>Cotonou, Bénin</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div class="contact-text">
+              <h4>Téléphone</h4>
+              <p>+229 01 43 83 80 31</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <a href="#" class="social-btn"><i class="fab fa-github"></i> GitHub</a>
+          <a href="#" class="social-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          <a href="#" class="social-btn"><i class="fab fa-facebook"></i> Facebook</a>
+          <a href="#" class="social-btn"><i class="fab fa-tiktok"></i> TikTok</a>
+          <a href="https://wa.me/2290169721630" class="social-btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i> Instagram</a>
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i> Twitter/X</a>
+        </div>
+
+      </div>
+
+      <div class="contact-form-wrapper">
+        <button class="btn-show-form" id="btnShowForm">
+          <i class="fas fa-paper-plane"></i> Envoyer un message
+        </button>
+        <div id="form-contact">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Nom complet</label>
+            <input type="text" id="contact-name" placeholder="Votre nom">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email</label>
+            <input type="email" id="contact-email" placeholder="Votre email">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-tag"></i> Sujet</label>
+            <input type="text" id="contact-subject" placeholder="Sujet du message">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-comment"></i> Message</label>
+            <textarea id="contact-message" rows="5" placeholder="Votre message..."></textarea>
+          </div>
+          <button class="btn-submit" id="btnSubmit">
+            <i class="fas fa-paper-plane"></i> Envoyer
+          </button>
+          <p id="contact-status" style="text-align:center;margin-top:1rem;font-family:var(--font-body);"></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>SK Digitale</h3>
+        <p>Développeur Web & Administrateur Réseaux passionné, basé à Cotonou, Bénin.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#parcours">Parcours</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#experiences">Expériences</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="pages/projects.html">Projets</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="pages/ai-chat.html">Assistant IA</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Samson KPODAMAKOU — L'informatique c'est l'avenir</p>
+      <p class="made-with">
+        Siège  à Cotonou, Bénin
+      </p>
+    </div>
+  </footer>
+
+  <!-- ✅ SUPPRIMÉ : L'ancien theme-toggle flottant est retiré -->
+
+  <!-- SCROLL TO TOP -->
+  <button class="scroll-top-btn" id="scrollTopBtn">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- WHATSAPP FLOTTANT -->
+  <a href="https://wa.me/22900000000" target="_blank" class="whatsapp-btn" title="Contactez-moi sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="assets/js/backed.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

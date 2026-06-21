@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <i class="fas fa-user-shield"></i>
+      <div>
+        <span class="logo-title">Samson KPODAMAKOU</span>
+        <span class="logo-sub">Admin Console</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a href="dashboard.html" class="nav-link active">
+        <i class="fas fa-chart-pie"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <p class="nav-label">Contenu</p>
+      <a href="projects.html" class="nav-link">
+        <i class="fas fa-folder-open"></i>
+        <span>Projets</span>
+      </a>
+      <a href="experiences.html" class="nav-link">
+        <i class="fas fa-briefcase"></i>
+        <span>Expériences</span>
+      </a>
+      <a href="ai-management.html" class="nav-link">
+        <i class="fas fa-robot"></i>
+        <span>IA</span>
+      </a>
+
+      <p class="nav-label">Communication</p>
+      <a href="messages.html" class="nav-link">
+        <i class="fas fa-envelope"></i>
+        <span>Messages</span>
+        <span class="nav-badge" id="unreadBadge" style="display:none;">0</span>
+      </a>
+      <a href="visitors.html" class="nav-link">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+      </a>
+
+      <div class="nav-bottom">
+        <a href="settings.html" class="nav-link">
+          <i class="fas fa-cog"></i>
+          <span>Paramètres</span>
+        </a>
+        <a href="login.html" class="nav-link nav-logout" id="btnLogout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span>Déconnexion</span>
+        </a>
+      </div>
+
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="admin-main">
+
+    <!-- HEADER -->
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="sidebar-toggle" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="breadcrumb">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+          <i class="fas fa-chevron-right"></i>
+          <span class="breadcrumb-active">Accueil</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="header-btn" id="themeToggle" title="Changer le thème">
+          <i class="fas fa-moon"></i>
+        </button>
+        <button class="header-btn notif-btn" id="notifBtn">
+          <i class="fas fa-bell"></i>
+          <span class="notif-dot" id="notifDot" style="display:none;"></span>
+        </button>
+        <div class="header-user">
+          <div class="user-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="user-info">
+            <span class="user-name">Samson KPODAMAKOU</span>
+            <span class="user-role">ADMINISTRATOR</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENU -->
+    <div class="admin-content">
+
+      <div class="page-title">
+        <h1>Portfolio Admin</h1>
+        <div class="breadcrumb-inline">
+          <span>Dashboard</span>
+          <i class="fas fa-chevron-right"></i>
+          <span class="active">Accueil</span>
+        </div>
+      </div>
+
+      <!-- KPI -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon blue">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="kpi-info">
+            <div class="kpi-badge green">+12%</div>
+            <h3 id="kpiVisitors">0</h3>
+            <p>Visites (ce mois-ci)</p>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon orange">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="kpi-info">
+            <div class="kpi-badge red" id="unreadLabel" style="display:none;">0 UNREAD</div>
+            <h3 id="kpiMessages">0</h3>
+            <p>Messages reçus</p>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon green">
+            <i class="fas fa-folder-open"></i>
+          </div>
+          <div class="kpi-info">
+            <h3 id="kpiProjects">0</h3>
+            <p>Projets en ligne</p>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon purple">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="kpi-info">
+            <h3 id="kpiExperiences">0</h3>
+            <p>Expériences professionnelles</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRAPHIQUE + IA -->
+      <div class="dashboard-mid">
+
+        <!-- GRAPHIQUE -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h2>Évolution des visites</h2>
+              <p>Trafic des 30 derniers jours</p>
+            </div>
+            <button class="btn-outline">Derniers 30 jours</button>
+          </div>
+          <canvas id="visitChart" height="200"></canvas>
+        </div>
+
+        <!-- WIDGET IA -->
+        <div class="ia-card">
+          <div class="ia-header">
+            <div class="ia-status">
+              <span class="ia-dot"></span>
+              OPÉRATIONNEL
+            </div>
+            <i class="fas fa-info-circle ia-info"></i>
+          </div>
+          <h2>État du modèle IA</h2>
+          <p class="ia-date">Dernière mise à jour : <span id="iaDate">—</span></p>
+          <div class="ia-stats">
+            <div class="ia-stat">
+              <span>Requêtes</span>
+              <strong id="iaRequests">0</strong>
+            </div>
+            <div class="ia-stat">
+              <span>Connaissances</span>
+              <strong id="iaKnowledge">0</strong>
+            </div>
+          </div>
+          <a href="ai-management.html" class="btn-ia">
+            <i class="fas fa-sliders-h"></i> Gérer les APIs
+          </a>
+          <a href="announcements.html" class="nav-link">
+        <i class="fas fa-bullhorn"></i><span>Annonces</span>
+      </a>
+        </div>
+
+      </div>
+
+      <!-- MESSAGES + PROJETS -->
+      <div class="activity-grid">
+
+        <!-- MESSAGES -->
+        <div class="activity-card">
+          <div class="activity-header">
+            <h2>5 derniers messages reçus</h2>
+            <a href="messages.html" class="activity-link">Voir tout</a>
+          </div>
+          <div id="lastMessages">
+            <div class="activity-loading">
+              <i class="fas fa-spinner fa-spin"></i> Chargement...
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJETS -->
+        <div class="activity-card">
+          <div class="activity-header">
+            <h2>Derniers projets</h2>
+            <a href="projects.html" class="btn-new">
+              <i class="fas fa-plus"></i> Nouveau
+            </a>
+          </div>
+          <div id="lastProjects">
+            <div class="activity-loading">
+              <i class="fas fa-spinner fa-spin"></i> Chargement...
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL RÉPONDRE MESSAGE -->
+  <div class="modal" id="replyModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fas fa-reply"></i> Répondre au message</h3>
+        <button class="modal-close" id="closeModal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info" id="modalInfo"></div>
+        <div class="form-group">
+          <label>Votre réponse</label>
+          <textarea id="replyText" rows="5" placeholder="Écrivez votre réponse..."></textarea>
+        </div>
+        <button class="btn-primary-admin" id="btnSendReply">
+          <i class="fas fa-paper-plane"></i> Envoyer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

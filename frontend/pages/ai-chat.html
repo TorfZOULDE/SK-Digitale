@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistant IA — Samson KPODAMAKOU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+</head>
+<body>
+
+  <canvas id="creative-bg"></canvas>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="logo">
+      <!-- ✅ Supprimé le bouton admin, remplacé par le theme toggle -->
+      <button class="theme-toggle" id="themeToggle" title="Changer le thème">
+        <i class="fas fa-sun"></i>
+      </button>
+      Samson KPODAMAKOU
+    </div>
+    <nav class="menu" id="mainNav">
+      <a href="../index.html"              class="menu-link">À propos</a>
+      <a href="../index.html#parcours"     class="menu-link">Parcours</a>
+      <a href="../index.html#competences"  class="menu-link">Compétences</a>
+      <a href="../index.html#experiences"  class="menu-link">Expériences</a>
+      <a href="projects.html"              class="menu-link">Projets</a>
+      <a href="../index.html#cv"           class="menu-link">CV</a>
+      <a href="../index.html#contact"      class="menu-link">Contact</a>
+      <a href="ai-chat.html"               class="menu-link menu-ia active">Assistant IA</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- CHAT SECTION -->
+  <section class="chat-section">
+
+    <div class="chat-hero">
+      <div class="chat-hero-icon">
+        <i class="fas fa-robot"></i>
+      </div>
+      <h1>Assistant <span>IA</span></h1>
+      <p>Posez-moi des questions sur Samson KPODAMAKOU — ses compétences, projets, expériences et plus encore.</p>
+    </div>
+
+    <!-- SUGGESTIONS -->
+    <div class="chat-suggestions">
+      <button class="suggestion-btn" onclick="askQuestion('Qui est Samson KPODAMAKOU ?')">
+        <i class="fas fa-user"></i> Qui est Samson KPODAMAKOU?
+      </button>
+      <button class="suggestion-btn" onclick="askQuestion('Quelles sont ses compétences ?')">
+        <i class="fas fa-code"></i> Ses compétences
+      </button>
+      <button class="suggestion-btn" onclick="askQuestion('Quels projets a-t-il réalisés ?')">
+        <i class="fas fa-folder-open"></i> Ses projets
+      </button>
+      <button class="suggestion-btn" onclick="askQuestion('Quel est son parcours scolaire ?')">
+        <i class="fas fa-graduation-cap"></i> Son parcours
+      </button>
+    </div>
+
+    <!-- CHAT BOX -->
+    <div class="chat-container">
+      <div class="chat-box" id="chatBox">
+        <div class="chat-msg bot">
+          <div class="chat-avatar bot-avatar">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="chat-bubble bot-bubble">
+            Bonjour ! Je suis l'assistant IA de Samson KPODAMAKOU. Posez-moi n'importe quelle question sur son profil, ses compétences ou ses projets. 😊
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-input-zone">
+        <div class="chat-input-box">
+          <input type="text" id="chatInput" placeholder="Posez votre question..." autocomplete="off">
+          <button class="chat-send-btn" id="chatSendBtn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="chat-hint">Appuyez sur Entrée pour envoyer</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h3>SK Digitale</h3>
+        <p>Développeur Web & Administrateur Réseaux passionné, basé à Cotonou, Bénin.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-section">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="../index.html#apropos">À propos</a></li>
+            <li><a href="../index.html#parcours">Parcours</a></li>
+            <li><a href="../index.html#competences">Compétences</a></li>
+            <li><a href="../index.html#experiences">Expériences</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Liens</h4>
+          <ul>
+            <li><a href="projects.html">Projets</a></li>
+            <li><a href="../index.html#cv">CV</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+            <li><a href="ai-chat.html">Assistant IA</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Samson KPODAMAKOU — A votre service</p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/22900000000" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="../assets/js/backed.js"></script>
+  <script src="../assets/js/pages.js"></script>
+  <script src="../assets/js/ai-chat.js"></script>
+</body>
+</html>

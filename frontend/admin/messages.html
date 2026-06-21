@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Messages</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin-page">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <i class="fas fa-user-shield"></i>
+      <div>
+        <span class="logo-title">Portfolio</span>
+        <span class="logo-sub">Admin Console</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-link"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+      <p class="nav-label">Contenu</p>
+      <a href="projects.html" class="nav-link"><i class="fas fa-folder-open"></i><span>Projets</span></a>
+      <a href="experiences.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Expériences</span></a>
+      <a href="ai-management.html" class="nav-link"><i class="fas fa-robot"></i><span>IA</span></a>
+      <a href="announcements.html" class="nav-link">
+        <i class="fas fa-bullhorn"></i><span>Annonces</span>
+      </a>
+      <p class="nav-label">Communication</p>
+      <a href="messages.html" class="nav-link active"><i class="fas fa-envelope"></i><span>Messages</span></a>
+      <a href="visitors.html" class="nav-link"><i class="fas fa-chart-line"></i><span>Analytics</span></a>
+      <div class="nav-bottom">
+        <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i><span>Paramètres</span></a>
+        <a href="login.html" class="nav-link nav-logout" id="btnLogout"><i class="fas fa-sign-out-alt"></i><span>Déconnexion</span></a>
+      </div>
+    </nav>
+  </aside>
+
+  <div class="admin-main">
+    <header class="admin-header">
+      <div class="header-left">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="breadcrumb">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+          <i class="fas fa-chevron-right"></i>
+          <span class="breadcrumb-active">Messages</span>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="header-btn" id="themeToggle"><i class="fas fa-moon"></i></button>
+        <div class="header-user">
+          <div class="user-avatar"><i class="fas fa-user-circle"></i></div>
+          <div class="user-info">
+            <span class="user-name">Samson KPODAMAKOU</span>
+            <span class="user-role">ADMINISTRATOR</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="admin-content">
+      <div class="page-title">
+        <h1>Messages <span id="msgCount" class="msg-count-badge">0</span></h1>
+        <p>Gérez les messages reçus depuis votre portfolio</p>
+      </div>
+
+      <!-- FILTRES -->
+      <div class="msg-filters">
+        <button class="msg-filter active" data-filter="all">
+          <i class="fas fa-inbox"></i> Tous
+        </button>
+        <button class="msg-filter" data-filter="unread">
+          <i class="fas fa-envelope"></i> Non lus
+        </button>
+        <button class="msg-filter" data-filter="read">
+          <i class="fas fa-envelope-open"></i> Lus
+        </button>
+        <button class="msg-filter" data-filter="archived">
+          <i class="fas fa-archive"></i> Archivés
+        </button>
+      </div>
+
+      <!-- LAYOUT MESSAGES -->
+      <div class="messages-layout">
+
+        <!-- LISTE -->
+        <div class="messages-list" id="messagesList">
+          <div class="activity-loading">
+            <i class="fas fa-spinner fa-spin"></i> Chargement...
+          </div>
+        </div>
+
+        <!-- DÉTAIL -->
+        <div class="message-detail" id="messageDetail">
+          <div class="message-detail-empty">
+            <i class="fas fa-envelope-open-text"></i>
+            <p>Sélectionnez un message pour le lire</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL RÉPONDRE -->
+  <div class="modal" id="replyModal">
+    <div class="modal-box modal-large">
+      <div class="modal-header">
+        <h3><i class="fas fa-reply"></i> Répondre au message</h3>
+        <button class="modal-close" id="closeReplyModal"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info" id="replyInfo"></div>
+        <div class="form-group">
+          <label>Votre réponse</label>
+          <textarea id="replyText" rows="6" placeholder="Écrivez votre réponse..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" id="cancelReply">Annuler</button>
+          <button class="btn-primary-admin" id="btnSendReply">
+            <i class="fas fa-paper-plane"></i> Envoyer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/admin.js"></script>
+  <script src="../assets/js/admin-messages.js"></script>
+</body>
+</html>
