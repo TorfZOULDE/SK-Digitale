@@ -1,15 +1,14 @@
 // ===================================
 // CONFIG API
 // ===================================
-const API = "http://localhost:3000/api"; 
-// ou l’URL de ton backend en ligne
+const API = window.location.origin + '/api';// ou l’URL de ton backend en ligne
 
 // ===================================
 // CHARGER LES RÉGLAGES DU SITE (thème + couleur)
 // ===================================
 const applySiteSettings = async () => {
     try {
-        const res  = await fetch('http://localhost:3000/api/settings');
+         const res  = await fetch(`${API}/settings`);
         const data = await res.json();
 
         // Applique la couleur principale

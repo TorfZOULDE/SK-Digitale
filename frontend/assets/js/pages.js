@@ -3,7 +3,7 @@
 // ===================================
 const applySiteSettings = async () => {
     try {
-        const res  = await fetch('http://localhost:3000/api/settings');
+const res  = await fetch(`${API}/settings`);
         const data = await res.json();
 
         if (data.primary_color) {
@@ -103,7 +103,7 @@ if (floatingThemeToggle) {
 // ===================================
 // TRACKER VISITEUR
 // ===================================
-const API = 'http://localhost:3000/api';
+const API = window.location.origin + '/api';
 
 const trackVisitor = async () => {
     try {

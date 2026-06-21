@@ -2,7 +2,7 @@
 // project-details.js - Détail Projet
 // ===================================
 
-//const API = 'http://localhost:3000/api';
+//const API = window.location.origin + '/api';
 
 // ===================================
 // CHARGER LE PROJET
