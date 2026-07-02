@@ -1,21 +1,36 @@
 const db = require('../config/db');
-const fs = require('fs');
-const path = require('path');
+const cloudinary = require('../config/cloudinary');
+const streamifier = require('streamifier');
+
+// Fonction utilitaire : envoie un buffer vers Cloudinary via un stream
+const uploadToCloudinary = (buffer, folder, resourceType) => {
+    return new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+            {
+                folder: folder,
+                resource_type: resourceType // 'image' ou 'video'
+            },
+            (error, result) => {
+                if (error) return reject(error);
+                resolve(result);
+            }
+        );
+        streamifier.createReadStream(buffer).pipe(uploadStream);
+    });
+};
 
 // Upload d'un média (image ou vidéo)
 const uploadMedia = async (req, res) => {
     try {
         const projectId = req.params.id;
         const { type } = req.body; // 'image' ou 'video'
-        
-        // Vérifier que le fichier existe
+
         if (!req.file) {
             return res.status(400).json({ message: 'Aucun fichier fourni' });
         }
 
         console.log('📁 Fichier reçu:', req.file.originalname);
         console.log('📁 Type:', type);
-        console.log('📁 Chemin temporaire:', req.file.path);
 
         // Vérifier que le projet existe
         const [project] = await db.execute('SELECT id FROM projects WHERE id = ?', [projectId]);
@@ -23,38 +38,23 @@ const uploadMedia = async (req, res) => {
             return res.status(404).json({ message: 'Projet introuvable' });
         }
 
-        // Déterminer le dossier en fonction du type
-        const folder = type === 'video' ? 'uploads/projects/videos' : 'uploads/projects/images';
-        
-        // Créer le dossier s'il n'existe pas
-        if (!fs.existsSync(folder)) {
-            fs.mkdirSync(folder, { recursive: true });
-            console.log('📁 Dossier créé:', folder);
-        }
+        const resourceType = type === 'video' ? 'video' : 'image';
+        const folder = `sk-digitale/projects/${type}s`;
 
-        // Déplacer le fichier vers le bon dossier
-        const fileName = `${Date.now()}-${Math.round(Math.random() * 1E9)}${path.extname(req.file.originalname)}`;
-        const filePath = path.join(folder, fileName);
-        
-        // ✅ Vérifier que le fichier temporaire existe avant de le déplacer
-        if (!fs.existsSync(req.file.path)) {
-            return res.status(500).json({ message: 'Fichier temporaire introuvable' });
-        }
-        
-        // ✅ Déplacer le fichier
-        fs.renameSync(req.file.path, filePath);
-        console.log('✅ Fichier déplacé vers:', filePath);
+        // Upload direct vers Cloudinary (le fichier n'est jamais écrit sur le disque)
+        const result = await uploadToCloudinary(req.file.buffer, folder, resourceType);
+        console.log('✅ Uploadé sur Cloudinary:', result.secure_url);
 
-        // Enregistrer en base de données
-        const [result] = await db.execute(
-            'INSERT INTO project_media (project_id, type, path) VALUES (?, ?, ?)',
-            [projectId, type, `/uploads/projects/${type}s/${fileName}`]
+        // Enregistrer en base de données (on stocke l'URL complète + le public_id pour pouvoir supprimer plus tard)
+        const [dbResult] = await db.execute(
+            'INSERT INTO project_media (project_id, type, path, cloudinary_id) VALUES (?, ?, ?, ?)',
+            [projectId, type, result.secure_url, result.public_id]
         );
 
         res.status(201).json({
             message: 'Média uploadé avec succès',
-            mediaId: result.insertId,
-            path: `/uploads/projects/${type}s/${fileName}`
+            mediaId: dbResult.insertId,
+            path: result.secure_url
         });
     } catch (err) {
         console.error('❌ Erreur upload média:', err);
@@ -66,7 +66,7 @@ const uploadMedia = async (req, res) => {
 const getProjectMedia = async (req, res) => {
     try {
         const projectId = req.params.id;
-        
+
         const [media] = await db.execute(
             'SELECT * FROM project_media WHERE project_id = ? ORDER BY created_at DESC',
             [projectId]
@@ -82,22 +82,22 @@ const getProjectMedia = async (req, res) => {
 const deleteMedia = async (req, res) => {
     try {
         const mediaId = req.params.mediaId;
-        
-        const [media] = await db.execute('SELECT path FROM project_media WHERE id = ?', [mediaId]);
+
+        const [media] = await db.execute('SELECT cloudinary_id, type FROM project_media WHERE id = ?', [mediaId]);
         if (media.length === 0) {
             return res.status(404).json({ message: 'Média introuvable' });
         }
 
-        // Supprimer le fichier du disque
-        const filePath = path.join(__dirname, '..', media[0].path);
-        if (fs.existsSync(filePath)) {
-            fs.unlinkSync(filePath);
-            console.log('🗑️ Fichier supprimé:', filePath);
+        // Supprimer le fichier sur Cloudinary
+        if (media[0].cloudinary_id) {
+            const resourceType = media[0].type === 'video' ? 'video' : 'image';
+            await cloudinary.uploader.destroy(media[0].cloudinary_id, { resource_type: resourceType });
+            console.log('🗑️ Fichier supprimé de Cloudinary:', media[0].cloudinary_id);
         }
 
         // Supprimer de la base de données
         await db.execute('DELETE FROM project_media WHERE id = ?', [mediaId]);
-        
+
         res.json({ message: 'Média supprimé avec succès' });
     } catch (err) {
         console.error('❌ Erreur deleteMedia:', err);

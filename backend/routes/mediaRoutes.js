@@ -1,23 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const fs = require('fs');
-const path = require('path');
 const { uploadMedia, getProjectMedia, deleteMedia } = require('../controllers/mediaController');
 
-// Configuration de Multer pour l'upload temporaire
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        const tempDir = 'uploads/temp';
-        if (!fs.existsSync(tempDir)) {
-            fs.mkdirSync(tempDir, { recursive: true });
-        }
-        cb(null, tempDir);
-    },
-    filename: function (req, file, cb) {
-        cb(null, Date.now() + path.extname(file.originalname));
-    }
-});
+// On garde le fichier en mémoire (buffer) au lieu de l'écrire sur le disque,
+// puis on l'envoie directement vers Cloudinary dans le contrôleur.
+const storage = multer.memoryStorage();
 
 const upload = multer({
     storage: storage,
@@ -25,7 +13,6 @@ const upload = multer({
         fileSize: 50 * 1024 * 1024 // 50MB max
     },
     fileFilter: (req, file, cb) => {
-        // Accepter images et vidéos
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'video/mp4', 'video/quicktime'];
         if (allowedTypes.includes(file.mimetype)) {
             cb(null, true);
