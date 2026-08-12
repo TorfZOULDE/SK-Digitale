@@ -1,6 +1,7 @@
 /* ===================================
    VARIABLES CSS & CONFIGURATION
 =================================== */
+
 :root {
     --color-anthracite: #1a1d29;
     --color-anthracite-light: #242938;
@@ -26,8 +27,7 @@
     --transition-slow: 0.5s ease;
 
     --font-display: 'Syne', sans-serif;
-    --font-body: 'Space Mono', monospace;
-}
+--font-body: 'Inter', sans-serif;}
 
 /* ===================================
    RESET & BASE
@@ -383,7 +383,80 @@ section {
     gap: 16px;
     flex-wrap: wrap;
 }
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-orange-primary);
+    background: var(--color-orange-glow);
+    border: 1px solid var(--color-orange-primary);
+    padding: 12px 24px;
+    border-radius: 28px;
+    margin-bottom: 26px;
+}
 
+.hero-badge-dot {
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--color-orange-primary);
+    flex-shrink: 0;
+    animation: pulse-dot 1.5s infinite;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 52px;
+    margin-top: 42px;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 800;
+    background: var(--gradient-orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-stat-label {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-float-badge {
+    position: absolute;
+    bottom: 10px;
+    left: -20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-anthracite-light);
+    border: 1px solid var(--color-orange-primary);
+    border-radius: 14px;
+    padding: 14px 20px;
+    box-shadow: var(--shadow-md);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-white);
+}
+
+.hero-float-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #10b981;
+    flex-shrink: 0;
+    animation: pulse-dot 1.5s infinite;
+}
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -430,8 +503,10 @@ section {
     transform: translateY(-3px);
 }
 
-.hero-photo { flex-shrink: 0; }
-
+.hero-photo {
+    flex-shrink: 0;
+    position: relative;   /* ← ajouté */
+}
 .photo-frame {
     width: 350px; height: 350px;
     border-radius: 50%;
@@ -480,6 +555,9 @@ section {
         gap: 40px;
     }
     .hero-actions { justify-content: center; }
+    .hero-badge { margin-left: auto; margin-right: auto; }
+    .hero-stats { justify-content: center; gap: 36px; }
+    .hero-float-badge { left: 50%; transform: translateX(-50%); bottom: -15px; }
 }
 
 @media (max-width: 768px) {
@@ -491,8 +569,10 @@ section {
     .photo-frame { width: 200px; height: 200px; }
     .btn-primary,
     .btn-secondary { width: 100%; justify-content: center; }
+    .hero-badge { font-size: 0.8rem; padding: 8px 16px; }
+    .hero-stats { gap: 24px; }
+    .hero-stat-num { font-size: 1.6rem; }
 }
-
 
 /* ===================================
    À PROPOS
@@ -516,10 +596,11 @@ section {
 }
 
 .bio-text p {
-    font-size: 1.1rem;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 1.25rem;      /* était 1.1rem */
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.9;
-    text-align: justify;
+    text-align: left;
 }
 
 .apropos-toggle {
@@ -2321,6 +2402,9 @@ body.light-mode .summary-item span {
 body.light-mode .contact-item {
     background: #ffffff;
 }
+body.light-mode .contact-intro {
+    color: rgba(26, 26, 42, 0.75);
+}
 
 body.light-mode .contact-text a,
 body.light-mode .contact-text p {
@@ -2390,6 +2474,27 @@ body.light-mode .logo .theme-toggle:hover {
     background: var(--gradient-orange) !important;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
+}
+
+body.light-mode .hero-badge {
+    color: #1a9cb0;
+    background: rgba(26, 156, 176, 0.08);
+    border-color: rgba(26, 156, 176, 0.35);
+}
+
+body.light-mode .hero-badge-dot {
+    background: #1a9cb0;
+}
+
+body.light-mode .hero-stat-label {
+    color: rgba(26, 26, 42, 0.6);
+}
+
+body.light-mode .hero-float-badge {
+    background: #ffffff;
+    border-color: rgba(26, 156, 176, 0.3);
+    color: #1a1a2a;
+    box-shadow: 0 4px 20px rgba(26, 156, 176, 0.15);
 }
 
 /* ===================================

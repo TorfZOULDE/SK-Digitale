@@ -374,7 +374,7 @@ btnSubmit.addEventListener('click', async () => {
     const status  = document.getElementById('contact-status');
 
     if (!name || !email || !message) {
-        status.textContent = '⚠️ Veuillez remplir tous les champs obligatoires.';
+        status.textContent = 'Veuillez remplir tous les champs obligatoires.';
         status.style.color = '#ff4444';
         return;
     }
@@ -392,7 +392,7 @@ btnSubmit.addEventListener('click', async () => {
         const data = await res.json();
 
         if (res.ok) {
-            status.textContent = '✅ Message envoyé avec succès !';
+            status.textContent = ' Message envoyé avec succès !';
             status.style.color = '#10b981';
             document.getElementById('contact-name').value    = '';
             document.getElementById('contact-email').value   = '';
