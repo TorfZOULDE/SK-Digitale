@@ -1,9 +1,14 @@
 // ===================================
+// API de base
+// ===================================
+const API = window.location.origin + '/api';
+
+// ===================================
 // CHARGER LES RÉGLAGES DU SITE (thème + couleur)
 // ===================================
 const applySiteSettings = async () => {
     try {
-const res  = await fetch(`${API}/settings`);
+        const res  = await fetch(`${API}/settings`);
         const data = await res.json();
 
         if (data.primary_color) {
@@ -82,7 +87,7 @@ if (themeToggle) {
     // Changer le thème au clic
     themeToggle.addEventListener('click', () => {
         document.body.classList.toggle('light-mode');
-        
+
         const icon = themeToggle.querySelector('i');
         if (document.body.classList.contains('light-mode')) {
             icon.classList.replace('fa-sun', 'fa-moon');
@@ -103,8 +108,6 @@ if (floatingThemeToggle) {
 // ===================================
 // TRACKER VISITEUR
 // ===================================
-const API = window.location.origin + '/api';
-
 const trackVisitor = async () => {
     try {
         await fetch(`${API}/visitors`, {
