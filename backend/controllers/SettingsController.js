@@ -15,8 +15,10 @@ const getSettings = async (req, res) => {
 const updateSettings = async (req, res) => {
     const { default_theme, primary_color } = req.body;
     try {
+        // Postgres n'a pas de "ON UPDATE CURRENT_TIMESTAMP" automatique comme MySQL,
+        // donc on met à jour updated_at explicitement ici.
         await db.execute(
-            'UPDATE site_settings SET default_theme = ?, primary_color = ? WHERE id = 1',
+            'UPDATE site_settings SET default_theme = ?, primary_color = ?, updated_at = NOW() WHERE id = 1',
             [default_theme, primary_color]
         );
         res.json({ message: 'Réglages mis à jour avec succès' });

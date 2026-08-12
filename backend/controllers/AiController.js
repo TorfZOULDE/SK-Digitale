@@ -13,10 +13,10 @@ const createKnowledge = async (req, res) => {
     const { category, question, answer } = req.body;
     try {
         const [result] = await db.execute(
-            'INSERT INTO ai_knowledge (category, question, answer) VALUES (?, ?, ?)',
+            'INSERT INTO ai_knowledge (category, question, answer) VALUES (?, ?, ?) RETURNING id',
             [category, question, answer]
         );
-        res.status(201).json({ message: 'Connaissance ajoutée', id: result.insertId });
+        res.status(201).json({ message: 'Connaissance ajoutée', id: result[0].id });
     } catch (err) {
         res.status(500).json({ message: 'Erreur serveur', error: err.message });
     }

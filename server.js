@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+dotenv.config();
 const db = require('./backend/config/db');
 
 dotenv.config();
@@ -27,9 +28,10 @@ app.use('/uploads', express.static('uploads'));
 
 const announcementRoutes = require('./backend/routes/announcement.routes');
 app.use('/api/announcements', announcementRoutes);
-// Test connexion base de données
-db.getConnection()
-  .then(() => console.log('✅ Connexion à MariaDB réussie'))
+
+// Test connexion base de données (PostgreSQL/Neon)
+db.testConnection()
+  .then(() => console.log('✅ Connexion à PostgreSQL (Neon) réussie'))
   .catch(err => console.error('❌ Erreur de connexion:', err.message));
 
 // ===================================
@@ -37,8 +39,9 @@ db.getConnection()
 // ===================================
 const cleanOldVisitors = async () => {
   try {
+    // Syntaxe PostgreSQL : NOW() - INTERVAL '30 days' (au lieu de DATE_SUB de MySQL)
     const [result] = await db.execute(
-      'DELETE FROM visitors WHERE visited_at < DATE_SUB(NOW(), INTERVAL 30 DAY)'
+      "DELETE FROM visitors WHERE visited_at < NOW() - INTERVAL '30 days'"
     );
     if (result.affectedRows > 0) {
       console.log(`🧹 ${result.affectedRows} ancien(s) visiteur(s) supprimé(s)`);
@@ -50,7 +53,7 @@ const cleanOldVisitors = async () => {
 
 // Exécute au démarrage puis toutes les 24h
 cleanOldVisitors();
-setInterval(cleanOldVisitors, 24 * 60 * 60 * 1000);  
+setInterval(cleanOldVisitors, 24 * 60 * 60 * 1000);
 // ===================================
 // ROUTES
 // ===================================

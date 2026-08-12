@@ -6,3 +6,5 @@ uploads/projects/videos/*
 !uploads/projects/videos/.gitkeep
 *.log
 .DS_Store
+backup.sql
+database/neon.sql

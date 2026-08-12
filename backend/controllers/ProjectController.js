@@ -26,10 +26,10 @@ const createProject = async (req, res) => {
   const { title, short_description, full_description, technologies, github_url, demo_url, date } = req.body;
   try {
     const [result] = await db.execute(
-      'INSERT INTO projects (title, short_description, full_description, technologies, github_url, demo_url, date) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO projects (title, short_description, full_description, technologies, github_url, demo_url, date) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING id',
       [title, short_description, full_description, technologies, github_url, demo_url, date]
     );
-    res.status(201).json({ message: 'Projet créé', id: result.insertId });
+    res.status(201).json({ message: 'Projet créé', id: result[0].id });
   } catch (err) {
     res.status(500).json({ message: 'Erreur serveur', error: err.message });
   }

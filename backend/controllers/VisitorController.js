@@ -34,7 +34,14 @@ const getStats = async (req, res) => {
     const [[{ total_messages }]] = await db.execute('SELECT COUNT(*) as total_messages FROM messages');
     const [[{ total_projects }]] = await db.execute('SELECT COUNT(*) as total_projects FROM projects');
 
-    res.json({ total_visitors, total_messages, total_projects });
+    // PostgreSQL renvoie COUNT(*) comme une chaîne de caractères (type bigint),
+    // contrairement à MySQL qui renvoie un nombre. On force la conversion pour
+    // éviter des bugs côté frontend si ces valeurs sont utilisées dans des calculs.
+    res.json({
+      total_visitors: parseInt(total_visitors, 10),
+      total_messages: parseInt(total_messages, 10),
+      total_projects: parseInt(total_projects, 10)
+    });
   } catch (err) {
     res.status(500).json({ message: 'Erreur serveur', error: err.message });
   }

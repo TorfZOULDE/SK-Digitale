@@ -15,10 +15,10 @@ const createExperience = async (req, res) => {
     const { icon, title, company, date_range, tasks } = req.body;
     try {
         const [result] = await db.execute(
-            'INSERT INTO experiences (icon, title, company, date_range, tasks) VALUES (?, ?, ?, ?, ?)',
+            'INSERT INTO experiences (icon, title, company, date_range, tasks) VALUES (?, ?, ?, ?, ?) RETURNING id',
             [icon, title, company, date_range, JSON.stringify(tasks)]
         );
-        res.status(201).json({ message: 'Expérience ajoutée', id: result.insertId });
+        res.status(201).json({ message: 'Expérience ajoutée', id: result[0].id });
     } catch (err) {
         res.status(500).json({ message: 'Erreur serveur', error: err.message });
     }

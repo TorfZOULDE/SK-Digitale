@@ -46,14 +46,15 @@ const uploadMedia = async (req, res) => {
         console.log('✅ Uploadé sur Cloudinary:', result.secure_url);
 
         // Enregistrer en base de données (on stocke l'URL complète + le public_id pour pouvoir supprimer plus tard)
+        // PostgreSQL n'a pas de insertId -> on utilise RETURNING id
         const [dbResult] = await db.execute(
-            'INSERT INTO project_media (project_id, type, path, cloudinary_id) VALUES (?, ?, ?, ?)',
+            'INSERT INTO project_media (project_id, type, path, cloudinary_id) VALUES (?, ?, ?, ?) RETURNING id',
             [projectId, type, result.secure_url, result.public_id]
         );
 
         res.status(201).json({
             message: 'Média uploadé avec succès',
-            mediaId: dbResult.insertId,
+            mediaId: dbResult[0].id,
             path: result.secure_url
         });
     } catch (err) {

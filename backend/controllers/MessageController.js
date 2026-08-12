@@ -68,8 +68,8 @@ const replyMessage = async (req, res) => {
         const msg = rows[0];
         await sendReplyEmail(msg.email, msg.name, msg.subject, reply);
 
-        // Marque comme lu
-        await db.execute('UPDATE messages SET is_read = 1 WHERE id = ?', [req.params.id]);
+        // Marque comme lu (is_read est un BOOLEAN en PostgreSQL -> TRUE au lieu de 1)
+        await db.execute('UPDATE messages SET is_read = TRUE WHERE id = ?', [req.params.id]);
 
         res.json({ message: 'Réponse envoyée avec succès' });
     } catch (err) {
