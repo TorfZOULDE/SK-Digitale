@@ -484,3 +484,31 @@ const loadAnnouncements = async () => {
 };
 
 loadAnnouncements();
+
+
+// ===================================
+// NAVIGATION MOBILE — BOUTON CENTRAL
+// ===================================
+const mobileNavCenterBtn = document.getElementById('mobileNavCenterBtn');
+const mobileMoreMenu     = document.getElementById('mobileMoreMenu');
+const mobileMoreOverlay  = document.getElementById('mobileMoreOverlay');
+const mobileMoreClose    = document.getElementById('mobileMoreClose');
+
+const openMobileMore = () => {
+    mobileMoreMenu.classList.add('active');
+    mobileMoreOverlay.classList.add('active');
+};
+
+const closeMobileMore = () => {
+    mobileMoreMenu.classList.remove('active');
+    mobileMoreOverlay.classList.remove('active');
+};
+
+if (mobileNavCenterBtn) mobileNavCenterBtn.addEventListener('click', openMobileMore);
+if (mobileMoreClose)    mobileMoreClose.addEventListener('click', closeMobileMore);
+if (mobileMoreOverlay)  mobileMoreOverlay.addEventListener('click', closeMobileMore);
+
+// Ferme le menu quand on clique sur un lien
+document.querySelectorAll('.mobile-more-item').forEach(item => {
+    item.addEventListener('click', closeMobileMore);
+});
