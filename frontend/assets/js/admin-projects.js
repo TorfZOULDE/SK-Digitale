@@ -159,13 +159,16 @@ const imagePreview = document.getElementById('imagePreview');
 if (imageInput) {
     imageInput.addEventListener('change', () => {
         Array.from(imageInput.files).forEach(file => {
-            selectedImages.push(file);
+            // ✅ ID unique basé sur un timestamp, plus jamais décalé après une suppression
+            const uid = `img-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+            selectedImages.push({ uid, file });
+
             const reader = new FileReader();
             reader.onload = (e) => {
                 imagePreview.innerHTML += `
-                    <div class="media-thumb" id="img-${selectedImages.length - 1}">
+                    <div class="media-thumb" id="${uid}">
                         <img src="${e.target.result}" alt="${file.name}">
-                        <button class="media-thumb-remove" onclick="removeImage(${selectedImages.length - 1})">
+                        <button class="media-thumb-remove" onclick="removeImage('${uid}')">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
@@ -176,9 +179,9 @@ if (imageInput) {
     });
 }
 
-const removeImage = (index) => {
-    selectedImages.splice(index, 1);
-    const thumb = document.getElementById(`img-${index}`);
+const removeImage = (uid) => {
+    selectedImages = selectedImages.filter(img => img.uid !== uid);
+    const thumb = document.getElementById(uid);
     if (thumb) thumb.remove();
 };
 
@@ -207,11 +210,13 @@ const videoPreview = document.getElementById('videoPreview');
 if (videoInput) {
     videoInput.addEventListener('change', () => {
         Array.from(videoInput.files).forEach(file => {
-            selectedVideos.push(file);
+            const uid = `vid-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+            selectedVideos.push({ uid, file });
+
             videoPreview.innerHTML += `
-                <div class="media-thumb">
+                <div class="media-thumb" id="${uid}">
                     <video src="${URL.createObjectURL(file)}"></video>
-                    <button class="media-thumb-remove" onclick="this.parentElement.remove()">
+                    <button class="media-thumb-remove" onclick="removeVideo('${uid}')">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
@@ -219,6 +224,12 @@ if (videoInput) {
         });
     });
 }
+
+const removeVideo = (uid) => {
+    selectedVideos = selectedVideos.filter(vid => vid.uid !== uid);
+    const thumb = document.getElementById(uid);
+    if (thumb) thumb.remove();
+};
 
 // Drag & Drop vidéos
 const videoZone = document.getElementById('videoUploadZone');
@@ -235,7 +246,6 @@ if (videoZone) {
         videoInput.dispatchEvent(new Event('change'));
     });
 }
-
 // ===================================
 // MODAL AJOUTER / MODIFIER
 // ===================================
@@ -317,7 +327,9 @@ const openEdit = async (id) => {
         const medias = await res.json();
 
         medias.forEach(media => {
-            const filePath = `/${media.path.replace(/\\/g, '/')}`;
+           const filePath = media.path.startsWith('http')
+    ? media.path
+    : `/${media.path.replace(/\\/g, '/')}`;
             if (media.type === 'image') {
                 imagePreview.innerHTML += `
                     <div class="media-thumb" id="existing-img-${media.id}">
@@ -391,45 +403,64 @@ if (saveProject) {
                 body: JSON.stringify({ title, technologies, short_description, full_description, github_url, demo_url, date })
             });
 
-            if (res.ok) {
-                const data = await res.json();
-                const projectId = editingId || data.id;
-
-                // Upload images
-                if (selectedImages.length > 0) {
-                    for (const img of selectedImages) {
-                        const formData = new FormData();
-                        formData.append('file', img);
-                        formData.append('project_id', projectId);
-                        formData.append('type', 'image');
-                        await fetch(`${API}/projects/${projectId}/media`, {
-                            method: 'POST',
-                            headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` },
-                            body: formData
-                        });
-                    }
-                }
-
-                // Upload vidéos
-                if (selectedVideos.length > 0) {
-                    for (const vid of selectedVideos) {
-                        const formData = new FormData();
-                        formData.append('file', vid);
-                        formData.append('project_id', projectId);
-                        formData.append('type', 'video');
-                        await fetch(`${API}/projects/${projectId}/media`, {
-                            method: 'POST',
-                            headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` },
-                            body: formData
-                        });
-                    }
-                }
-
-                closeModal();
-                loadProjects();
-            } else {
-                alert('Erreur lors de la sauvegarde.');
+            if (!res.ok) {
+                alert('Erreur lors de la sauvegarde du projet.');
+                return;
             }
+
+            const data = await res.json();
+            const projectId = editingId || data.id;
+            const uploadErrors = [];
+
+            // Upload images
+            for (const { file } of selectedImages) {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('project_id', projectId);
+                formData.append('type', 'image');
+                try {
+                    const upRes = await fetch(`${API}/projects/${projectId}/media`, {
+                        method: 'POST',
+                        headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` },
+                        body: formData
+                    });
+                    if (!upRes.ok) {
+                        const errData = await upRes.json().catch(() => ({}));
+                        uploadErrors.push(`Image "${file.name}": ${errData.message || upRes.status}`);
+                    }
+                } catch (err) {
+                    uploadErrors.push(`Image "${file.name}": erreur réseau`);
+                }
+            }
+
+            // Upload vidéos
+            for (const { file } of selectedVideos) {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('project_id', projectId);
+                formData.append('type', 'video');
+                try {
+                    const upRes = await fetch(`${API}/projects/${projectId}/media`, {
+                        method: 'POST',
+                        headers: { 'Authorization': `Bearer ${localStorage.getItem('admin_token')}` },
+                        body: formData
+                    });
+                    if (!upRes.ok) {
+                        const errData = await upRes.json().catch(() => ({}));
+                        uploadErrors.push(`Vidéo "${file.name}": ${errData.message || upRes.status}`);
+                    }
+                } catch (err) {
+                    uploadErrors.push(`Vidéo "${file.name}": erreur réseau (fichier probablement trop volumineux ou connexion instable)`);
+                }
+            }
+
+            if (uploadErrors.length > 0) {
+                alert('⚠️ Projet sauvegardé, mais certains médias ont échoué :\n\n' + uploadErrors.join('\n'));
+            }
+
+            closeModal();
+            loadProjects();
+
         } catch (err) {
             alert('Impossible de contacter le serveur.');
         }
