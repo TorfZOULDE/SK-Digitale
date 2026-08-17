@@ -146,17 +146,19 @@ const renderProjects = async (projects) => {
         const project = projects[i];
 
         // Charge la première image
-        let imageHtml = `<i class="fas fa-folder-open"></i>`;
-        try {
-            const mediaRes = await fetch(`${API}/projects/${project.id}/media`);
-            const medias   = await mediaRes.json();
-            const firstImage = medias.find(m => m.type === 'image');
-            if (firstImage) {
-                const imgPath = `/${firstImage.path.replace(/\\/g, '/')}`;
-                imageHtml = `<img src="${imgPath}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover;">`;
-            }
-        } catch (err) {}
-
+let imageHtml = `<i class="fas fa-folder-open"></i>`;
+try {
+    const mediaRes = await fetch(`${API}/projects/${project.id}/media`);
+    const medias   = await mediaRes.json();
+    const firstImage = medias.find(m => m.type === 'image');
+    if (firstImage) {
+        // ✅ Cloudinary renvoie déjà une URL complète (https://...)
+        const imgPath = firstImage.path.startsWith('http')
+            ? firstImage.path
+            : `/${firstImage.path.replace(/\\/g, '/')}`;
+        imageHtml = `<img src="${imgPath}" alt="${project.title}" style="width:100%;height:100%;object-fit:cover;">`;
+    }
+} catch (err) {}
         grid.innerHTML += `
             <div class="projet-card">
                 <div class="projet-card-img">
