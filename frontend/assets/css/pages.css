@@ -194,6 +194,42 @@
     letter-spacing: 2px;
 }
 
+
+.card-badge {
+    position: absolute;
+    top: 15px; left: 15px;
+    z-index: 3;
+    padding: 5px 14px;
+    background: rgba(76, 217, 100, 0.15);
+    border: 1px solid rgba(76, 217, 100, 0.4);
+    color: #4cd964;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-meta-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.card-meta-row span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.card-meta-row i {
+    color: var(--color-orange-primary);
+    font-size: 0.75rem;
+}
+
 .card-body {
     padding: 25px;
     flex: 1;
@@ -762,6 +798,10 @@ body.light-mode .tag {
 
 body.light-mode .card-number {
     color: rgba(26, 26, 42, 0.2) !important;
+}
+
+body.light-mode .card-meta-row span {
+    color: rgba(26, 26, 42, 0.5) !important;
 }
 
 body.light-mode .btn-project.secondary {

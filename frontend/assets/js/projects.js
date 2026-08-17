@@ -99,6 +99,8 @@ const renderProjects = async (projects) => {
             : '';
 
         const num = String(i + 1).padStart(2, '0');
+        const status = proj.demo_url ? 'En ligne' : 'Terminé';
+        const year = proj.date ? new Date(proj.date).getFullYear() : '';
 
         // Charge la première image du projet
         let imageHtml = `<div class="card-icon-wrap"><i class="fas fa-folder-open"></i></div>`;
@@ -107,7 +109,11 @@ const renderProjects = async (projects) => {
             const medias   = await mediaRes.json();
             const firstImage = medias.find(m => m.type === 'image');
             if (firstImage) {
-                const imgPath = `/${firstImage.path.replace(/\\/g, '/')}`;
+                // ✅ Cloudinary renvoie déjà une URL complète (https://...)
+                // -> on ne préfixe le / que pour d'anciens chemins locaux
+                const imgPath = firstImage.path.startsWith('http')
+                    ? firstImage.path
+                    : `/${firstImage.path.replace(/\\/g, '/')}`;
                 imageHtml = `<img src="${imgPath}" alt="${proj.title}" class="card-cover-img">`;
             }
         } catch (err) {}
@@ -115,8 +121,9 @@ const renderProjects = async (projects) => {
         grid.innerHTML += `
             <div class="project-card">
                 <div class="card-visual">
+                    <span class="card-badge">${status}</span>
+                    ${year ? `<span class="card-number">${year}</span>` : `<span class="card-number">${num}</span>`}
                     ${imageHtml}
-                    <span class="card-number">${num}</span>
                 </div>
                 <div class="card-body">
                     <div class="card-category">
@@ -126,18 +133,22 @@ const renderProjects = async (projects) => {
                     <p class="card-desc">
                         ${proj.short_description || proj.full_description || 'Projet réalisé par Torf Zoulde.'}
                     </p>
+                    <div class="card-meta-row">
+                        <span><i class="fas fa-code"></i> ${proj.technologies ? proj.technologies.split(',').length : 0} techs</span>
+                        ${proj.date ? `<span><i class="fas fa-calendar"></i> ${new Date(proj.date).toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' })}</span>` : ''}
+                    </div>
                     <div class="card-tags">${tags}</div>
-                   <div class="card-footer">
-    <a href="project-details.html?id=${proj.id}" class="btn-project primary">
-        <i class="fas fa-eye"></i> Voir détails
-    </a>
-    ${proj.demo_url
-        ? `<a href="${proj.demo_url}" target="_blank" class="btn-project secondary">
-            <i class="fas fa-external-link-alt"></i> Démo
-           </a>`
-        : ''
-    }
-</div>
+                    <div class="card-footer">
+                        <a href="project-details.html?id=${proj.id}" class="btn-project primary">
+                            <i class="fas fa-eye"></i> Voir détails
+                        </a>
+                        ${proj.demo_url
+                            ? `<a href="${proj.demo_url}" target="_blank" class="btn-project secondary">
+                                <i class="fas fa-external-link-alt"></i> Démo
+                               </a>`
+                            : ''
+                        }
+                    </div>
                 </div>
             </div>
         `;
