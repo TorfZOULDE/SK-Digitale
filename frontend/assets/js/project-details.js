@@ -54,23 +54,33 @@ const loadProjectDetail = async () => {
               })
             : '';
 
-        // Charge les médias (images + vidéos) — les URLs Cloudinary sont déjà complètes,
-        // pas besoin (et pas correct) de leur ajouter un "/" devant.
+       // Charge les médias — on sépare vidéos et photos dans deux galeries distinctes
         let mediaHtml = '';
         try {
             const mediaRes = await fetch(`${API}/projects/${id}/media`);
             const medias   = await mediaRes.json();
 
-            if (medias.length > 0) {
-                mediaHtml = `<div class="project-detail-gallery">`;
-                medias.forEach(m => {
-                    if (m.type === 'image') {
-                        mediaHtml += `<img src="${m.path}" alt="${proj.title}" class="gallery-item">`;
-                    } else {
-                        mediaHtml += `<video src="${m.path}" controls class="gallery-item"></video>`;
-                    }
-                });
-                mediaHtml += `</div>`;
+            const videos = medias.filter(m => m.type === 'video');
+            const images = medias.filter(m => m.type === 'image');
+
+            if (videos.length > 0) {
+                mediaHtml += `
+                    <div class="project-detail-section">
+                        <h3><i class="fas fa-video"></i> Vidéos</h3>
+                        <div class="project-detail-gallery gallery-videos">
+                            ${videos.map(m => `<video src="${m.path}" controls class="gallery-item"></video>`).join('')}
+                        </div>
+                    </div>`;
+            }
+
+            if (images.length > 0) {
+                mediaHtml += `
+                    <div class="project-detail-section">
+                        <h3><i class="fas fa-images"></i> Photos</h3>
+                        <div class="project-detail-gallery gallery-images">
+                            ${images.map(m => `<img src="${m.path}" alt="${proj.title}" class="gallery-item">`).join('')}
+                        </div>
+                    </div>`;
             }
         } catch (err) {
             console.error('Erreur chargement médias:', err);
