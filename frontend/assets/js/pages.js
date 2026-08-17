@@ -119,3 +119,63 @@ const trackVisitor = async () => {
 };
 
 trackVisitor();
+
+
+// ===================================
+// NAVIGATION MOBILE — BOUTON CENTRAL
+// ===================================
+const mobileNavCenterBtn = document.getElementById('mobileNavCenterBtn');
+const mobileMoreMenu     = document.getElementById('mobileMoreMenu');
+const mobileMoreOverlay  = document.getElementById('mobileMoreOverlay');
+const mobileMoreClose    = document.getElementById('mobileMoreClose');
+
+const openMobileMore = () => {
+    mobileMoreMenu.classList.add('active');
+    mobileMoreOverlay.classList.add('active');
+};
+
+const closeMobileMore = () => {
+    mobileMoreMenu.classList.remove('active');
+    mobileMoreOverlay.classList.remove('active');
+};
+
+if (mobileNavCenterBtn) mobileNavCenterBtn.addEventListener('click', openMobileMore);
+if (mobileMoreClose)    mobileMoreClose.addEventListener('click', closeMobileMore);
+if (mobileMoreOverlay)  mobileMoreOverlay.addEventListener('click', closeMobileMore);
+
+document.querySelectorAll('.mobile-more-item').forEach(item => {
+    item.addEventListener('click', closeMobileMore);
+});
+
+// ===================================
+// MODAL CV (bottom nav mobile)
+// ===================================
+const CV_PATH = '../assets/files/CV_Samson_KPODAMAKOU.pdf'; // ⚠️ ../ car on est dans pages/
+const mobileNavCvBtn = document.getElementById('mobileNavCvBtn');
+const cvModal         = document.getElementById('cvModal');
+const cvModalOverlay  = document.getElementById('cvModalOverlay');
+const cvModalClose    = document.getElementById('cvModalClose');
+const cvModalView     = document.getElementById('cvModalView');
+const cvModalDownload = document.getElementById('cvModalDownload');
+
+const openCvModal  = () => { cvModal.classList.add('active'); cvModalOverlay.classList.add('active'); };
+const closeCvModal = () => { cvModal.classList.remove('active'); cvModalOverlay.classList.remove('active'); };
+
+if (mobileNavCvBtn)  mobileNavCvBtn.addEventListener('click', openCvModal);
+if (cvModalClose)    cvModalClose.addEventListener('click', closeCvModal);
+if (cvModalOverlay)  cvModalOverlay.addEventListener('click', closeCvModal);
+
+if (cvModalView) cvModalView.addEventListener('click', () => {
+    window.open(CV_PATH, '_blank');
+    closeCvModal();
+});
+
+if (cvModalDownload) cvModalDownload.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = CV_PATH;
+    a.download = 'CV_Samson_KPODAMAKOU.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    closeCvModal();
+});

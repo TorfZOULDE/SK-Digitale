@@ -82,7 +82,75 @@
   <button class="scroll-top-btn" id="scrollTopBtn">
     <i class="fas fa-arrow-up"></i>
   </button>
+<!-- MOBILE BOTTOM NAV -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+  <a href="../index.html#hero" class="mobile-nav-item">
+    <i class="fas fa-home"></i>
+    <span>Accueil</span>
+  </a>
+  <a href="projects.html" class="mobile-nav-item active">
+    <i class="fas fa-folder-open"></i>
+    <span>Projets</span>
+  </a>
+  <button class="mobile-nav-center" id="mobileNavCenterBtn" aria-label="Plus d'options">
+    <i class="fas fa-th-large"></i>
+  </button>
+  <button class="mobile-nav-item" id="mobileNavCvBtn">
+    <i class="fas fa-file-alt"></i>
+    <span>CV</span>
+  </button>
+  <a href="ai-chat.html" class="mobile-nav-item">
+    <i class="fas fa-robot"></i>
+    <span>Assistant</span>
+  </a>
+</nav>
 
+<!-- MENU "PLUS D'OPTIONS" -->
+<div class="mobile-more-overlay" id="mobileMoreOverlay"></div>
+<div class="mobile-more-menu" id="mobileMoreMenu">
+  <div class="mobile-more-handle"></div>
+  <div class="mobile-more-header">
+    <span>Plus d'options</span>
+    <button class="mobile-more-close" id="mobileMoreClose"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="mobile-more-grid">
+    <a href="../index.html#apropos" class="mobile-more-item">
+      <i class="fas fa-user"></i><span>À propos</span>
+    </a>
+    <a href="../index.html#parcours" class="mobile-more-item">
+      <i class="fas fa-graduation-cap"></i><span>Parcours</span>
+    </a>
+    <a href="../index.html#competences" class="mobile-more-item">
+      <i class="fas fa-laptop-code"></i><span>Compétences</span>
+    </a>
+    <a href="../index.html#experiences" class="mobile-more-item">
+      <i class="fas fa-briefcase"></i><span>Expériences</span>
+    </a>
+    <a href="../index.html#contact" class="mobile-more-item">
+      <i class="fas fa-envelope"></i><span>Contact</span>
+    </a>
+    <a href="https://wa.me/22900000000" target="_blank" class="mobile-more-item mobile-more-whatsapp">
+      <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+    </a>
+  </div>
+</div>
+
+<!-- MODAL CV -->
+<div class="cv-modal-overlay" id="cvModalOverlay"></div>
+<div class="cv-modal" id="cvModal">
+  <button class="cv-modal-close" id="cvModalClose"><i class="fas fa-times"></i></button>
+  <div class="cv-modal-icon"><i class="fas fa-file-pdf"></i></div>
+  <h3>Curriculum Vitae</h3>
+  <p>Que souhaitez-vous faire ?</p>
+  <div class="cv-modal-actions">
+    <button class="cv-modal-btn cv-modal-view" id="cvModalView">
+      <i class="fas fa-eye"></i> Consulter en ligne
+    </button>
+    <button class="cv-modal-btn cv-modal-download" id="cvModalDownload">
+      <i class="fas fa-download"></i> Télécharger
+    </button>
+  </div>
+</div>
   <script src="../assets/js/backed.js"></script>
   <script src="../assets/js/pages.js"></script>
   <script src="../assets/js/project-details.js"></script>
