@@ -790,10 +790,10 @@
   <button class="mobile-nav-center" id="mobileNavCenterBtn" aria-label="Plus d'options">
     <i class="fas fa-th-large"></i>
   </button>
-  <a href="#cv" class="mobile-nav-item">
-    <i class="fas fa-file-alt"></i>
-    <span>CV</span>
-  </a>
+  <button class="mobile-nav-item" id="mobileNavCvBtn">
+  <i class="fas fa-file-alt"></i>
+  <span>CV</span>
+</button>
   <a href="pages/ai-chat.html" class="mobile-nav-item">
     <i class="fas fa-robot"></i>
     <span>Assistant</span>
@@ -828,6 +828,23 @@
       <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
     </a>
   </div>
+
+  <!-- MODAL CV -->
+<div class="cv-modal-overlay" id="cvModalOverlay"></div>
+<div class="cv-modal" id="cvModal">
+  <button class="cv-modal-close" id="cvModalClose"><i class="fas fa-times"></i></button>
+  <div class="cv-modal-icon"><i class="fas fa-file-pdf"></i></div>
+  <h3>Curriculum Vitae</h3>
+  <p>Que souhaitez-vous faire ?</p>
+  <div class="cv-modal-actions">
+    <button class="cv-modal-btn cv-modal-view" id="cvModalView">
+      <i class="fas fa-eye"></i> Consulter en ligne
+    </button>
+    <button class="cv-modal-btn cv-modal-download" id="cvModalDownload">
+      <i class="fas fa-download"></i> Télécharger
+    </button>
+  </div>
+</div>
 </div>
   <!-- WHATSAPP FLOTTANT -->
   <a href="https://wa.me/22900000000" target="_blank" class="whatsapp-btn" title="Contactez-moi sur WhatsApp">

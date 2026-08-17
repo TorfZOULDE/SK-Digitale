@@ -512,3 +512,37 @@ if (mobileMoreOverlay)  mobileMoreOverlay.addEventListener('click', closeMobileM
 document.querySelectorAll('.mobile-more-item').forEach(item => {
     item.addEventListener('click', closeMobileMore);
 });
+
+
+// ===================================
+// MODAL CV (bottom nav mobile)
+// ===================================
+const CV_PATH = 'assets/files/CV_Samson_KPODAMAKOU.pdf';
+const mobileNavCvBtn = document.getElementById('mobileNavCvBtn');
+const cvModal         = document.getElementById('cvModal');
+const cvModalOverlay  = document.getElementById('cvModalOverlay');
+const cvModalClose    = document.getElementById('cvModalClose');
+const cvModalView     = document.getElementById('cvModalView');
+const cvModalDownload = document.getElementById('cvModalDownload');
+
+const openCvModal  = () => { cvModal.classList.add('active'); cvModalOverlay.classList.add('active'); };
+const closeCvModal = () => { cvModal.classList.remove('active'); cvModalOverlay.classList.remove('active'); };
+
+if (mobileNavCvBtn)  mobileNavCvBtn.addEventListener('click', openCvModal);
+if (cvModalClose)    cvModalClose.addEventListener('click', closeCvModal);
+if (cvModalOverlay)  cvModalOverlay.addEventListener('click', closeCvModal);
+
+if (cvModalView) cvModalView.addEventListener('click', () => {
+    window.open(CV_PATH, '_blank');
+    closeCvModal();
+});
+
+if (cvModalDownload) cvModalDownload.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = CV_PATH;
+    a.download = 'CV_Samson_KPODAMAKOU.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    closeCvModal();
+});
